@@ -1,11 +1,17 @@
 # Test cases:
-# 1. Auth tests:
-##  Login to  project:
+#  Auth tests:
+##  1.1 Login to  project with valid data:
 ### -go to Projects page
 ### -enter login and pass
 ### -click Sign in button
 ## Expected result: signed in to the project
 ### Severity: High
+##  1.2 Login to  project with not valid data:
+### -go to Projects page
+### -enter login and pass
+### -click Sign in button
+## Expected result: not signed in to the project
+### Severity: Medium
 ## 2. Create a project:
 ### -go to Projects page
 ### -click Crate new project button

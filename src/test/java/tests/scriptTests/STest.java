@@ -1,6 +1,7 @@
 package tests.scriptTests;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -27,5 +28,10 @@ public class STest extends BaseHeadlessTest {
         $("span[class=CAunhU]").click();
         String textOfMessageOne = $$x("//small[@class = 'f75Cb_']").get(0).getText();
         Assertions.assertEquals(errorOne, textOfMessageOne, "Error on the page!");
+    }
+
+    @Test
+    void test(){
+        Assertions.assertTrue(true);
     }
 }

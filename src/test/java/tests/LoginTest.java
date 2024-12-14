@@ -9,7 +9,7 @@ import tests.base.BaseTest;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.$$x;
 
-public class LoginTest extends BaseHeadlessTest {
+public class LoginTest extends BaseTest {
 
     LoginStepsPage loginStepsPage = new LoginStepsPage();
 

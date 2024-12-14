@@ -13,7 +13,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static io.qameta.allure.Allure.attachment;
 import static io.qameta.allure.Allure.step;
 
-public class ProjectTest extends BaseHeadlessTest {
+public class ProjectTest extends BaseTest {
 
     ProjectStepsPage steps = new ProjectStepsPage();
 

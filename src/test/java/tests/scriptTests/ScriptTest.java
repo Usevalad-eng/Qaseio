@@ -17,7 +17,7 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 
-public class ScriptTest extends BaseHeadlessTest {
+public class ScriptTest extends BaseTest {
 
     public String error1 = "This field is required";
     public String error2 = "This field is required";

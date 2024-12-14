@@ -4,13 +4,14 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import tests.base.BaseHeadlessTest;
 import tests.base.BaseSTest;
 
 import java.util.stream.Stream;
 
 import static com.codeborne.selenide.Selenide.*;
 
-public class STest extends BaseSTest {
+public class STest extends BaseHeadlessTest {
     static Stream<Arguments> qaseioAuthNegativeScenarios() {
         return Stream.of(
                 Arguments.of("kubyox@mailto.plus", "", "This field is required"),

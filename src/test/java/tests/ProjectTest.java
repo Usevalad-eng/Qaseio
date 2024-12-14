@@ -6,13 +6,14 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.ProjectStepsPage;
+import tests.base.BaseHeadlessTest;
 import tests.base.BaseTest;
 
 import static com.codeborne.selenide.Selenide.$;
 import static io.qameta.allure.Allure.attachment;
 import static io.qameta.allure.Allure.step;
 
-public class ProjectTest extends BaseTest {
+public class ProjectTest extends BaseHeadlessTest {
 
     ProjectStepsPage steps = new ProjectStepsPage();
 

@@ -1,10 +1,10 @@
 package pages;
 
 import io.qameta.allure.Step;
+import org.junit.jupiter.api.Assertions;
 
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class LoginStepsPage {
 
@@ -29,8 +29,25 @@ public class LoginStepsPage {
         $("[name=password]").submit();
     }
 
+    @Step("click submit")
+    public void clickSignin(){
+        $("span[class=CAunhU]").click();
+    }
+
     @Step("successful Login")
     public void successfulLogin(){
         $("h1[class=uA6zAY]").shouldHave(text("Projects"));
+    }
+
+    @Step("get error one")
+    public void getErrorOne(){
+        String textOfMessageOne = $$x("//small[@class = 'f75Cb_']").get(0).getText();
+        Assertions.assertEquals("This field is required", textOfMessageOne, "Error on the page!");
+    }
+
+    @Step("get error two")
+    public void getErrorTwo(){
+        String textOfMessageTwo = $$x("//small[@class = 'f75Cb_']").get(0).getText();
+        Assertions.assertEquals("This field is required", textOfMessageTwo, "Error on the page!");
     }
 }

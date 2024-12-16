@@ -1,13 +1,9 @@
-package tests.qaseio;
+package tests.qaseioTests;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import pages.LoginStepsPage;
 import tests.base.BaseTest;
-
-import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.Selenide.$$x;
 
 public class LoginSuccessTest extends BaseTest {
 

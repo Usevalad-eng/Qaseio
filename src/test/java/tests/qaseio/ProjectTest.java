@@ -4,6 +4,7 @@ import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.Test;
 import pages.ProjectStepsPage;
+import tests.base.BaseHeadlessTest;
 import tests.base.BaseTest;
 
 import static com.codeborne.selenide.Selenide.$;
@@ -11,7 +12,7 @@ import static com.codeborne.selenide.Selenide.$x;
 import static io.qameta.allure.Allure.attachment;
 import static io.qameta.allure.Allure.step;
 
-public class AProjectTest extends BaseTest {
+public class ProjectTest extends BaseHeadlessTest {
 
     ProjectStepsPage steps = new ProjectStepsPage();
 
@@ -39,10 +40,8 @@ public class AProjectTest extends BaseTest {
         steps.clickCreateProject();
         steps.openProjectsPage();
         steps.assertThatProjectCreated("Demo");
-        //closeWebDriver();
-        $(".CmRKGs").click();  //click menu
-        //$(".OHE0ll").click();  //exit
-        $x("//span[text() = 'Sign out']").click();
+        //$(".CmRKGs").click();  //click menu
+        //$x("//span[text() = 'Sign out']").click(); //exit
     }
 
     /*@Test

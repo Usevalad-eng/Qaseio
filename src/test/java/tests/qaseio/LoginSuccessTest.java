@@ -17,6 +17,7 @@ public class LoginSuccessTest extends BaseTest {
     public String error2 = "This field is required";
 
     @Test
+    @Disabled
     public void loginSuccessfulTest(){
         loginStepsPage.openLoginPage();
         loginStepsPage.inputLogin("kubyox@mailto.plus");

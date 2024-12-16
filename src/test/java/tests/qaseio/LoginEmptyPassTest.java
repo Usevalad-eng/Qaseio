@@ -3,11 +3,12 @@ package tests.qaseio;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import pages.LoginStepsPage;
+import tests.base.BaseHeadlessTest;
 import tests.base.BaseTest;
 
 import static com.codeborne.selenide.Selenide.*;
 
-public class LoginEmptyPassTest extends BaseTest {
+public class LoginEmptyPassTest extends BaseHeadlessTest {
 
     LoginStepsPage loginStepsPage = new LoginStepsPage();
 

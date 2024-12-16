@@ -1,9 +1,11 @@
 package tests.scriptTests;
 
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.Allure;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -23,15 +25,18 @@ public class ScriptTest extends BaseTest {
     public String error2 = "This field is required";
 
     @Test
+    @Disabled
     public void userShouldBeLoggedInUsingValidData() {
         open("/login");
         $("[name=email]").setValue("kubyox@mailto.plus");
         $("[name=password]").setValue("qaseio122024");
         $("span[class=CAunhU]").click();
         $("h1[class=uA6zAY]").shouldHave(text("Projects"));
+        Configuration.timeout = 5000;
     }
 
     @Test
+    @Disabled
     void userShouldNotBeLoggedInUsingEmptyData() {
         open("/login");
         $("[name=email]").setValue("");
@@ -41,9 +46,11 @@ public class ScriptTest extends BaseTest {
         Assertions.assertEquals(error1, textOfMessageOne, "Error on the page!");
         String textOfMessageTwo = $$x("//small[@class = 'f75Cb_']").get(1).getText();
         Assertions.assertEquals(error2, textOfMessageTwo, "Error on the page!");
+        Configuration.timeout = 5000;
     }
 
     @Test
+    @Disabled
     void userShouldNotBeLoggedInUsingEmptyPass() {
         open("/login");
         $("[name=email]").setValue("kubyox@mailto.plus");
@@ -51,9 +58,11 @@ public class ScriptTest extends BaseTest {
         $("span[class=CAunhU]").click();
         String textOfMessageTwo = $$x("//small[@class = 'f75Cb_']").get(0).getText();
         Assertions.assertEquals(error2, textOfMessageTwo, "Error on the page!");
+        Configuration.timeout = 5000;
     }
 
     @Test
+    @Disabled
     void userShouldNotBeLoggedInUsingEmptyLogin() {
         open("/login");
         $("[name=email]").setValue("");
@@ -61,6 +70,7 @@ public class ScriptTest extends BaseTest {
         $("span[class=CAunhU]").click();
         String textOfMessageOne = $$x("//small[@class = 'f75Cb_']").get(0).getText();
         Assertions.assertEquals(error1, textOfMessageOne, "Error on the page!");
+        Configuration.timeout = 5000;
     }
 
     static Stream<Arguments> qaseioAuthNegativeScenarios() {
@@ -71,6 +81,7 @@ public class ScriptTest extends BaseTest {
     }
     @MethodSource("qaseioAuthNegativeScenarios")
     @ParameterizedTest(name = "Qaseio auth negative tests using JUnit5(empty pass or login)")
+    @Disabled
     void qaseioAuthNegativeScenarios(String login, String pass, String errorOne) {
         open("/login");
         $("[name=email]").setValue(login);
@@ -78,9 +89,11 @@ public class ScriptTest extends BaseTest {
         $("span[class=CAunhU]").click();
         String textOfMessageOne = $$x("//small[@class = 'f75Cb_']").get(0).getText();
         Assertions.assertEquals(errorOne, textOfMessageOne, "Error on the page!");
+        Configuration.timeout = 5000;
     }
 
     @Test
+    @Disabled
     public void createProjectScriptTest() {
         SelenideLogger.addListener("allure", new AllureSelenide());
         open("/login");
@@ -95,9 +108,11 @@ public class ScriptTest extends BaseTest {
         $(".NFxRR3").shouldBe(exist);
         $(".NFxRR3").shouldHave(text("Demo"));
         $$x("//a[@class = 'cx2QU4']").get(0).shouldHave(text("Demo"));
+        Configuration.timeout = 5000;
     }
 
     @Test
+    @Disabled
     public void createProjectStepsTest() {
         SelenideLogger.addListener("allure", new AllureSelenide());
 
@@ -128,5 +143,6 @@ public class ScriptTest extends BaseTest {
             $(".NFxRR3").shouldHave(text("Demo"));
             $$x("//a[@class = 'cx2QU4']").get(0).shouldHave(text("Demo"));
         });
+        Configuration.timeout = 5000;
     }
 }

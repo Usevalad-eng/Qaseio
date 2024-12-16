@@ -14,12 +14,12 @@ public class ProjectStepsPage {
 
     @Step("Open Login Page")
     public void openLoginPage() {
-        open("/login");
+        open("https://app.qase.io/login");
     }
 
     @Step("Input login {login}")
     public void inputLogin(String login) {
-        $("[name=email]").sendKeys(login);
+        $x("//input[@name='email']").sendKeys(login);
     }
 
     @Step("Input pass: {pass}")

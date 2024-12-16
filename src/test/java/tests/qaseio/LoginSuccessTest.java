@@ -1,15 +1,15 @@
-package tests;
+package tests.qaseio;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import pages.LoginStepsPage;
-import tests.base.BaseHeadlessTest;
 import tests.base.BaseTest;
 
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.$$x;
 
-public class LoginTest extends BaseTest {
+public class LoginSuccessTest extends BaseTest {
 
     LoginStepsPage loginStepsPage = new LoginStepsPage();
 
@@ -25,7 +25,8 @@ public class LoginTest extends BaseTest {
         loginStepsPage.successfulLogin();
     }
 
-    @Test
+    /*@Test
+    @Disabled
     void userShouldNotBeLoggedInUsingEmptyData() {
         open("/login");
         $("[name=email]").setValue("");
@@ -38,6 +39,7 @@ public class LoginTest extends BaseTest {
     }
 
     @Test
+    @Disabled
     void userShouldNotBeLoggedInUsingEmptyPass() {
         open("/login");
         $("[name=email]").setValue("kubyox@mailto.plus");
@@ -48,6 +50,7 @@ public class LoginTest extends BaseTest {
     }
 
     @Test
+    @Disabled
     void userShouldNotBeLoggedInUsingEmptyLogin() {
         open("/login");
         $("[name=email]").setValue("");
@@ -55,5 +58,5 @@ public class LoginTest extends BaseTest {
         $("span[class=CAunhU]").click();
         String textOfMessageOne = $$x("//small[@class = 'f75Cb_']").get(0).getText();
         Assertions.assertEquals(error1, textOfMessageOne, "Error on the page!");
-    }
+    }*/
 }

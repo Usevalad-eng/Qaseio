@@ -11,7 +11,7 @@ public class LoginStepsPage {
 
     @Step("Open Login Page")
     public void openLoginPage(){
-        open("/login");
+        open("https://app.qase.io/login");
     }
 
     @Step("Input login {login}")

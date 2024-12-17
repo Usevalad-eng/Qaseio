@@ -1,43 +1,24 @@
 package tests.qaseioTests;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.LoginStepsPage;
 import tests.base.BaseHeadlessTest;
-
-import static com.codeborne.selenide.Selenide.*;
 
 public class LoginEmptyPassTest extends BaseHeadlessTest {
 
     LoginStepsPage loginStepsPage = new LoginStepsPage();
 
-    public String error1 = "This field is required";
-    public String error2 = "This field is required";
-
     @Test
+    @DisplayName("User Should Not Be LoggedIn Using Empty Pass")
     void userShouldNotBeLoggedInUsingEmptyPass() {
-        /*open("/login");
-        $("[name=email]").setValue("kubyox@mailto.plus");
-        $("[name=password]").setValue("");
-        $("span[class=CAunhU]").click();*/
+        SelenideLogger.addListener("allure", new AllureSelenide());
         loginStepsPage.openLoginPage();
         loginStepsPage.inputLogin("kubyox@mailto.plus");
         loginStepsPage.inputPass("");
         loginStepsPage.clickSignin();
-        /*String textOfMessageTwo = $$x("//small[@class = 'f75Cb_']").get(0).getText();
-        Assertions.assertEquals(error2, textOfMessageTwo, "Error on the page!");*/
         loginStepsPage.getErrorTwo();
-    }
-
-    @Test
-    @Disabled
-    void userShouldNotBeLoggedInUsingEmptyPassScript() {
-        open("/login");
-        $("[name=email]").setValue("kubyox@mailto.plus");
-        $("[name=password]").setValue("");
-        $("span[class=CAunhU]").click();
-        String textOfMessageTwo = $$x("//small[@class = 'f75Cb_']").get(0).getText();
-        Assertions.assertEquals(error2, textOfMessageTwo, "Error on the page!");
     }
 }

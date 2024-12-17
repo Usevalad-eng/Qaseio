@@ -6,8 +6,7 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 
 public class ProjectStepsPage {
@@ -56,6 +55,21 @@ public class ProjectStepsPage {
     @Step("assert that project {projName} created")
     public void assertThatProjectCreated(String projName) {
         $(".NFxRR3").shouldHave(text(projName));
+    }
+
+    @Step("findMenu")
+    public void findMenu() {
+        $x("//img[@alt = 'Test Name']").click();
+    }
+
+    @Step("findExit")
+    public void findExit() {
+        $x("//*[text() = 'Sign out']").click();
+    }
+
+    @Step("assertThatExit")
+    public void assertThatExit() {
+        $(".ilHPl4").shouldBe(exist);
     }
 
     @Attachment(value = "screen", type = "image/png", fileExtension = "png")

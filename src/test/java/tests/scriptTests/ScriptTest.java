@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import tests.base.BaseHeadlessTest;
 import tests.base.BaseTest;
 
 import java.util.stream.Stream;
@@ -143,6 +142,28 @@ public class ScriptTest extends BaseTest {
             $(".NFxRR3").shouldHave(text("Demo"));
             $$x("//a[@class = 'cx2QU4']").get(0).shouldHave(text("Demo"));
         });
+        Configuration.timeout = 5000;
+    }
+
+    @Test
+    @Disabled
+    public void createProjectAndExitScriptTest() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
+        open("/login");
+        $("[name=email]").sendKeys("kubyox@mailto.plus");
+        $("[name=password]").sendKeys("qaseio122024");
+        $("[name=password]").submit();
+        $x("//span[text() = 'Create new project']").shouldBe(visible).click();
+        $("#modal-header").shouldHave(text("Create new project"));
+        $("#project-name").sendKeys("Demo");
+        $x("//span[text() = 'Create project']").click();
+        open("/projects");
+        $(".NFxRR3").shouldBe(exist);
+        $(".NFxRR3").shouldHave(text("Demo"));
+        $$x("//a[@class = 'cx2QU4']").get(0).shouldHave(text("Demo"));
+        $x("//img[@alt = 'Test Name']").click();
+        $x("//*[text() = 'Sign out']").click();
+        $(".ilHPl4").shouldBe(exist);
         Configuration.timeout = 5000;
     }
 }

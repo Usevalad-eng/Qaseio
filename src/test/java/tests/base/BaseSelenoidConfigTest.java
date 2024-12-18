@@ -1,15 +1,13 @@
 package tests.base;
 
 import com.codeborne.selenide.Configuration;
-import org.junit.jupiter.api.BeforeAll;
 
-public class BaseSTest {
-    @BeforeAll
-    static void screenResolution() {
+public class BaseSelenoidConfigTest {
+    public static void configure() {
         Configuration.remote = "http://localhost:4444/wd/hub";
         Configuration.browser = "chrome";
-        Configuration.browserVersion = "109.0";
+        Configuration.browserVersion = "latest";
         Configuration.browserSize = "1920x1080";
-        Configuration.timeout = 5000;
+        Configuration.timeout = 10000;
     }
 }

@@ -1,7 +1,6 @@
 package tests.selenoidTests;
 
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Disabled;
@@ -20,7 +19,17 @@ public class Selenoid1Test {
     }
 
     @Test
-    //@Disabled
+    @Disabled
+    public void userShouldBeLoggedInUsingValidData() {
+        open("https://app.qase.io/login");
+        $("[name=email]").setValue("kubyox@mailto.plus");
+        $("[name=password]").setValue("qaseio122024");
+        $("span[class=CAunhU]").click();
+        $("h1[class=uA6zAY]").shouldHave(text("Projects"));
+    }
+
+    @Test
+    @Disabled
     void searchTest() {
         open("https://www.google.com");
         $("[name=q]").setValue("Selenoid").pressEnter();
@@ -31,15 +40,5 @@ public class Selenoid1Test {
     @Disabled
     void test(){
         Assertions.assertTrue(true);
-    }
-
-    @Test
-    @Disabled
-    public void userShouldBeLoggedInUsingValidData() {
-        open("https://app.qase.io/login");
-        $("[name=email]").setValue("kubyox@mailto.plus");
-        $("[name=password]").setValue("qaseio122024");
-        $("span[class=CAunhU]").click();
-        $("h1[class=uA6zAY]").shouldHave(text("Projects"));
     }
 }

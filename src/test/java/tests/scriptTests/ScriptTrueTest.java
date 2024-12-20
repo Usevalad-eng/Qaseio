@@ -12,6 +12,5 @@ public class ScriptTrueTest extends BaseTest {
     @Disabled
     void test(){
         Assertions.assertTrue(true);
-        Configuration.timeout = 5000;
     }
 }

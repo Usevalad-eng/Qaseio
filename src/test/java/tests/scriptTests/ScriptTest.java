@@ -31,7 +31,6 @@ public class ScriptTest extends BaseTest {
         $("[name=password]").setValue("qaseio122024");
         $("span[class=CAunhU]").click();
         $("h1[class=uA6zAY]").shouldHave(text("Projects"));
-        Configuration.timeout = 5000;
     }
 
     @Test
@@ -45,7 +44,6 @@ public class ScriptTest extends BaseTest {
         Assertions.assertEquals(error1, textOfMessageOne, "Error on the page!");
         String textOfMessageTwo = $$x("//small[@class = 'f75Cb_']").get(1).getText();
         Assertions.assertEquals(error2, textOfMessageTwo, "Error on the page!");
-        Configuration.timeout = 5000;
     }
 
     @Test
@@ -57,7 +55,6 @@ public class ScriptTest extends BaseTest {
         $("span[class=CAunhU]").click();
         String textOfMessageTwo = $$x("//small[@class = 'f75Cb_']").get(0).getText();
         Assertions.assertEquals(error2, textOfMessageTwo, "Error on the page!");
-        Configuration.timeout = 5000;
     }
 
     @Test
@@ -69,7 +66,6 @@ public class ScriptTest extends BaseTest {
         $("span[class=CAunhU]").click();
         String textOfMessageOne = $$x("//small[@class = 'f75Cb_']").get(0).getText();
         Assertions.assertEquals(error1, textOfMessageOne, "Error on the page!");
-        Configuration.timeout = 5000;
     }
 
     static Stream<Arguments> qaseioAuthNegativeScenarios() {
@@ -88,7 +84,6 @@ public class ScriptTest extends BaseTest {
         $("span[class=CAunhU]").click();
         String textOfMessageOne = $$x("//small[@class = 'f75Cb_']").get(0).getText();
         Assertions.assertEquals(errorOne, textOfMessageOne, "Error on the page!");
-        Configuration.timeout = 5000;
     }
 
     @Test
@@ -107,7 +102,6 @@ public class ScriptTest extends BaseTest {
         $(".NFxRR3").shouldBe(exist);
         $(".NFxRR3").shouldHave(text("Demo"));
         $$x("//a[@class = 'cx2QU4']").get(0).shouldHave(text("Demo"));
-        Configuration.timeout = 5000;
     }
 
     @Test
@@ -142,7 +136,6 @@ public class ScriptTest extends BaseTest {
             $(".NFxRR3").shouldHave(text("Demo"));
             $$x("//a[@class = 'cx2QU4']").get(0).shouldHave(text("Demo"));
         });
-        Configuration.timeout = 5000;
     }
 
     @Test
@@ -164,6 +157,5 @@ public class ScriptTest extends BaseTest {
         $x("//img[@alt = 'Test Name']").click();
         $x("//*[text() = 'Sign out']").click();
         $(".ilHPl4").shouldBe(exist);
-        Configuration.timeout = 5000;
     }
 }

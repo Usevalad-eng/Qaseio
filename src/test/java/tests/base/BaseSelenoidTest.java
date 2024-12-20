@@ -9,8 +9,8 @@ public class BaseSelenoidTest {
         Configuration.remote = "http://localhost:4444/wd/hub";
         Configuration.browser = "chrome";
         //Configuration.browserVersion = "109.0";
-        Configuration.browserVersion = "latest";
+        //Configuration.browserVersion = "latest";
         Configuration.browserSize = "1920x1080";
-        Configuration.timeout = 5000;
+        //Configuration.timeout = 5000;
     }
 }

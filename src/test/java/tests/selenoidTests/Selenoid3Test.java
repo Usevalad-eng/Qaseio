@@ -6,17 +6,24 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-import tests.base.BaseSelenoidConfigTest;
 
+import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
-public class Selenoid1Test {
+public class Selenoid3Test {
 
     @BeforeAll
-    static void setup() {
-        BaseSelenoidConfigTest.configure();
+    public static void setUp() {
+        Configuration.remote = "http://localhost:4444/wd/hub";
+        Configuration.browser = "chrome";
+    }
+
+    @Test
+    public void userCanSearch() {
+        open("https://www.google.com");
+        $("[name='q']").setValue("Selenide").pressEnter();
+        $$("#search .g").shouldHave(sizeGreaterThan(1));
     }
 
     @Test
@@ -29,7 +36,7 @@ public class Selenoid1Test {
 
     @Test
     @Disabled
-    void test(){
+    void test() {
         Assertions.assertTrue(true);
     }
 

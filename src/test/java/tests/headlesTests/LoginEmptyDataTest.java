@@ -1,15 +1,15 @@
-package tests.qaseioTests;
+package tests.headlesTests;
 
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import pages.LoginStepsPage;
+import pages.LoginPage;
 import tests.base.BaseHeadlessTest;
 
 public class LoginEmptyDataTest extends BaseHeadlessTest {
 
-    LoginStepsPage loginStepsPage = new LoginStepsPage();
+    LoginPage loginStepsPage = new LoginPage();
 
     @Test
     @DisplayName("User Should Not Be LoggedIn Using Empty Data")

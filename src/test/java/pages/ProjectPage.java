@@ -1,5 +1,6 @@
 package pages;
 
+import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
 import io.qameta.allure.Attachment;
 import io.qameta.allure.Step;
@@ -9,7 +10,12 @@ import org.openqa.selenium.TakesScreenshot;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 
-public class ProjectStepsPage {
+public class ProjectPage extends BasePage{
+
+    @Step("Project title is visible")
+    public void projectPageIsOpened() {
+        $("h1[class=uA6zAY]").shouldHave(text("Projects"));
+    }
 
     @Step("Open Login Page")
     public void openLoginPage() {
@@ -26,48 +32,48 @@ public class ProjectStepsPage {
         $("[name=password]").sendKeys(pass);
     }
 
-    @Step("submit")
+    @Step("Submit")
     public void clickSubmit() {
         $("[name=password]").submit();
     }
 
-    @Step("create new project")
+    @Step("Create new project")
     public void createNewProject() {
         $x("//span[text() = 'Create new project']").shouldBe(visible).click();
         $("#modal-header").shouldHave(text("Create new project"));
     }
 
-    @Step("enter project name: {name}")
+    @Step("Enter project name: {name}")
     public void enterProjectName(String name) {
         $("#project-name").sendKeys(name);
     }
 
-    @Step("click create project")
+    @Step("Click create project")
     public void clickCreateProject() {
         $x("//span[text() = 'Create project']").click();
     }
 
-    @Step("open Projects page")
+    @Step("Open Projects page")
     public void openProjectsPage() {
         open("/projects");
     }
 
-    @Step("assert that project {projName} created")
+    @Step("Assert that project {projName} created")
     public void assertThatProjectCreated(String projName) {
         $(".NFxRR3").shouldHave(text(projName));
     }
 
-    @Step("findMenu")
+    @Step("Find menu")
     public void findMenu() {
         $x("//img[@alt = 'Test Name']").click();
     }
 
-    @Step("findExit")
+    @Step("Find exit")
     public void findExit() {
         $x("//*[text() = 'Sign out']").click();
     }
 
-    @Step("assertThatExit")
+    @Step("Assert that exit")
     public void assertThatExit() {
         $(".ilHPl4").shouldBe(exist);
     }
@@ -76,5 +82,10 @@ public class ProjectStepsPage {
     public byte[] attachScreenshot() {
         return
                 ((TakesScreenshot) WebDriverRunner.getWebDriver()).getScreenshotAs(OutputType.BYTES);
+    }
+
+    @Override
+    public boolean pageIsOpen(String title) {
+        return super.pageIsOpen(title);
     }
 }

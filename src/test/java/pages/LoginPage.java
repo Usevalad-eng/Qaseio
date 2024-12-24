@@ -3,9 +3,6 @@ package pages;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
-import org.junit.jupiter.api.Assertions;
-
-import java.util.List;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
@@ -16,7 +13,7 @@ public class LoginPage extends BasePage{
     private final SelenideElement PASS_INPUT = $("[name=password]");
     private final SelenideElement SIGN_IN_BUTTON = $("span[class=CAunhU]");
     private final ElementsCollection ERROR_MESSAGE = $$x("//small[@class = 'f75Cb_']");
-
+    @Override
     @Step("Open login Page")
     public void openLoginPage(){
         open("/login");
@@ -37,8 +34,8 @@ public class LoginPage extends BasePage{
         $("[name=password]").submit();
     }
 
-    @Step("Click sign in")
-    public void clickSignin(){
+    @Step("Click sign in button")
+    public void clickSignInButton(){
         SIGN_IN_BUTTON.click();
     }
 
@@ -47,7 +44,7 @@ public class LoginPage extends BasePage{
         $("h1[class=uA6zAY]").shouldHave(text("Projects"));
     }
 
-    @Step("Get error one")
+    /*@Step("Get error one")
     public void getErrorOne(){
         String textOfMessageOne = $$x("//small[@class = 'f75Cb_']").get(0).getText();
         Assertions.assertEquals("This field is required", textOfMessageOne, "Error on the page!");
@@ -57,7 +54,7 @@ public class LoginPage extends BasePage{
     public void getErrorTwo(){
         String textOfMessageTwo = $$x("//small[@class = 'f75Cb_']").get(0).getText();
         Assertions.assertEquals("This field is required", textOfMessageTwo, "Error on the page!");
-    }
+    }*/
 
     @Step("Get error message")
     public String getErrorMessage(){

@@ -1,15 +1,18 @@
 package pages;
 
-import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
 
-public class BasePage {
+public abstract class BasePage {
 
     private final String pageTitle = "//div[@id = 'application-content']//h1[text() = '%s']";
 
+    @Step("Open login Page")
+    public void openLoginPage(){
+        open("/login");
+    }
     public boolean pageIsOpen(String title){
         return $(String.format(pageTitle, title)).isDisplayed();
     }

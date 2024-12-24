@@ -1,13 +1,11 @@
 package tests;
 
-import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
-import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.LoginPage;
-import pages.ProjectPage;
 import tests.base.BaseTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -15,11 +13,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class LoginTest extends BaseTest {
      LoginPage loginPage = new LoginPage();
-     ProjectPage projectPage = new ProjectPage();
+     //ProjectPage projectPage = new ProjectPage();
 
     @Test
-    @DisplayName("Auth successful Test")
     //@Disabled
+    @DisplayName("Auth successful Test")
     public void loginSuccessfulAuthTest(){
         SelenideLogger.addListener("allure", new AllureSelenide());
         loginPage.openLoginPage();
@@ -27,10 +25,7 @@ public class LoginTest extends BaseTest {
         loginPage.inputPass("qaseio122024");
         loginPage.clickSubmit();
         loginPage.successfulLogin();
-        //projectPage.pageIsOpen("Project");
-        //projectPage.projectPageIsOpened();
         //assertTrue(projectPage.pageIsOpen("Project"));
-        //Selenide.closeWebDriver();
     }
 
     @Test
@@ -40,10 +35,8 @@ public class LoginTest extends BaseTest {
         loginPage.openLoginPage();
         loginPage.inputLogin("");
         loginPage.inputPass("");
-        loginPage.clickSignin();
-        //loginPage.getErrorOne();
-        //loginPage.getErrorTwo();
-        assertEquals(2, loginPage.getErrorMessagesCount(), "Error!");
+        loginPage.clickSignInButton();
+        assertEquals(2, loginPage.getErrorMessagesCount(), "Something went wrong!");
     }
 
     @Test
@@ -53,8 +46,7 @@ public class LoginTest extends BaseTest {
         loginPage.openLoginPage();
         loginPage.inputLogin("");
         loginPage.inputPass("qaseio122024");
-        loginPage.clickSignin();
-        //loginPage.getErrorOne();
+        loginPage.clickSignInButton();
         assertEquals("This field is required", loginPage.getErrorMessage(), "Something went wrong!");
     }
 
@@ -65,8 +57,7 @@ public class LoginTest extends BaseTest {
         loginPage.openLoginPage();
         loginPage.inputLogin("kubyox@mailto.plus");
         loginPage.inputPass("");
-        loginPage.clickSignin();
-        //loginPage.getErrorTwo();
+        loginPage.clickSignInButton();
         assertEquals("This field is required", loginPage.getErrorMessage(), "Something went wrong!");
     }
 }

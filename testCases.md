@@ -1,100 +1,120 @@
 # **Test cases:**
 #  Auth tests:
 ##  1.1 Login  with valid data:
-### -go to Login page 
-### -enter login and pass
-### -click Sign in button
+Steps:
+####   1. go to Login page 
+####   2. enter login and pass
+####   3. click Sign in button
 ## Expected result: signed in to the app
 ### Severity: High
 ##  1.2 Login  with not valid data(empty login and pass):
-### -go to Login page
-### -enter empty login and pass
-### -click Sign in button
+Steps:
+##### 1. go to Login page
+##### 2. enter empty login and pass
+##### 3. click Sign in button
 ## Expected result: not signed in to the  app
 ### Severity: Medium
 ##  1.3 Login  with not valid data(empty login):
-### -go to Login page
-### -enter empty login and pass with valid data
-### -click Sign in button
+Steps:
+#### 1. go to Login page
+#### 2. enter empty login and pass with valid data
+#### 3. click Sign in button
 ## Expected result: not signed in to the app
 ### Severity: Medium
 ##  1.4 Login  with not valid data(empty pass):
-### -go to Login page
-### -enter empty pass and login with valid data
-### -click Sign in button
+Steps:
+#### 1. go to Login page
+#### 2. enter empty pass and login with valid data
+#### 3. click Sign in button
 ## Expected result: not signed in to the app
 ### Severity: Medium
 #  Project tests:
 ## 2.1 Create a project:
-### -log in to the app
-### -go to Projects page
-### -click Crate new project button
-### -fill in project name and project code fields
-### -click Create project button
+Steps:
+#### 1. log in to the app
+#### 2. go to Projects page
+#### 3. click Crate new project button
+#### 4. fill in project name and project code fields
+#### 5. click Create project button
 ## Expected result: project with expected name is created
 ### Severity: Blocker
 ## 2.2 Delete a project:
-### -log in to the app
-### -go to Projects page
-### -click Crate new project button
-### -fill in project name and project code fields
-### -click Create project button
-### -go to Projects page
-### -click 3 dots on the right side of the page near  created project
-### -click Delete button
+Steps:
+#### 1. log in to the app
+#### 2. go to Projects page
+#### 3. click Crate new project button
+#### 4. fill in project name and project code fields
+#### 5. click Create project button
+#### 6. go to Projects page
+#### 7. click 3 dots on the right side of the page near  created project
+#### 8. click Delete button
 ## Expected result: project with expected name is deleted
+### Severity: Medium
+## 2.3 Create a project with not valid data:
+Steps:
+#### 1. log in to the app
+#### 2. go to Projects page
+#### 3. click Crate new project button
+#### 4. fill in project name and project code fields with digits only
+#### 5. click Create project button
+## Expected result: project with expected name is not created
 ### Severity: Medium
 #  Suite tests:
 ## 3.1 Create test suite:
-### -log in to the app
-### -go to Projects page
-### -create a project
-### -click Suite button(inside the created project)
-### -fill in Suite name field
-### -choose Parent suite
-### -click Create button
+Steps:
+#### 1. log in to the app
+#### 2. go to Projects page
+#### 3. create a project
+#### 4. click Suite button(inside the created project)
+#### 5. fill in Suite name field
+#### 6. choose Parent suite
+#### 7. click Create button
 ## Expected result: test suit with expected name is created
 ### Severity: High
 ## 3.2 Delete test suite:
-### -log in to the app
-### -go to Projects page
-### -create a project
-### -click Suite button(inside the created project)
-### -fill in Suite name field
-### -choose Parent suite
-### -click Create button
-### -click Bucket button
+Steps:
+#### 1. log in to the app
+#### 2. go to Projects page
+#### 3. create a project
+#### 4. click Suite button(inside the created project)
+#### 5. fill in Suite name field
+#### 6. choose Parent suite
+#### 7. click Create button
+#### 8. click Bucket button
 ## Expected result: test suit with expected name is deleted
 ### Severity: Medium
 #  Test cases tests:
 ## 4.1 Create test case:
-### -log in to the app
-### -go to Projects page
-### -click Project
-### -click Case button
-### -click Add steps button
-### -fill in required fields
-### -click Save button
+Steps:
+#### 1. log in to the app
+#### 2. go to Projects page
+#### 3. click Project
+#### 4. click Case button
+#### 5. click Add steps button
+#### 6. fill in required fields
+#### 7. click Save button
 ## Expected result: test case with expected name is created
 ### Severity: High
 ## 4.2 Delete test case:
-### -log in to the app
-### -go to Projects page
-### -click Project
-### -click Case button
-### -click Add steps button
-### -fill in required fields
-### -click Save button
-### -choose the case clicking checkbox near the case
-### -enter 'CONFIRM' in the form
-### -click Delete button
+Steps:
+#### 1. log in to the app
+#### 2. go to Projects page
+#### 3. click Project
+#### 4. click Case button
+#### 5. click Add steps button
+#### 6. fill in required fields
+#### 7. click Save button
+#### 8. choose the case clicking checkbox near the case
+#### 9. enter 'CONFIRM' in the form
+#### 10. click Delete button
 ## Expected result: test case with expected name is deleted
 ### Severity: Medium
 #  Menu tests:
 ## 5.1 Exit from the app:
-### -log in to the app
-### -click user avatar button on the right side of the page
-### -click Sign out
+Steps:
+#### 1. log in to the app
+#### 2. click user avatar button on the right side of the page
+#### 3. click Sign out
 ## Expected result: signed out
 ### Severity: Medium
 

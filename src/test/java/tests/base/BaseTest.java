@@ -1,22 +1,33 @@
 package tests.base;
 
 import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.AfterEach;
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.BeforeAll;
+import steps.LoginSteps;
 
 public class BaseTest {
+
+    public LoginSteps loginSteps = new LoginSteps();
 
     @BeforeAll
     static void screenResolution() {
         Configuration.baseUrl = "https://app.qase.io";
         Configuration.browserSize = "1920x1080";
+        //SelenideLogger.addListener("allure", new AllureSelenide());
     }
 
-    /*@AfterAll
-    static void exit(){
-        Selenide.closeWindow();
-        //Selenide.clearBrowserCookies();
+    /*@BeforeAll
+    static void screenResolution() {
+        Configuration.baseUrl = "https://app.qase.io";
+        Configuration.headless = true;
+    }*/
+
+    /*@BeforeAll
+    static void screenResolution() {
+        Configuration.baseUrl = "https://app.qase.io";
+        Configuration.remote = "http://localhost:4444/wd/hub";
+        Configuration.browser = "chrome";
+        Configuration.browserSize = "1920x1080";
     }*/
 }

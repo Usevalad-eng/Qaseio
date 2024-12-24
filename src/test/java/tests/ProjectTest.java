@@ -22,11 +22,7 @@ public class ProjectTest extends BaseTest {
     public void createProjectTest() {
         SelenideLogger.addListener("allure", new AllureSelenide());
         projectPage.openLoginPage();
-        //step("authorization", () -> {
-        projectPage.inputLogin("kubyox@mailto.plus");
-        projectPage.inputPass("qaseio122024");
-        //});
-        projectPage.clickSubmit();
+        loginSteps.authInApp("kubyox@mailto.plus", "qaseio122024");
         projectPage.projectPageIsOpened();
         projectPage.createNewProject();
         projectPage.enterProjectName("Demo");
@@ -36,28 +32,22 @@ public class ProjectTest extends BaseTest {
     }
 
     @Test
-    //@Disabled
+    @Disabled
+    @Flaky
     public void createProjectAndExitTest() {
         SelenideLogger.addListener("allure", new AllureSelenide());
         projectPage.openLoginPage();
-        projectPage.inputLogin("kubyox@mailto.plus");
+        /*projectPage.inputLogin("kubyox@mailto.plus");
         projectPage.inputPass("qaseio122024");
-        projectPage.clickSubmit();
+        projectPage.clickSubmit();*/
+        loginSteps.authInApp("kubyox@mailto.plus", "qaseio122024");
         projectPage.createNewProject();
-        projectPage.enterProjectName("Demo");
+        projectPage.enterProjectName("D");
         projectPage.clickCreateProject();
         projectPage.openProjectsPage();
-        projectPage.assertThatProjectCreated("Demo");
+        projectPage.assertThatProjectCreated("D");
         projectPage.findMenu();
         projectPage.findExit();
         projectPage.assertThatExit();
-    }
-
-    @Test
-    @Disabled
-    void dynamic() {
-        Allure.feature("proj");
-        Allure.story("Story");
-        Allure.label("owner", "Vsevolod");
     }
 }

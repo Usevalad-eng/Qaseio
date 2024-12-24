@@ -21,20 +21,6 @@ public class ProjectPage extends BasePage{
     public void projectPageIsOpened() {
         $("h1[class=uA6zAY]").shouldHave(text("Projects"));
     }
-    /*@Step("Input login {login}")
-    public void inputLogin(String login) {
-        $x("//input[@name='email']").sendKeys(login);
-    }
-
-    @Step("Input pass: {pass}")
-    public void inputPass(String pass) {
-        $("[name=password]").sendKeys(pass);
-    }
-
-    @Step("Submit")
-    public void clickSubmit() {
-        $("[name=password]").submit();
-    }*/
 
     @Step("Create new project")
     public void createNewProject() {
@@ -77,11 +63,16 @@ public class ProjectPage extends BasePage{
         $(".ilHPl4").shouldBe(exist);
     }
 
-    /*@Attachment(value = "screen", type = "image/png", fileExtension = "png")
+    @Step("Can't create new project error can be seen")
+    public void canNotCreateProjectErrorShouldBeVisible() {
+        $x("//div[text() = 'The code must be at least 2 characters.']").shouldBe(visible);
+    }
+
+    @Attachment(value = "screen", type = "image/png", fileExtension = "png")
     public byte[] attachScreenshot() {
         return
                 ((TakesScreenshot) WebDriverRunner.getWebDriver()).getScreenshotAs(OutputType.BYTES);
-    }*/
+    }
 
     @Override
     public boolean pageIsOpen(String title) {

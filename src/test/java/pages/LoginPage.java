@@ -3,6 +3,7 @@ package pages;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
+import org.junit.jupiter.api.Assertions;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
@@ -44,7 +45,7 @@ public class LoginPage extends BasePage{
         $("h1[class=uA6zAY]").shouldHave(text("Projects"));
     }
 
-    /*@Step("Get error one")
+    @Step("Get error one")
     public void getErrorOne(){
         String textOfMessageOne = $$x("//small[@class = 'f75Cb_']").get(0).getText();
         Assertions.assertEquals("This field is required", textOfMessageOne, "Error on the page!");
@@ -54,7 +55,7 @@ public class LoginPage extends BasePage{
     public void getErrorTwo(){
         String textOfMessageTwo = $$x("//small[@class = 'f75Cb_']").get(0).getText();
         Assertions.assertEquals("This field is required", textOfMessageTwo, "Error on the page!");
-    }*/
+    }
 
     @Step("Get error message")
     public String getErrorMessage(){

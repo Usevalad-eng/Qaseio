@@ -55,7 +55,7 @@ Steps:
 #### 1. log in to the app
 #### 2. go to Projects page
 #### 3. click Crate new project button
-#### 4. fill in project name and project code fields with digits only
+#### 4. fill in project name and project code fields with one character
 #### 5. click Create project button
 ## Expected result: project with expected name is not created
 ### Severity: Medium
@@ -116,5 +116,5 @@ Steps:
 #### 2. click user avatar button on the right side of the page
 #### 3. click Sign out
 ## Expected result: signed out
-### Severity: Medium
+### Severity: Minor
 

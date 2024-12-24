@@ -3,7 +3,6 @@ package tests;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.*;
 import io.qameta.allure.selenide.AllureSelenide;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.ProjectPage;
@@ -18,7 +17,7 @@ public class ProjectTest extends BaseTest {
     @Owner("Vsevolod")
     @Severity(SeverityLevel.BLOCKER)
     @Link(value = "test", url = "https://www.test.com")
-    @DisplayName("Creation of project test")
+    @DisplayName("Creation of Project test")
     public void createProjectTest() {
         SelenideLogger.addListener("allure", new AllureSelenide());
         projectPage.openLoginPage();
@@ -32,20 +31,30 @@ public class ProjectTest extends BaseTest {
     }
 
     @Test
-    @Disabled
-    @Flaky
-    public void createProjectAndExitTest() {
+    @DisplayName("Creation of Project test")
+    public void createProjectWithOneCharacterInTheNameTest() {
         SelenideLogger.addListener("allure", new AllureSelenide());
         projectPage.openLoginPage();
-        /*projectPage.inputLogin("kubyox@mailto.plus");
-        projectPage.inputPass("qaseio122024");
-        projectPage.clickSubmit();*/
         loginSteps.authInApp("kubyox@mailto.plus", "qaseio122024");
+        projectPage.projectPageIsOpened();
         projectPage.createNewProject();
         projectPage.enterProjectName("D");
         projectPage.clickCreateProject();
+        projectPage.canNotCreateProjectErrorShouldBeVisible();
+    }
+
+    @Test
+    @DisplayName("Creation of Project  and exit from the App test")
+    @Severity(SeverityLevel.MINOR)
+    public void createProjectAndExitTest() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
+        projectPage.openLoginPage();
+        loginSteps.authInApp("kubyox@mailto.plus", "qaseio122024");
+        projectPage.createNewProject();
+        projectPage.enterProjectName("DD");
+        projectPage.clickCreateProject();
         projectPage.openProjectsPage();
-        projectPage.assertThatProjectCreated("D");
+        projectPage.assertThatProjectCreated("DD");
         projectPage.findMenu();
         projectPage.findExit();
         projectPage.assertThatExit();

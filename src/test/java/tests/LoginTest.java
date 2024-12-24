@@ -2,22 +2,19 @@ package tests;
 
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.LoginPage;
 import tests.base.BaseTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class LoginTest extends BaseTest {
      LoginPage loginPage = new LoginPage();
      //ProjectPage projectPage = new ProjectPage();
 
     @Test
-    //@Disabled
-    @DisplayName("Auth successful Test")
+    @DisplayName("Auth successful test")
     public void loginSuccessfulAuthTest(){
         SelenideLogger.addListener("allure", new AllureSelenide());
         loginPage.openLoginPage();
@@ -29,7 +26,7 @@ public class LoginTest extends BaseTest {
     }
 
     @Test
-    @DisplayName("User Should Not Be LoggedIn Using Empty Data")
+    @DisplayName("User should not be logged in using empty data")
     void userShouldNotBeLoggedInUsingEmptyData() {
         SelenideLogger.addListener("allure", new AllureSelenide());
         loginPage.openLoginPage();
@@ -40,7 +37,7 @@ public class LoginTest extends BaseTest {
     }
 
     @Test
-    @DisplayName("User Should Not Be LoggedIn Using Empty Login")
+    @DisplayName("User should not be loggedIn using empty login")
     void userShouldNotBeLoggedInUsingEmptyLogin() {
         SelenideLogger.addListener("allure", new AllureSelenide());
         loginPage.openLoginPage();
@@ -51,7 +48,7 @@ public class LoginTest extends BaseTest {
     }
 
     @Test
-    @DisplayName("User Should Not Be LoggedIn Using Empty Pass")
+    @DisplayName("User should not be logged in using empty Password")
     void userShouldNotBeLoggedInUsingEmptyPass() {
         SelenideLogger.addListener("allure", new AllureSelenide());
         loginPage.openLoginPage();

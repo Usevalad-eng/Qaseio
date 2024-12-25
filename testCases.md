@@ -109,12 +109,5 @@ Steps:
 #### 10. click Delete button
 ## Expected result: test case with expected name is deleted
 ### Severity: Medium
-#  Menu tests:
-## 5.1 Exit from the app:
-Steps:
-#### 1. log in to the app
-#### 2. click user avatar button on the right side of the page
-#### 3. click Sign out
-## Expected result: signed out
-### Severity: Minor
+
 

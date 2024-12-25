@@ -68,11 +68,11 @@ public class ProjectPage extends BasePage{
         $x("//div[text() = 'The code must be at least 2 characters.']").shouldBe(visible);
     }
 
-    @Attachment(value = "screen", type = "image/png", fileExtension = "png")
+    /*@Attachment(value = "screen", type = "image/png", fileExtension = "png")
     public byte[] attachScreenshot() {
         return
                 ((TakesScreenshot) WebDriverRunner.getWebDriver()).getScreenshotAs(OutputType.BYTES);
-    }
+    }*/
 
     @Override
     public boolean pageIsOpen(String title) {

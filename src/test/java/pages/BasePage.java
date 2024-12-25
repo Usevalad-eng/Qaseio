@@ -13,7 +13,8 @@ public abstract class BasePage {
     public void openLoginPage(){
         open("/login");
     }
+
     public boolean pageIsOpen(String title){
-        return $(String.format(pageTitle, title)).isDisplayed();
+        return $(String.format(title, pageTitle)).isDisplayed();
     }
 }

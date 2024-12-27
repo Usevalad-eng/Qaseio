@@ -1,15 +1,16 @@
 package pages;
 
-import com.codeborne.selenide.WebDriverRunner;
-import io.qameta.allure.Attachment;
+import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 
 public class ProjectPage extends BasePage{
+
+    private final SelenideElement PROJECT_NAME_INPUT = $("#project-name");
+    private final SelenideElement PROJECT_CODE_INPUT = $("#project-code");
+
 
     @Override
     @Step("Open Login Page")
@@ -29,8 +30,13 @@ public class ProjectPage extends BasePage{
     }
 
     @Step("Enter project name: {name}")
-    public void enterProjectName(String name) {
-        $("#project-name").sendKeys(name);
+    public void getProjectName(String name) {
+        PROJECT_NAME_INPUT.sendKeys(name);
+    }
+
+    @Step("Enter project code: {code}")
+    public void getProjectCode(String code) {
+        PROJECT_CODE_INPUT.sendKeys(code);
     }
 
     @Step("Click create project")
@@ -66,6 +72,12 @@ public class ProjectPage extends BasePage{
     @Step("Can't create new project error can be seen")
     public void canNotCreateProjectErrorShouldBeVisible() {
         $x("//div[text() = 'The code must be at least 2 characters.']").shouldBe(visible);
+    }
+
+    @Step("Find exit")
+    public void assertThatProjCreated() {
+        open("/projects");
+        $(".cx2QU4").shouldBe(visible);
     }
 
     /*@Attachment(value = "screen", type = "image/png", fileExtension = "png")

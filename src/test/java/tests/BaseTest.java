@@ -5,6 +5,7 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import com.github.javafaker.Faker;
 import io.qameta.allure.selenide.AllureSelenide;
+import models.Project;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -20,6 +21,11 @@ public class BaseTest {
     public ProjectSteps projectSteps = new ProjectSteps();
     LoginPage loginPage = new LoginPage();
     ProjectPage projectPage = new ProjectPage();
+
+    /*Project proj = ProjectBuilder.get();
+    Project proj1 = Project.builder().projectName("Demo").projectCode("Demo").build();*/
+
+    Project projectFakerTest = new Project(fake.code().asin(), fake.name().firstName());
 
     @BeforeAll
     static void screenResolution() {

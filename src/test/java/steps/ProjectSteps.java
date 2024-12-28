@@ -1,17 +1,18 @@
 package steps;
 
 import models.Project;
-import models.ProjectBuilder;
 import pages.ProjectPage;
 
 public class ProjectSteps {
 
     ProjectPage projectPage = new ProjectPage();
 
-    public void createProjectWithBuilder(Project project) {
+    public void createProject(Project project) {
         projectPage.createNewProject();
         /*projectPage.getProjectName(project.getProjectName());
-        projectPage.getProjectCode(project.getProjectCode());*/
+        projectPage.getProjectCode(project.getProjectCode());*/  //lombok
+        projectPage.getProjectName(project.getProjName());
+        projectPage.getProjectCode(project.getProjCode());
         projectPage.clickCreateProject();
     }
 }

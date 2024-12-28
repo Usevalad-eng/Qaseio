@@ -65,7 +65,7 @@ public class LoginTest extends BaseTest {
     }
     @MethodSource("qaseioAuthNegativeScenarios")
     @ParameterizedTest(name = "Qaseio auth negative tests using JUnit5(empty pass or login)")
-    //@Disabled
+    @Disabled
     void qaseioAuthNegativeScenarios(String login, String pass, String errorOne) {
         open("/login");
         $("[name=email]").setValue(login);

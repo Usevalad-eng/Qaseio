@@ -1,15 +1,11 @@
 package tests;
 
 import io.qameta.allure.*;
-import models.Project;
-import models.ProjectBuilder;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class ProjectTest extends BaseTest {
-    //Project proj = ProjectBuilder.get();
-    //Project proj1 = Project.builder().projectName("Demo").projectCode("Demo").build();
 
     @Test
     @Feature("Project")
@@ -36,14 +32,15 @@ public class ProjectTest extends BaseTest {
     @Owner("Vsevolod")
     @Severity(SeverityLevel.MINOR)
     @Link(value = "test", url = "https://www.test.com")
-    @DisplayName("Creation of Project with valid data and using Lombok")
+    @DisplayName("Creation of Project with valid data using Lombok/constructor")
     public void createProjectTestUsingBuilder() {
         projectPage.openLoginPage();
         loginSteps.authInApp("kubyox@mailto.plus", "qaseio122024");
         projectPage.projectPageIsOpened();
-        //projectSteps.createProjectWithBuilder(proj);  //todo add lombok
+        //projectSteps.createProject(proj);  //todo add lombok
+        projectSteps.createProject(projectFakerTest);
         projectPage.openProjectsPage();
-        projectPage.assertThatProjectCreated("Demo");
+        projectPage.assertThatProjCreated();
     }
 
     @Test

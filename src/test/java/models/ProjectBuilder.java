@@ -1,7 +1,7 @@
 package models;
 
 import com.github.javafaker.Faker;
-
+import lombok.*;
 public class ProjectBuilder {
 
     static Faker faker = new Faker();

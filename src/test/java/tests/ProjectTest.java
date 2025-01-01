@@ -1,15 +1,19 @@
 package tests;
 
 import io.qameta.allure.*;
+import models.Project;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ProjectTest extends BaseTest {
 
     @Test
     @Feature("Project")
-    @Story("User can create a project")
+    @Story("1 User can create a project")
     @Owner("Vsevolod")
     @Severity(SeverityLevel.BLOCKER)
     @Link(value = "test", url = "https://www.test.com")
@@ -28,16 +32,16 @@ public class ProjectTest extends BaseTest {
     @Test
     @Disabled
     @Feature("Project")
-    @Story("User can create a project")
+    @Story("2 User can create a project")
     @Owner("Vsevolod")
     @Severity(SeverityLevel.MINOR)
     @Link(value = "test", url = "https://www.test.com")
-    @DisplayName("Creation of Project with valid data using Lombok/constructor")
+    @DisplayName("Creation of Project with valid data using Lombok/Constructor/Faker")
     public void createProjectTestUsingBuilder() {
         projectPage.openLoginPage();
         loginSteps.authInApp("kubyox@mailto.plus", "qaseio122024");
         projectPage.projectPageIsOpened();
-        //projectSteps.createProject(proj);  //todo add lombok
+        //projectSteps.createProject(proj);  //todo -add lombok
         projectSteps.createProject(projectFakerTest);
         projectPage.openProjectsPage();
         projectPage.assertThatProjCreated();
@@ -46,25 +50,27 @@ public class ProjectTest extends BaseTest {
     @Test
     @Disabled
     @Feature("Project")
-    @Story("User can create a project")
+    @Story("3 User can create a project")
     @Owner("Vsevolod")
     @Severity(SeverityLevel.MINOR)
     @Link(value = "test", url = "https://www.test.com")
-    @DisplayName("Creation of Project with valid data using Faker")
+    @DisplayName("Creation of Project with valid data using Constructor/Faker")
     public void createProjectTestWithFaker() {
         projectPage.openLoginPage();
         loginSteps.authInApp("kubyox@mailto.plus", "qaseio122024");
         projectPage.projectPageIsOpened();
         projectPage.createNewProject();
-        projectPage.getProjectName(fake.name().firstName());
+        String fakeName = fake.name().firstName();
+        projectPage.getProjectName(fakeName);
         projectPage.clickCreateProject();
         projectPage.openProjectsPage();
-        projectPage.assertThatProjCreated();
+        String actualProjName = projectPage.receiveProjectName();
+        assertEquals(fakeName, actualProjName, "Error, something went wrong!");
     }
 
     @Test
     @Feature("Project")
-    @Story("User can't create a project")
+    @Story("4 User can't create a project")
     @Owner("Vsevolod")
     @Severity(SeverityLevel.MINOR)
     @Link(value = "test", url = "https://www.test.com")
@@ -83,7 +89,7 @@ public class ProjectTest extends BaseTest {
     @Disabled
     @DisplayName("Creation of Project  and exit from the App")
     @Feature("Project")
-    @Story("User can create a project")
+    @Story("5 User can create a project")
     @Owner("Vsevolod")
     @Link(value = "test", url = "https://www.test.com")
     @Severity(SeverityLevel.MINOR)

@@ -39,6 +39,17 @@ public class ProjectPage extends BasePage{
         PROJECT_CODE_INPUT.sendKeys(code);
     }
 
+    @Step("Receive project name(actual)")
+    public String receiveProjectName() {
+        open("/projects");
+        return $("a[class = cx2QU4]").getText();
+    }
+
+    @Step("Receive proj name(expected)")
+    public String receiveProjName() {
+        return PROJECT_CODE_INPUT.getText();
+    }
+
     @Step("Click create project")
     public void clickCreateProject() {
         $x("//span[text() = 'Create project']").click();

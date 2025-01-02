@@ -2,15 +2,19 @@ package pages;
 
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
+import lombok.Data;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
+import static io.restassured.RestAssured.given;
 
-public class ProjectPage extends BasePage{
+//@Data
+public class ProjectPage extends BasePage {
 
     private final SelenideElement PROJECT_NAME_INPUT = $("#project-name");
     private final SelenideElement PROJECT_CODE_INPUT = $("#project-code");
 
+    private final SelenideElement PROJECT_INPUT = $x("//label[text() = 'Project name']/../..//input");
 
     @Override
     @Step("Open Login Page")
@@ -91,11 +95,30 @@ public class ProjectPage extends BasePage{
         $(".cx2QU4").shouldBe(visible);
     }
 
+    @Step("Assert project name")
+    public void assertProjectName(String text) {
+        open("/projects");
+        PROJECT_CODE_INPUT.shouldHave(text(text));
+    }
+
     /*@Attachment(value = "screen", type = "image/png", fileExtension = "png")
-    public byte[] attachScreenshot() {
-        return
-                ((TakesScreenshot) WebDriverRunner.getWebDriver()).getScreenshotAs(OutputType.BYTES);
-    }*/
+public byte[] attachScreenshot() {
+    return
+            ((TakesScreenshot) WebDriverRunner.getWebDriver()).getScreenshotAs(OutputType.BYTES);
+}*/
+
+    @Step("Del project 'Demo'")
+    public void delProj() {
+        given()
+                .header("Token", "8712b8dd5d9089dac78e3e50b649233346b7f122015027677ef032f5b55fc9e8")
+                .log().uri()
+                .when()
+                .delete("https://api.qase.io/v1/project/DEMO")
+                .then()
+                .log().status()
+                .log().body()
+                .statusCode(200);
+    }
 
     @Override
     public boolean pageIsOpen(String title) {

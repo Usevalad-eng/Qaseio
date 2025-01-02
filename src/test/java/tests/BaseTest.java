@@ -34,13 +34,13 @@ public class BaseTest {
     }
 
     @BeforeEach
-    void setUp(){
+    void setUp() {
         Configuration.timeout = 5000;
         SelenideLogger.addListener("allure", new AllureSelenide());
     }
 
     @AfterEach
-    void tearDown(){
+    void tearDown() {
         Selenide.closeWebDriver();
         Configuration.timeout = 3000;
     }

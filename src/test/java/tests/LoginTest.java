@@ -1,5 +1,6 @@
 package tests;
 
+import io.qameta.allure.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
@@ -17,17 +18,25 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class LoginTest extends BaseTest {
 
     @Test
+    @Feature("Auth")
+    @Story("User can auth to a project")
+    @Owner("Vsevolod")
+    @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Auth successful test")
-    public void loginSuccessfulAuthTest(){
+    public void loginSuccessfulAuthTest() {
         loginPage.openLoginPage();
         loginPage.inputLogin("kubyox@mailto.plus");
         loginPage.inputPass("qaseio122024");
         loginPage.clickSubmit();
         loginPage.successfulLogin();
-        //assertTrue(projectPage.pageIsOpen("Projects"));  //check
+        //assertTrue(projectPage.pageIsOpen("Projects"));  //check why it isn't working and delete
     }
 
     @Test
+    @Feature("Auth")
+    @Story("User can auth to a project")
+    @Owner("Vsevolod")
+    @Severity(SeverityLevel.NORMAL)
     @DisplayName("User should not be logged in using empty data")
     void userShouldNotBeLoggedInUsingEmptyData() {
         loginPage.openLoginPage();
@@ -38,6 +47,10 @@ public class LoginTest extends BaseTest {
     }
 
     @Test
+    @Feature("Auth")
+    @Story("User can auth to a project")
+    @Owner("Vsevolod")
+    @Severity(SeverityLevel.NORMAL)
     @DisplayName("User should not be loggedIn using empty login")
     void userShouldNotBeLoggedInUsingEmptyLogin() {
         loginPage.openLoginPage();
@@ -48,6 +61,10 @@ public class LoginTest extends BaseTest {
     }
 
     @Test
+    @Feature("Auth")
+    @Story("User can auth to a project")
+    @Owner("Vsevolod")
+    @Severity(SeverityLevel.NORMAL)
     @DisplayName("User should not be logged in using empty Password")
     void userShouldNotBeLoggedInUsingEmptyPass() {
         loginPage.openLoginPage();
@@ -63,9 +80,12 @@ public class LoginTest extends BaseTest {
                 Arguments.of("", "qaseio122024", "This field is required")
         );
     }
+
     @MethodSource("qaseioAuthNegativeScenarios")
     @ParameterizedTest(name = "Qaseio auth negative tests using JUnit5(empty pass or login)")
     @Disabled
+    @Severity(SeverityLevel.NORMAL)
+    @DisplayName("User should not be logged in using empty password/login")
     void qaseioAuthNegativeScenarios(String login, String pass, String errorOne) {
         open("/login");
         $("[name=email]").setValue(login);

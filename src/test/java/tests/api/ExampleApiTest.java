@@ -29,18 +29,18 @@ public class ExampleApiTest {
         //.body("country.country_id[0]", is("NG"));
     }
 
-        @Test
-        @Disabled
-        void checkTotal() {
-            given()
-                    .when()
-                    .get("https://selenoid.autotests.cloud/status")
-                    .then()
-                    .log().status()
-                    .log().body()
-                    .statusCode(HttpStatus.SC_OK);
-                    //.body("total", is(20));
-        }
+    @Test
+    @Disabled
+    void checkTotal() {
+        given()
+                .when()
+                .get("https://selenoid.autotests.cloud/status")
+                .then()
+                .log().status()
+                .log().body()
+                .statusCode(HttpStatus.SC_OK);
+        //.body("total", is(20));
+    }
 
     @Test
     @Disabled
@@ -56,12 +56,12 @@ public class ExampleApiTest {
                 .log().status()
                 .log().body()
                 .statusCode(200);
-                //.body("token", is("QpwL5tke4Pnpja7X4"));
+        //.body("token", is("QpwL5tke4Pnpja7X4"));
     }
 
     @Test
     @Disabled
-    void check(){
+    void check() {
         String expectedResponse = "{\n" +
                 "  \"count\": 6172,\n" +
                 "  \"name\": \"nathaniel\",\n" +
@@ -104,7 +104,7 @@ public class ExampleApiTest {
 
     @Test
     @Disabled
-    void checkResponse(){
+    void checkResponse() {
         Integer expectedCount = 6172;
 
         Integer actualCount = given()
@@ -122,7 +122,7 @@ public class ExampleApiTest {
 
     @Test
     @Disabled
-    void checkContent(){
+    void checkContent() {
         given()
                 .log().uri()
                 .when()
@@ -150,7 +150,7 @@ public class ExampleApiTest {
 
     @Test
     @Disabled
-    void loginPostTest(){
+    void loginPostTest() {
         String data = "{ \"email\": \"eve.holt@reqres.in\", \"password\": \"cityslicka\" }";
 
         /*String data = "{\n" +

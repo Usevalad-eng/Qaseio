@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static io.restassured.RestAssured.given;
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ProjectTest extends BaseTest {
@@ -16,7 +18,7 @@ public class ProjectTest extends BaseTest {
     @Story("1 User can create a project")
     @Owner("Vsevolod")
     @Severity(SeverityLevel.BLOCKER)
-    @Link(value = "test", url = "https://www.test.com")
+    @Link(value = "test", url = "https://app.qase.io")
     @DisplayName("Creation of Project with valid data")
     public void createProjectTest() {
         projectPage.openLoginPage();
@@ -32,10 +34,30 @@ public class ProjectTest extends BaseTest {
     @Test
     @Disabled
     @Feature("Project")
+    @Story("1.1 User can create a project")
+    @Owner("Vsevolod")
+    @Severity(SeverityLevel.NORMAL)
+    @Link(value = "test", url = "https://app.qase.io")
+    @DisplayName("Creation of Project with valid data")
+    public void createProjectTestAndDelProj() {
+        projectPage.openLoginPage();
+        loginSteps.authInApp("kubyox@mailto.plus", "qaseio122024");
+        projectPage.projectPageIsOpened();
+        projectPage.createNewProject();
+        projectPage.getProjectName("Demo");
+        projectPage.clickCreateProject();
+        projectPage.openProjectsPage();
+        projectPage.assertThatProjectCreated("Demo");
+        projectPage.delProj();
+    }
+
+    @Test
+    @Disabled
+    @Feature("Project")
     @Story("2 User can create a project")
     @Owner("Vsevolod")
-    @Severity(SeverityLevel.MINOR)
-    @Link(value = "test", url = "https://www.test.com")
+    @Severity(SeverityLevel.NORMAL)
+    @Link(value = "test", url = "https://app.qase.io")
     @DisplayName("Creation of Project with valid data using Lombok/Constructor/Faker")
     public void createProjectTestUsingBuilder() {
         projectPage.openLoginPage();
@@ -52,8 +74,8 @@ public class ProjectTest extends BaseTest {
     @Feature("Project")
     @Story("3 User can create a project")
     @Owner("Vsevolod")
-    @Severity(SeverityLevel.MINOR)
-    @Link(value = "test", url = "https://www.test.com")
+    @Severity(SeverityLevel.NORMAL)
+    @Link(value = "test", url = "https://app.qase.io")
     @DisplayName("Creation of Project with valid data using Constructor/Faker")
     public void createProjectTestWithFaker() {
         projectPage.openLoginPage();
@@ -65,15 +87,19 @@ public class ProjectTest extends BaseTest {
         projectPage.clickCreateProject();
         projectPage.openProjectsPage();
         String actualProjName = projectPage.receiveProjectName();
-        assertEquals(fakeName, actualProjName, "Error, something went wrong!");
+        assertAll(
+                () -> assertEquals(fakeName, actualProjName, "Error, something went wrong!"),
+                () -> projectPage.assertThatProjCreated()
+        );
+        //assertEquals(fakeName, actualProjName, "Error, something went wrong!");
     }
 
     @Test
     @Feature("Project")
     @Story("4 User can't create a project")
     @Owner("Vsevolod")
-    @Severity(SeverityLevel.MINOR)
-    @Link(value = "test", url = "https://www.test.com")
+    @Severity(SeverityLevel.NORMAL)
+    @Link(value = "test", url = "https://app.qase.io")
     @DisplayName("Creation of a Project with only one character is unavailable")
     public void createProjectWithOneCharacterInTheNameTest() {
         projectPage.openLoginPage();
@@ -91,8 +117,8 @@ public class ProjectTest extends BaseTest {
     @Feature("Project")
     @Story("5 User can create a project")
     @Owner("Vsevolod")
-    @Link(value = "test", url = "https://www.test.com")
-    @Severity(SeverityLevel.MINOR)
+    @Link(value = "test", url = "https://app.qase.io")
+    @Severity(SeverityLevel.NORMAL)
     public void createProjectAndExitTest() {
         projectPage.openLoginPage();
         loginSteps.authInApp("kubyox@mailto.plus", "qaseio122024");

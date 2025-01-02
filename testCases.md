@@ -6,28 +6,28 @@ Steps:
 ####   2. enter login and pass
 ####   3. click Sign in button
 ## Expected result: signed in to the app
-### Severity: High
+### Severity: Blocker
 ##  1.2 Login  with not valid data(empty login and pass):
 Steps:
 ##### 1. go to Login page
 ##### 2. enter empty login and pass
 ##### 3. click Sign in button
 ## Expected result: not signed in to the  app
-### Severity: Medium
+### Severity: Normal
 ##  1.3 Login  with not valid data(empty login):
 Steps:
 #### 1. go to Login page
 #### 2. enter empty login and pass with valid data
 #### 3. click Sign in button
 ## Expected result: not signed in to the app
-### Severity: Medium
+### Severity: Normal
 ##  1.4 Login  with not valid data(empty pass):
 Steps:
 #### 1. go to Login page
 #### 2. enter empty pass and login with valid data
 #### 3. click Sign in button
 ## Expected result: not signed in to the app
-### Severity: Medium
+### Severity: Normal
 #  Project tests:
 ## 2.1 Create a project:
 Steps:
@@ -49,7 +49,7 @@ Steps:
 #### 7. click 3 dots on the right side of the page near  created project
 #### 8. click Delete button
 ## Expected result: project with expected name is deleted
-### Severity: Medium
+### Severity: Normal
 ## 2.3 Create a project with not valid data:
 Steps:
 #### 1. log in to the app
@@ -58,7 +58,7 @@ Steps:
 #### 4. fill in project name and project code fields with one character
 #### 5. click Create project button
 ## Expected result: project with expected name is not created
-### Severity: Medium
+### Severity: Normal
 #  Suite tests:
 ## 3.1 Create test suite:
 Steps:

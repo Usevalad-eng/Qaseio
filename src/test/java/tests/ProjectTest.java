@@ -1,9 +1,6 @@
 package tests;
 
 import io.qameta.allure.*;
-import models.Project;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -15,7 +12,7 @@ public class ProjectTest extends BaseTest {
 
     @Test
     @Feature("Project")
-    @Story("1 User can create a project")
+    @Story("User can create a project")
     @Owner("Vsevolod")
     @Severity(SeverityLevel.BLOCKER)
     @Link(value = "test", url = "https://app.qase.io")
@@ -26,15 +23,15 @@ public class ProjectTest extends BaseTest {
         projectPage.projectPageIsOpened();
         projectPage.createNewProject();
         projectPage.getProjectName("Demo");
-        projectPage.clickCreateProject();
+        projectPage.CreateProject();
         projectPage.openProjectsPage();
         projectPage.assertThatProjectCreated("Demo");
     }
 
     @Test
-    @Disabled
+    //@Disabled
     @Feature("Project")
-    @Story("1.1 User can create a project")
+    @Story("User can create a project")
     @Owner("Vsevolod")
     @Severity(SeverityLevel.NORMAL)
     @Link(value = "test", url = "https://app.qase.io")
@@ -45,16 +42,16 @@ public class ProjectTest extends BaseTest {
         projectPage.projectPageIsOpened();
         projectPage.createNewProject();
         projectPage.getProjectName("Demo");
-        projectPage.clickCreateProject();
+        projectPage.CreateProject();
         projectPage.openProjectsPage();
         projectPage.assertThatProjectCreated("Demo");
         projectPage.delProj();
     }
 
     @Test
-    @Disabled
+    //@Disabled
     @Feature("Project")
-    @Story("2 User can create a project")
+    @Story("User can create a project")
     @Owner("Vsevolod")
     @Severity(SeverityLevel.NORMAL)
     @Link(value = "test", url = "https://app.qase.io")
@@ -70,9 +67,9 @@ public class ProjectTest extends BaseTest {
     }
 
     @Test
-    @Disabled
+    //@Disabled
     @Feature("Project")
-    @Story("3 User can create a project")
+    @Story("User can create a project")
     @Owner("Vsevolod")
     @Severity(SeverityLevel.NORMAL)
     @Link(value = "test", url = "https://app.qase.io")
@@ -84,7 +81,7 @@ public class ProjectTest extends BaseTest {
         projectPage.createNewProject();
         String fakeName = fake.name().firstName();
         projectPage.getProjectName(fakeName);
-        projectPage.clickCreateProject();
+        projectPage.CreateProject();
         projectPage.openProjectsPage();
         String actualProjName = projectPage.receiveProjectName();
         assertAll(
@@ -96,7 +93,7 @@ public class ProjectTest extends BaseTest {
 
     @Test
     @Feature("Project")
-    @Story("4 User can't create a project")
+    @Story("User can't create a project")
     @Owner("Vsevolod")
     @Severity(SeverityLevel.NORMAL)
     @Link(value = "test", url = "https://app.qase.io")
@@ -107,15 +104,15 @@ public class ProjectTest extends BaseTest {
         projectPage.projectPageIsOpened();
         projectPage.createNewProject();
         projectPage.getProjectName("D");
-        projectPage.clickCreateProject();
+        projectPage.CreateProject();
         projectPage.canNotCreateProjectErrorShouldBeVisible();
     }
 
     @Test
-    @Disabled
+    //@Disabled
     @DisplayName("Creation of Project  and exit from the App")
     @Feature("Project")
-    @Story("5 User can create a project")
+    @Story("User can create a project")
     @Owner("Vsevolod")
     @Link(value = "test", url = "https://app.qase.io")
     @Severity(SeverityLevel.NORMAL)
@@ -124,7 +121,7 @@ public class ProjectTest extends BaseTest {
         loginSteps.authInApp("kubyox@mailto.plus", "qaseio122024");
         projectPage.createNewProject();
         projectPage.getProjectName("Dee");
-        projectPage.clickCreateProject();
+        projectPage.CreateProject();
         projectPage.openProjectsPage();
         projectPage.assertThatProjectCreated("Dee");
         projectPage.findMenu();

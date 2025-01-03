@@ -37,7 +37,7 @@ public class LoginTest extends BaseTest {
     @Story("User can auth to a project")
     @Owner("Vsevolod")
     @Severity(SeverityLevel.NORMAL)
-    @DisplayName("User should not be logged in using empty data")
+    @DisplayName("User should not be logged in using empty login and password")
     void userShouldNotBeLoggedInUsingEmptyData() {
         loginPage.openLoginPage();
         loginPage.inputLogin("");
@@ -65,7 +65,7 @@ public class LoginTest extends BaseTest {
     @Story("User can auth to a project")
     @Owner("Vsevolod")
     @Severity(SeverityLevel.NORMAL)
-    @DisplayName("User should not be logged in using empty Password")
+    @DisplayName("User should not be logged in using empty password")
     void userShouldNotBeLoggedInUsingEmptyPass() {
         loginPage.openLoginPage();
         loginPage.inputLogin("kubyox@mailto.plus");
@@ -80,18 +80,17 @@ public class LoginTest extends BaseTest {
                 Arguments.of("", "qaseio122024", "This field is required")
         );
     }
-
     @MethodSource("qaseioAuthNegativeScenarios")
     @ParameterizedTest(name = "Qaseio auth negative tests using JUnit5(empty pass or login)")
-    @Disabled
+    //@Disabled
     @Severity(SeverityLevel.NORMAL)
-    @DisplayName("User should not be logged in using empty password/login")
-    void qaseioAuthNegativeScenarios(String login, String pass, String errorOne) {
-        open("/login");
-        $("[name=email]").setValue(login);
-        $("[name=password]").setValue(pass);
-        $("span[class=CAunhU]").click();
-        String textOfMessageOne = $$x("//small[@class = 'f75Cb_']").get(0).getText();
-        Assertions.assertEquals(errorOne, textOfMessageOne, "Error on the page!");
+    @DisplayName("User should not be logged in using empty password or login")
+    void qaseioAuthNegativeScenarios(String login, String pass, String textOfExpectedMessage) {
+        loginPage.openLoginPage();
+        loginPage.inputLogin(login);
+        loginPage.inputPass(pass);
+        loginPage.clickSignInButton();
+        String textOfActualMessage = loginPage.getErrorMessagesText();
+        assertEquals(textOfExpectedMessage, textOfActualMessage, "Error, something went wrong!");
     }
 }

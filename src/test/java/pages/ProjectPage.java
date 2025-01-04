@@ -1,5 +1,6 @@
 package pages;
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
@@ -22,6 +23,10 @@ public class ProjectPage extends BasePage {
     private final SelenideElement QASE_LOGO = $(".ilHPl4");
     private final SelenideElement PROJ_NAME = $(".cx2QU4");
     private final SelenideElement PROJ_ERROR = $x("//div[text()='The code must be at least 2 characters.']");
+    private final ElementsCollection DOTS_BUTTON = $$x("//span[@class = 'qc0jO1']");
+    private final SelenideElement DELETE_BUTTON = $x("//div[@data-testid = 'remove']");
+    private final SelenideElement DELETE_PROJECT_BUTTON = $x("//span[text() = 'Delete project']");
+
     private final SelenideElement PROJECT_INPUT = $x("//label[text() = 'Project name']/../..//input");
 
     @Override
@@ -106,7 +111,7 @@ public class ProjectPage extends BasePage {
         PROJ_ERROR.shouldBe(visible);
     }
 
-    @Step("Find exit")
+    @Step("Assert that project deleted")
     public void assertThatProjCreated() {
         open("/projects");
         //$(".cx2QU4").shouldBe(visible);
@@ -117,6 +122,30 @@ public class ProjectPage extends BasePage {
     public void assertProjectName(String text) {
         open("/projects");
         PROJECT_CODE_INPUT.shouldHave(text(text));
+    }
+
+    @Step("Find and click Dots")
+    public void findDots() {
+        //$$x("//span[@class = 'qc0jO1']").get(5).click();
+        DOTS_BUTTON.get(5).click();
+    }
+
+    @Step("Click Delete button")
+    public void deleteButton() {
+        //$x("//div[@data-testid = 'remove']").shouldBe(visible).click();
+        DELETE_BUTTON.shouldBe(visible).click();
+    }
+
+    @Step("Click Delete project button")
+    public void deleteProject() {
+        //$x("//span[text() = 'Delete project']").shouldBe(visible).click();
+        DELETE_PROJECT_BUTTON.shouldBe(visible).click();
+    }
+
+    @Step("Assert that project deleted")
+    public void assertThatProjDeleted() {
+        open("/projects");
+        PROJ_NAME.shouldBe(not(visible));
     }
 
     /*@Attachment(value = "screen", type = "image/png", fileExtension = "png")

@@ -128,4 +128,25 @@ public class ProjectTest extends BaseTest {
         projectPage.findExit();
         projectPage.assertThatExit();
     }
+
+    @Test
+    //@Disabled
+    @DisplayName("Deletion of the Project")
+    @Feature("Project")
+    @Story("User can delete a project")
+    @Owner("Vsevolod")
+    @Link(value = "test", url = "https://app.qase.io")
+    @Severity(SeverityLevel.NORMAL)
+    public void createProjectAndDel() {
+        projectPage.openLoginPage();
+        loginSteps.authInApp("kubyox@mailto.plus", "qaseio122024");
+        projectPage.createNewProject();
+        projectPage.getProjectName("Dee");
+        projectPage.CreateProject();
+        projectPage.openProjectsPage();
+        projectPage.findDots();
+        projectPage.deleteButton();
+        projectPage.deleteProject();
+        projectPage.assertThatProjDeleted();
+    }
 }

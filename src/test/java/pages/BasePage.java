@@ -13,7 +13,7 @@ public abstract class BasePage {
     public void openLoginPage(){
         open("/login");
     }
-
+    @Step("Is page opened")
     public boolean pageIsOpen(String title){
         return $(String.format(title, pageTitle)).isDisplayed();
     }

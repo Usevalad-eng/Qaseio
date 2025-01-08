@@ -9,8 +9,10 @@ import models.Project;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import pages.CasePage;
 import pages.LoginPage;
 import pages.ProjectPage;
+import pages.SuitePage;
 import steps.LoginSteps;
 import steps.ProjectSteps;
 
@@ -21,6 +23,8 @@ public class BaseTest {
     public ProjectSteps projectSteps = new ProjectSteps();
     LoginPage loginPage = new LoginPage();
     ProjectPage projectPage = new ProjectPage();
+    SuitePage suitePage = new SuitePage();
+    CasePage casePage = new CasePage();
 
     /*Project proj = ProjectBuilder.get();
     Project proj1 = Project.builder().projectName("Demo").projectCode("Demo").build();*/

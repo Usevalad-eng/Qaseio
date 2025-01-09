@@ -13,6 +13,7 @@ public class SuitePage extends BasePage{
     private final SelenideElement SUITE_NAME_INPUT = $("#title");
     private final SelenideElement CREATE_BUTTON = $x("//span[text() = 'Create']");
     private final SelenideElement SUITE_NAME = $("h3[class = 'IeCpCv']");
+    private final SelenideElement RECEIVE_SUITE_NAME = $x("//a[@class = 'ZofjAx z7H5tt']");
 
     @Step("Create new suite")
     public void createNewSuite() {
@@ -32,6 +33,21 @@ public class SuitePage extends BasePage{
     @Step("Assert that suite {name} created")
     public void assertThatSuiteCreated(String name) {
         SUITE_NAME.shouldHave(text(name));
+    }
+
+    @Step("Receive suite name(actual)")
+    public String receiveSuiteName() {
+        return RECEIVE_SUITE_NAME.getText();
+    }
+
+    @Step("Open suite Page")
+    public void openSuitePage() {
+        open("https://app.qase.io/project/DEMO");
+    }
+
+    @Step("Assert that suite {name} created")
+    public void assertThatSuiteNotCreated() {
+        SUITE_NAME.shouldNotBe(visible);
     }
 
     @Override

@@ -14,6 +14,7 @@ public class CasePage extends BasePage{
     private final SelenideElement CASE_NAME_INPUT = $("#title");
     private final SelenideElement SAVE_BUTTON = $x("//span[text() = 'Save']");
     private final SelenideElement CASE_NAME = $x("//div[@class = 'YkyiUm t1vo_q']");
+    private final SelenideElement RECEIVE_CASE_NAME = $x("//div[@class = 'YkyiUm t1vo_q']");
 
     @Step("Create new case")
     public void createNewCase() {
@@ -33,6 +34,11 @@ public class CasePage extends BasePage{
     @Step("Assert that case {name} created")
     public void assertThatCaseCreated(String name) {
         CASE_NAME.shouldHave(text(name));
+    }
+
+    @Step("Receive case name(actual)")
+    public String receiveCaseName() {
+        return RECEIVE_CASE_NAME.getText();
     }
 
     @Override

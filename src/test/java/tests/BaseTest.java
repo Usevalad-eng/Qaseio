@@ -6,7 +6,9 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import com.github.javafaker.Faker;
 import io.qameta.allure.selenide.AllureSelenide;
+import models.Case;
 import models.Project;
+import models.Suite;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -31,6 +33,8 @@ public class BaseTest {
     Project proj1 = Project.builder().projectName("Demo").projectCode("Demo").build();*/
 
     Project projectFakerTest = new Project(fake.code().asin(), fake.name().firstName());
+    Suite suiteFakerTest = new Suite(fake.name().firstName());
+    Case caseFakerTest = new Case(fake.name().firstName());
 
     @BeforeAll
     static void screenResolution() {

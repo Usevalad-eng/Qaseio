@@ -28,8 +28,8 @@ public class CaseTest extends BaseTest{
         suitePage.createSuite();
         //suitePage.assertThatSuiteCreated("suiteTest");
         casePage.createNewCase();
-        casePage.getCaseName("case");
+        casePage.getCaseName("caseTest");
         casePage.createCase();
-        //todo assert
+        casePage.assertThatCaseCreated("caseTest");
     }
 }

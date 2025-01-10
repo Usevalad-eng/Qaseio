@@ -33,7 +33,7 @@ public class ProjectTest extends BaseTest {
     @Test
     @Disabled
     @Feature("Project")
-    @Story("User can create a project")
+    @Story("User can create/delete a project")
     @Owner("Vsevolod")
     @Severity(SeverityLevel.NORMAL)
     @Link(value = "test", url = "https://app.qase.io")

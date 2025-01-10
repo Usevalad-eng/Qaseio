@@ -7,7 +7,7 @@ import io.qameta.allure.Step;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 
-public class LoginPage extends BasePage{
+public class LoginPage extends BasePage {
 
     private final SelenideElement LOGIN_INPUT = $("[name=email]");
     private final SelenideElement PASS_INPUT = $("[name=password]");
@@ -17,47 +17,47 @@ public class LoginPage extends BasePage{
 
     @Override
     @Step("Open login Page")
-    public void openLoginPage(){
+    public void openLoginPage() {
         open("/login");
     }
 
     @Step("Input login {login}")
-    public void inputLogin(String login){
+    public void inputLogin(String login) {
         LOGIN_INPUT.sendKeys(login);
     }
 
     @Step("Input pass: {pass}")
-    public void inputPass(String pass){
+    public void inputPass(String pass) {
         PASS_INPUT.sendKeys(pass);
     }
 
     @Step("Click submit")
-    public void clickSubmit(){
+    public void clickSubmit() {
         PASS_INPUT.submit();
     }
 
     @Step("Click sign in button")
-    public void clickSignInButton(){
+    public void clickSignInButton() {
         SIGN_IN_BUTTON.click();
     }
 
     @Step("Successful log in")
-    public void successfulLogin(){
+    public void successfulLogin() {
         PROJECTS_TEXT.shouldHave(text("Projects"));
     }
 
     @Step("Get error message")
-    public String getErrorMessage(){
+    public String getErrorMessage() {
         return ERROR_MESSAGE.get(0).getText();
     }
 
     @Step("Get error message count")
-    public Integer getErrorMessagesCount(){
+    public Integer getErrorMessagesCount() {
         return ERROR_MESSAGE.size();
     }
 
     @Step("Get error message")
-    public String getErrorMessagesText(){
+    public String getErrorMessagesText() {
         return ERROR_MESSAGE.get(0).getText();
     }
 

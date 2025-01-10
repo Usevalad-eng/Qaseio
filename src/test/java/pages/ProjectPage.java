@@ -26,7 +26,6 @@ public class ProjectPage extends BasePage {
     private final ElementsCollection DOTS_BUTTON = $$x("//span[@class = 'qc0jO1']");
     private final SelenideElement DELETE_BUTTON = $x("//div[@data-testid = 'remove']");
     private final SelenideElement DELETE_PROJECT_BUTTON = $x("//span[text() = 'Delete project']");
-
     private final SelenideElement PROJECT_INPUT = $x("//label[text() = 'Project name']/../..//input");
 
     @Override

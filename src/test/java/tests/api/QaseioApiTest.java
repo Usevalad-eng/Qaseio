@@ -27,8 +27,9 @@ public class QaseioApiTest {
 
     @Test
     @Disabled
-    @DisplayName("Delete project 'Demo', project with code 'DEMO' should be created before this method runs")
+    @DisplayName("Create project 'Demo'")
     public void qaseioCreateProj() {
+
         String data = "{ \"title\": \"DEMO\", \"code\": \"DEMO\" }";
 
         given()

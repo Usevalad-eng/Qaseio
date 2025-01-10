@@ -7,7 +7,7 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
-public class SuitePage extends BasePage{
+public class SuitePage extends BasePage {
 
     private final SelenideElement CREATE_SUITE_BUTTON = $x("//span[text() = 'Suite']");
     private final SelenideElement SUITE_NAME_INPUT = $("#title");

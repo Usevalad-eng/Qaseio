@@ -7,7 +7,7 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
-public class CasePage extends BasePage{
+public class CasePage extends BasePage {
 
     private final SelenideElement CREATE_CASE_BUTTON = $x("//span[text() = 'Case']");
     private final SelenideElement CASE_NAME_INPUT = $("#title");

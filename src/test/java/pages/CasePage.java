@@ -42,13 +42,13 @@ public class CasePage extends BasePage{
         return RECEIVE_CASE_NAME.getText();
     }
 
-    @Step("Assert that case {name} not created")
+    @Step("Assert that case {name} is not created")
     public void assertThatCaseCanNotCreated() {
         CASE_ZERO.shouldBe(visible);
     }
 
     @Override
-    @Step("Open Login Page")
+    @Step("Open login Page")
     public void openLoginPage() {
         open("https://app.qase.io/login");
     }

@@ -13,6 +13,6 @@ public class ProjectSteps {
         projectPage.getProjectCode(project.getProjectCode());*/  //lombok
         projectPage.getProjectName(project.getProjName());
         projectPage.getProjectCode(project.getProjCode());
-        projectPage.CreateProject();
+        projectPage.createProject();
     }
 }

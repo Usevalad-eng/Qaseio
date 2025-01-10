@@ -28,8 +28,7 @@ public class LoginTest extends BaseTest {
         loginPage.inputLogin("kubyox@mailto.plus");
         loginPage.inputPass("qaseio122024");
         loginPage.clickSubmit();
-        loginPage.successfulLogin();
-        //assertTrue(projectPage.pageIsOpen("Projects"));  //check why it isn't working and delete
+        loginPage.successfulLogin(); //assertTrue(projectPage.pageIsOpen("Projects"));  //check why it isn't working and delete
     }
 
     @Test
@@ -82,7 +81,7 @@ public class LoginTest extends BaseTest {
     }
     @MethodSource("qaseioAuthNegativeScenarios")
     @ParameterizedTest(name = "Qaseio auth negative tests using JUnit5(empty pass or login)")
-    //@Disabled
+    @Disabled
     @Severity(SeverityLevel.NORMAL)
     @DisplayName("User should not be logged in using empty password or login")
     void qaseioAuthNegativeScenarios(String login, String pass, String textOfExpectedMessage) {

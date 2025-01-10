@@ -37,14 +37,11 @@ public class ProjectPage extends BasePage {
 
     @Step("Project title is visible")
     public void projectPageIsOpened() {
-        //$("h1[class=uA6zAY]").shouldHave(text("Projects"));
         PROJECT_TEXT.shouldHave(text("Projects"));
     }
 
     @Step("Create new project")
     public void createNewProject() {
-        //$x("//span[text() = 'Create new project']").shouldBe(visible).click();
-        //$("#modal-header").shouldHave(text("Create new project"));
         CREATE_NEW_PROJECT_BUTTON.shouldBe(visible).click();
     }
 
@@ -61,7 +58,6 @@ public class ProjectPage extends BasePage {
     @Step("Receive project name(actual)")
     public String receiveProjectName() {
         open("/projects");
-        //return $("a[class = cx2QU4]").getText();
         return RECEIVE_PROJECT_NAME.getText();
     }
 
@@ -71,8 +67,7 @@ public class ProjectPage extends BasePage {
     }
 
     @Step("Click create project")
-    public void CreateProject() {
-        //$x("//span[text() = 'Create project']").click();
+    public void createProject() {
         CREATE_PROJECT_BUTTON.click();
     }
 
@@ -83,38 +78,32 @@ public class ProjectPage extends BasePage {
 
     @Step("Assert that project {projName} created")
     public void assertThatProjectCreated(String projName) {
-        //$(".NFxRR3").shouldHave(text(projName));
         PROJECT_NAME.shouldHave(text(projName));
     }
 
     @Step("Find menu")
     public void findMenu() {
-        //$x("//img[@alt = 'Test Name']").click();
         MENU_BUTTON.click();
     }
 
     @Step("Find exit")
     public void findExit() {
-        //$x("//*[text() = 'Sign out']").click();
         SIGN_OUT_BUTTON.click();
     }
 
     @Step("Assert that exit")
     public void assertThatExit() {
-        //$(".ilHPl4").shouldBe(exist);
         QASE_LOGO.shouldBe(exist);
     }
 
     @Step("Can't create new project error can be seen")
     public void canNotCreateProjectErrorShouldBeVisible() {
-        //$x("//div[text() = 'The code must be at least 2 characters.']").shouldBe(visible);
         PROJ_ERROR.shouldBe(visible);
     }
 
     @Step("Assert that project deleted")
     public void assertThatProjCreated() {
         open("/projects");
-        //$(".cx2QU4").shouldBe(visible);
         PROJ_NAME.shouldBe(visible);
     }
 
@@ -126,19 +115,16 @@ public class ProjectPage extends BasePage {
 
     @Step("Find and click Dots")
     public void findDots() {
-        //$$x("//span[@class = 'qc0jO1']").get(5).click();
         DOTS_BUTTON.get(5).click();
     }
 
     @Step("Click Delete button")
     public void deleteButton() {
-        //$x("//div[@data-testid = 'remove']").shouldBe(visible).click();
         DELETE_BUTTON.shouldBe(visible).click();
     }
 
     @Step("Click Delete project button")
     public void deleteProject() {
-        //$x("//span[text() = 'Delete project']").shouldBe(visible).click();
         DELETE_PROJECT_BUTTON.shouldBe(visible).click();
     }
 
@@ -147,12 +133,6 @@ public class ProjectPage extends BasePage {
         open("/projects");
         PROJ_NAME.shouldBe(not(visible));
     }
-
-    /*@Attachment(value = "screen", type = "image/png", fileExtension = "png")
-public byte[] attachScreenshot() {
-    return
-            ((TakesScreenshot) WebDriverRunner.getWebDriver()).getScreenshotAs(OutputType.BYTES);
-}*/
 
     @Step("Del project 'Demo'")
     public void delProj() {

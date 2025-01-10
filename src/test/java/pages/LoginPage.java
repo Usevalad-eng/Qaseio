@@ -46,18 +46,6 @@ public class LoginPage extends BasePage{
         PROJECTS_TEXT.shouldHave(text("Projects"));
     }
 
-    /*@Step("Get error one")
-    public void getErrorOne(){
-        String textOfMessageOne = $$x("//small[@class = 'f75Cb_']").get(0).getText();
-        Assertions.assertEquals("This field is required", textOfMessageOne, "Error on the page!");
-    }
-
-    @Step("Get error two")
-    public void getErrorTwo(){
-        String textOfMessageTwo = $$x("//small[@class = 'f75Cb_']").get(0).getText();
-        Assertions.assertEquals("This field is required", textOfMessageTwo, "Error on the page!");
-    }*/
-
     @Step("Get error message")
     public String getErrorMessage(){
         return ERROR_MESSAGE.get(0).getText();

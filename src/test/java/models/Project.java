@@ -10,7 +10,6 @@ import lombok.experimental.SuperBuilder;
 @Data
 @AllArgsConstructor*/
 
-
 public class Project {
 
     private String projectName;

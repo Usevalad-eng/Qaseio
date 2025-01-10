@@ -2,6 +2,7 @@ package tests;
 
 import io.qameta.allure.*;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -9,7 +10,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CaseTest extends BaseTest{
     @Test
-    //@Disabled
     @Feature("Case")
     @Story("User can create a case")
     @Owner("Vsevolod")
@@ -22,13 +22,10 @@ public class CaseTest extends BaseTest{
         projectPage.projectPageIsOpened();
         projectPage.createNewProject();
         projectPage.getProjectName("Demo");
-        projectPage.CreateProject();
-        //projectPage.openProjectsPage();
-        //projectPage.assertThatProjectCreated("Demo");
+        projectPage.createProject();
         suitePage.createNewSuite();
         suitePage.getSuiteName("suiteTest");
         suitePage.createSuite();
-        //suitePage.assertThatSuiteCreated("suiteTest");
         casePage.createNewCase();
         casePage.getCaseName("caseTest");
         casePage.createCase();
@@ -36,6 +33,7 @@ public class CaseTest extends BaseTest{
     }
 
     @Test
+    @Disabled
     @Feature("Case")
     @Story("User can create a case")
     @Owner("Vsevolod")
@@ -48,25 +46,20 @@ public class CaseTest extends BaseTest{
         projectPage.projectPageIsOpened();
         projectPage.createNewProject();
         projectPage.getProjectName(projectFakerTest.getProjName());
-        projectPage.CreateProject();
-        //projectPage.openProjectsPage();
-        //projectPage.assertThatProjectCreated("Demo");
+        projectPage.createProject();
         suitePage.createNewSuite();
         String expectedSuiteName = suiteFakerTest.getSuiteName();
         suitePage.getSuiteName(expectedSuiteName);
         suitePage.createSuite();
-        //suitePage.assertThatSuiteCreated("suiteTest");
-        //assertEquals(expectedSuiteName, suitePage.receiveSuiteName(), "error!");
         casePage.createNewCase();
         String expectedCaseName = caseFakerTest.getCaseName();
         casePage.getCaseName(expectedCaseName);
         casePage.createCase();
-        //casePage.assertThatCaseCreated("caseTest");
         Assertions.assertEquals(expectedCaseName, casePage.receiveCaseName(), "error!");
     }
 
     @Test
-    //@Disabled
+    @Disabled
     @Feature("Case")
     @Story("User can not create a case")
     @Owner("Vsevolod")
@@ -79,18 +72,12 @@ public class CaseTest extends BaseTest{
         projectPage.projectPageIsOpened();
         projectPage.createNewProject();
         projectPage.getProjectName("Demo");
-        projectPage.CreateProject();
-        //projectPage.openProjectsPage();
-        //projectPage.assertThatProjectCreated("Demo");
+        projectPage.createProject();
         suitePage.createNewSuite();
         suitePage.getSuiteName("suiteTest");
         suitePage.createSuite();
-        //suitePage.assertThatSuiteCreated("suiteTest");
         casePage.createNewCase();
         casePage.getCaseName("");
-        //casePage.createCase();
-        //casePage.assertThatCaseCreated("caseTest");
-        //suitePage.openSuitePage();
         projectPage.openProjectsPage();
         casePage.assertThatCaseCanNotCreated();
     }

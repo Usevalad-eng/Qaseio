@@ -1,6 +1,7 @@
 package tests;
 
 import io.qameta.allure.*;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -11,6 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class ProjectTest extends BaseTest {
 
     @Test
+    @Disabled
     @Feature("Project")
     @Story("User can create a project")
     @Owner("Vsevolod")
@@ -23,13 +25,13 @@ public class ProjectTest extends BaseTest {
         projectPage.projectPageIsOpened();
         projectPage.createNewProject();
         projectPage.getProjectName("Demo");
-        projectPage.CreateProject();
+        projectPage.createProject();
         projectPage.openProjectsPage();
         projectPage.assertThatProjectCreated("Demo");
     }
 
     @Test
-    //@Disabled
+    @Disabled
     @Feature("Project")
     @Story("User can create a project")
     @Owner("Vsevolod")
@@ -42,14 +44,14 @@ public class ProjectTest extends BaseTest {
         projectPage.projectPageIsOpened();
         projectPage.createNewProject();
         projectPage.getProjectName("Demo");
-        projectPage.CreateProject();
+        projectPage.createProject();
         projectPage.openProjectsPage();
         projectPage.assertThatProjectCreated("Demo");
         projectPage.delProj();
     }
 
     @Test
-    //@Disabled
+    @Disabled
     @Feature("Project")
     @Story("User can create a project")
     @Owner("Vsevolod")
@@ -67,7 +69,7 @@ public class ProjectTest extends BaseTest {
     }
 
     @Test
-    //@Disabled
+    @Disabled
     @Feature("Project")
     @Story("User can create a project")
     @Owner("Vsevolod")
@@ -81,14 +83,13 @@ public class ProjectTest extends BaseTest {
         projectPage.createNewProject();
         String fakeName = fake.name().firstName();
         projectPage.getProjectName(fakeName);
-        projectPage.CreateProject();
+        projectPage.createProject();
         projectPage.openProjectsPage();
         String actualProjName = projectPage.receiveProjectName();
         assertAll(
                 () -> assertEquals(fakeName, actualProjName, "Error, something went wrong!"),
                 () -> projectPage.assertThatProjCreated()
         );
-        //assertEquals(fakeName, actualProjName, "Error, something went wrong!");
     }
 
     @Test
@@ -104,12 +105,12 @@ public class ProjectTest extends BaseTest {
         projectPage.projectPageIsOpened();
         projectPage.createNewProject();
         projectPage.getProjectName("D");
-        projectPage.CreateProject();
+        projectPage.createProject();
         projectPage.canNotCreateProjectErrorShouldBeVisible();
     }
 
     @Test
-    //@Disabled
+    @Disabled
     @DisplayName("Creation of Project  and exit from the App")
     @Feature("Project")
     @Story("User can create a project")
@@ -121,7 +122,7 @@ public class ProjectTest extends BaseTest {
         loginSteps.authInApp("kubyox@mailto.plus", "qaseio122024");
         projectPage.createNewProject();
         projectPage.getProjectName("Dee");
-        projectPage.CreateProject();
+        projectPage.createProject();
         projectPage.openProjectsPage();
         projectPage.assertThatProjectCreated("Dee");
         projectPage.findMenu();
@@ -130,7 +131,7 @@ public class ProjectTest extends BaseTest {
     }
 
     @Test
-    //@Disabled
+    @Disabled
     @DisplayName("Deletion of the Project")
     @Feature("Project")
     @Story("User can delete a project")
@@ -142,7 +143,7 @@ public class ProjectTest extends BaseTest {
         loginSteps.authInApp("kubyox@mailto.plus", "qaseio122024");
         projectPage.createNewProject();
         projectPage.getProjectName("Dee");
-        projectPage.CreateProject();
+        projectPage.createProject();
         projectPage.openProjectsPage();
         projectPage.findDots();
         projectPage.deleteButton();

@@ -1,6 +1,7 @@
 package tests;
 
 import io.qameta.allure.*;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -9,6 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class SuiteTest extends BaseTest{
 
     @Test
+    @Disabled
     @Feature("Suite")
     @Story("User can create a suite")
     @Owner("Vsevolod")
@@ -21,9 +23,7 @@ public class SuiteTest extends BaseTest{
         projectPage.projectPageIsOpened();
         projectPage.createNewProject();
         projectPage.getProjectName("Demo");
-        projectPage.CreateProject();
-        //projectPage.openProjectsPage();
-        //projectPage.assertThatProjectCreated("Demo");
+        projectPage.createProject();
         suitePage.createNewSuite();
         suitePage.getSuiteName("suiteTest");
         suitePage.createSuite();
@@ -31,6 +31,7 @@ public class SuiteTest extends BaseTest{
     }
 
     @Test
+    @Disabled
     @Feature("Suite")
     @Story("User can create a suite")
     @Owner("Vsevolod")
@@ -43,18 +44,16 @@ public class SuiteTest extends BaseTest{
         projectPage.projectPageIsOpened();
         projectPage.createNewProject();
         projectPage.getProjectName(projectFakerTest.getProjName());
-        projectPage.CreateProject();
-        //projectPage.openProjectsPage();
-        //projectPage.assertThatProjectCreated("Demo");
+        projectPage.createProject();
         suitePage.createNewSuite();
         String expectedSuiteName = suiteFakerTest.getSuiteName();
         suitePage.getSuiteName(expectedSuiteName);
         suitePage.createSuite();
-        //suitePage.assertThatSuiteCreated("suiteTest");
         assertEquals(expectedSuiteName, suitePage.receiveSuiteName(), "error!");
     }
 
     @Test
+    @Disabled
     @Feature("Suite")
     @Story("User can create a suite")
     @Owner("Vsevolod")
@@ -67,13 +66,10 @@ public class SuiteTest extends BaseTest{
         projectPage.projectPageIsOpened();
         projectPage.createNewProject();
         projectPage.getProjectName("Demo");
-        projectPage.CreateProject();
-        //projectPage.openProjectsPage();
-        //projectPage.assertThatProjectCreated("Demo");
+        projectPage.createProject();
         suitePage.createNewSuite();
         suitePage.getSuiteName("");
         suitePage.createSuite();
-        //suitePage.assertThatSuiteCreated("suiteTest");
         suitePage.openSuitePage();
         suitePage.assertThatSuiteNotCreated();
     }

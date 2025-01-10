@@ -74,8 +74,6 @@ public class SuiteTest extends BaseTest{
         suitePage.getSuiteName("");
         suitePage.createSuite();
         //suitePage.assertThatSuiteCreated("suiteTest");
-        //reload
-        //assert that not created
         suitePage.openSuitePage();
         suitePage.assertThatSuiteNotCreated();
     }

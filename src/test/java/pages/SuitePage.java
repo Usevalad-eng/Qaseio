@@ -45,7 +45,7 @@ public class SuitePage extends BasePage{
         open("https://app.qase.io/project/DEMO");
     }
 
-    @Step("Assert that suite {name} created")
+    @Step("Assert that suite {name} not created")
     public void assertThatSuiteNotCreated() {
         SUITE_NAME.shouldNotBe(visible);
     }

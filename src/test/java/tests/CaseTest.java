@@ -64,4 +64,34 @@ public class CaseTest extends BaseTest{
         //casePage.assertThatCaseCreated("caseTest");
         Assertions.assertEquals(expectedCaseName, casePage.receiveCaseName(), "error!");
     }
+
+    @Test
+    //@Disabled
+    @Feature("Case")
+    @Story("User can not create a case")
+    @Owner("Vsevolod")
+    @Severity(SeverityLevel.MINOR)
+    @Link(value = "test", url = "https://app.qase.io")
+    @DisplayName("Creation of a case with not valid data")
+    public void notCreateCaseTest() {
+        projectPage.openLoginPage();
+        loginSteps.authInApp("kubyox@mailto.plus", "qaseio122024");
+        projectPage.projectPageIsOpened();
+        projectPage.createNewProject();
+        projectPage.getProjectName("Demo");
+        projectPage.CreateProject();
+        //projectPage.openProjectsPage();
+        //projectPage.assertThatProjectCreated("Demo");
+        suitePage.createNewSuite();
+        suitePage.getSuiteName("suiteTest");
+        suitePage.createSuite();
+        //suitePage.assertThatSuiteCreated("suiteTest");
+        casePage.createNewCase();
+        casePage.getCaseName("");
+        //casePage.createCase();
+        //casePage.assertThatCaseCreated("caseTest");
+        //suitePage.openSuitePage();
+        projectPage.openProjectsPage();
+        casePage.assertThatCaseCanNotCreated();
+    }
 }

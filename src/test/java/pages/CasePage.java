@@ -1,6 +1,5 @@
 package pages;
 
-import asserts.AssertOfTextEquals;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
@@ -15,6 +14,8 @@ public class CasePage extends BasePage{
     private final SelenideElement SAVE_BUTTON = $x("//span[text() = 'Save']");
     private final SelenideElement CASE_NAME = $x("//div[@class = 'YkyiUm t1vo_q']");
     private final SelenideElement RECEIVE_CASE_NAME = $x("//div[@class = 'YkyiUm t1vo_q']");
+    private final SelenideElement CASE_ZERO =
+            $x("//small[text() = '0 test cases  |  1 suite  |  No active runs']");
 
     @Step("Create new case")
     public void createNewCase() {
@@ -39,6 +40,11 @@ public class CasePage extends BasePage{
     @Step("Receive case name(actual)")
     public String receiveCaseName() {
         return RECEIVE_CASE_NAME.getText();
+    }
+
+    @Step("Assert that case {name} not created")
+    public void assertThatCaseCanNotCreated() {
+        CASE_ZERO.shouldBe(visible);
     }
 
     @Override

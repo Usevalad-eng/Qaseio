@@ -25,6 +25,8 @@ allure {
 }
 
 dependencies {
+    testCompileOnly 'org.projectlombok:lombok:1.18.22'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.22'
     testImplementation(
             "org.junit.jupiter:junit-jupiter:5.11.3",
             "com.codeborne:selenide:6.19.1",
@@ -32,8 +34,7 @@ dependencies {
             "org.assertj:assertj-core:3.26.3",
             "io.qameta.allure:allure-selenide:2.12.0",
             "io.rest-assured:rest-assured:5.5.0",
-            "com.github.javafaker:javafaker:1.0.2",
-            "org.projectlombok:lombok:1.18.30"
+            "com.github.javafaker:javafaker:1.0.2"
     )
 }
 

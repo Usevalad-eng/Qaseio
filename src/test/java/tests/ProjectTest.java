@@ -24,14 +24,14 @@ public class ProjectTest extends BaseTest {
         loginSteps.authInApp("kubyox@mailto.plus", "qaseio122024");
         projectPage.projectPageIsOpened();
         projectPage.createNewProject();
-        projectPage.getProjectName("Demo");
+        projectPage.inputProjectName("Demo");
         projectPage.createProject();
         projectPage.openProjectsPage();
         projectPage.assertThatProjectCreated("Demo");
     }
 
     @Test
-    @Disabled
+    //@Disabled
     @Feature("Project")
     @Story("User can create/delete a project")
     @Owner("Vsevolod")
@@ -43,33 +43,49 @@ public class ProjectTest extends BaseTest {
         loginSteps.authInApp("kubyox@mailto.plus", "qaseio122024");
         projectPage.projectPageIsOpened();
         projectPage.createNewProject();
-        projectPage.getProjectName("Demo");
+        projectPage.inputProjectName("Demo");
         projectPage.createProject();
         projectPage.openProjectsPage();
         projectPage.assertThatProjectCreated("Demo");
-        projectPage.delProj();
+        qaseioApiTest.qaseioDelProj("DEMO");
     }
 
     @Test
-    @Disabled
+    //@Disabled
     @Feature("Project")
     @Story("User can create a project")
     @Owner("Vsevolod")
     @Severity(SeverityLevel.NORMAL)
     @Link(value = "test", url = "https://app.qase.io")
-    @DisplayName("Creation of Project with valid data using Lombok/Constructor/Faker")
+    @DisplayName("Creation of Project with valid data using Lombok/Faker")
     public void createProjectTestUsingBuilder() {
         projectPage.openLoginPage();
         loginSteps.authInApp("kubyox@mailto.plus", "qaseio122024");
         projectPage.projectPageIsOpened();
-        //projectSteps.createProject(proj);  //todo -add lombok
-        projectSteps.createProject(projectFakerTest);
+        projectSteps.createProject(proj);
         projectPage.openProjectsPage();
         projectPage.assertThatProjCreated();
     }
 
     @Test
-    @Disabled
+    //@Disabled
+    @Feature("Project")
+    @Story("User can create a project")
+    @Owner("Vsevolod")
+    @Severity(SeverityLevel.NORMAL)
+    @Link(value = "test", url = "https://app.qase.io")
+    @DisplayName("Creation of Project with valid data using Constructor/Faker")
+    public void createProjectTestUsingBuilderTwo() {
+        projectPage.openLoginPage();
+        loginSteps.authInApp("kubyox@mailto.plus", "qaseio122024");
+        projectPage.projectPageIsOpened();
+        projectSteps.createProject(proj1);
+        projectPage.openProjectsPage();
+        projectPage.assertThatProjCreated();
+    }
+
+    @Test
+    //@Disabled
     @Feature("Project")
     @Story("User can create a project")
     @Owner("Vsevolod")
@@ -82,7 +98,7 @@ public class ProjectTest extends BaseTest {
         projectPage.projectPageIsOpened();
         projectPage.createNewProject();
         String fakeName = fake.name().firstName();
-        projectPage.getProjectName(fakeName);
+        projectPage.inputProjectName(fakeName);
         projectPage.createProject();
         projectPage.openProjectsPage();
         String actualProjName = projectPage.receiveProjectName();
@@ -104,13 +120,13 @@ public class ProjectTest extends BaseTest {
         loginSteps.authInApp("kubyox@mailto.plus", "qaseio122024");
         projectPage.projectPageIsOpened();
         projectPage.createNewProject();
-        projectPage.getProjectName("D");
+        projectPage.inputProjectName("D");
         projectPage.createProject();
         projectPage.canNotCreateProjectErrorShouldBeVisible();
     }
 
     @Test
-    @Disabled
+    //@Disabled
     @DisplayName("Creation of Project  and exit from the App")
     @Feature("Project")
     @Story("User can create a project")
@@ -121,7 +137,7 @@ public class ProjectTest extends BaseTest {
         projectPage.openLoginPage();
         loginSteps.authInApp("kubyox@mailto.plus", "qaseio122024");
         projectPage.createNewProject();
-        projectPage.getProjectName("Dee");
+        projectPage.inputProjectName("Dee");
         projectPage.createProject();
         projectPage.openProjectsPage();
         projectPage.assertThatProjectCreated("Dee");
@@ -131,7 +147,7 @@ public class ProjectTest extends BaseTest {
     }
 
     @Test
-    @Disabled
+    //@Disabled
     @DisplayName("Deletion of the Project")
     @Feature("Project")
     @Story("User can delete a project")
@@ -142,7 +158,7 @@ public class ProjectTest extends BaseTest {
         projectPage.openLoginPage();
         loginSteps.authInApp("kubyox@mailto.plus", "qaseio122024");
         projectPage.createNewProject();
-        projectPage.getProjectName("Dee");
+        projectPage.inputProjectName("Dee");
         projectPage.createProject();
         projectPage.openProjectsPage();
         projectPage.findDots();

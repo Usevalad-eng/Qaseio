@@ -1,7 +1,6 @@
 package tests;
 
 import io.qameta.allure.*;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -10,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class SuiteTest extends BaseTest{
 
     @Test
-    @Disabled
+    //@Disabled
     @Feature("Suite")
     @Story("User can create a suite")
     @Owner("Vsevolod")
@@ -22,16 +21,16 @@ public class SuiteTest extends BaseTest{
         loginSteps.authInApp("kubyox@mailto.plus", "qaseio122024");
         projectPage.projectPageIsOpened();
         projectPage.createNewProject();
-        projectPage.getProjectName("Demo");
+        projectPage.inputProjectName("Demo");
         projectPage.createProject();
         suitePage.createNewSuite();
-        suitePage.getSuiteName("suiteTest");
+        suitePage.inputSuiteName("suiteTest");
         suitePage.createSuite();
         suitePage.assertThatSuiteCreated("suiteTest");
     }
 
     @Test
-    @Disabled
+    //@Disabled
     @Feature("Suite")
     @Story("User can create a suite")
     @Owner("Vsevolod")
@@ -43,17 +42,17 @@ public class SuiteTest extends BaseTest{
         loginSteps.authInApp("kubyox@mailto.plus", "qaseio122024");
         projectPage.projectPageIsOpened();
         projectPage.createNewProject();
-        projectPage.getProjectName(projectFakerTest.getProjName());
+        projectPage.inputProjectName(proj.getProjectName());
         projectPage.createProject();
         suitePage.createNewSuite();
-        String expectedSuiteName = suiteFakerTest.getSuiteName();
-        suitePage.getSuiteName(expectedSuiteName);
+        String expectedSuiteName = suite.getSuiteName();
+        suitePage.inputSuiteName(expectedSuiteName);
         suitePage.createSuite();
         assertEquals(expectedSuiteName, suitePage.receiveSuiteName(), "error!");
     }
 
     @Test
-    @Disabled
+    //@Disabled
     @Feature("Suite")
     @Story("User can create a suite")
     @Owner("Vsevolod")
@@ -65,10 +64,10 @@ public class SuiteTest extends BaseTest{
         loginSteps.authInApp("kubyox@mailto.plus", "qaseio122024");
         projectPage.projectPageIsOpened();
         projectPage.createNewProject();
-        projectPage.getProjectName("Demo");
+        projectPage.inputProjectName("Demo");
         projectPage.createProject();
         suitePage.createNewSuite();
-        suitePage.getSuiteName("");
+        suitePage.inputSuiteName("");
         suitePage.createSuite();
         suitePage.openSuitePage();
         suitePage.assertThatSuiteNotCreated();

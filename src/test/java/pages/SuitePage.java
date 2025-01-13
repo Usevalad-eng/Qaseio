@@ -21,7 +21,7 @@ public class SuitePage extends BasePage {
     }
 
     @Step("Enter suite name: {name}")
-    public void getSuiteName(String name) {
+    public void inputSuiteName(String name) {
         SUITE_NAME_INPUT.sendKeys(name);
     }
 

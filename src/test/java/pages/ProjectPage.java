@@ -3,12 +3,13 @@ package pages;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
+import lombok.Data;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static io.restassured.RestAssured.given;
 
-//@Data
+@Data
 public class ProjectPage extends BasePage {
 
     private final SelenideElement PROJECT_NAME_INPUT = $("#project-name");
@@ -45,12 +46,12 @@ public class ProjectPage extends BasePage {
     }
 
     @Step("Enter project name: {name}")
-    public void getProjectName(String name) {
+    public void inputProjectName(String name) {
         PROJECT_NAME_INPUT.sendKeys(name);
     }
 
     @Step("Enter project code: {code}")
-    public void getProjectCode(String code) {
+    public void inputProjectCode(String code) {
         PROJECT_CODE_INPUT.sendKeys(code);
     }
 
@@ -133,7 +134,7 @@ public class ProjectPage extends BasePage {
         PROJ_NAME.shouldBe(not(visible));
     }
 
-    @Step("Del project 'Demo'")
+    /*@Step("Del project 'Demo'")
     public void delProj() {
         given()
                 .header("Token", "8712b8dd5d9089dac78e3e50b649233346b7f122015027677ef032f5b55fc9e8")
@@ -144,7 +145,7 @@ public class ProjectPage extends BasePage {
                 .log().status()
                 .log().body()
                 .statusCode(200);
-    }
+    }*/
 
     @Override
     public boolean pageIsOpen(String title) {

@@ -9,13 +9,13 @@ import static io.restassured.RestAssured.given;
 
 public class QaseioApiTest {
 
-    public String headerValue = "8712b8dd5d9089dac78e3e50b649233346b7f122015027677ef032f5b55fc9e8";
+    public String token = "8712b8dd5d9089dac78e3e50b649233346b7f122015027677ef032f5b55fc9e8";
 
     @Test
     @DisplayName("Get projects")
     public void qaseioGetProj() {
         given()
-                .header("Token", headerValue)
+                .header("Token", token)
                 .log().uri()
                 .when()
                 .get("https://api.qase.io/v1/project")
@@ -26,14 +26,14 @@ public class QaseioApiTest {
     }
 
     @Test
-    @Disabled
+    //@Disabled
     @DisplayName("Create project 'Demo'")
     public void qaseioCreateProj() {
 
-        String data = "{ \"title\": \"DEMO\", \"code\": \"DEMO\" }";
+        String data = "{ \"title\": \"MEMO\", \"code\": \"MEMO\" }";
 
         given()
-                .header("Token", headerValue)
+                .header("Token", token)
                 .log().uri()
                 .accept(ContentType.JSON)
                 .contentType(ContentType.JSON)
@@ -46,15 +46,14 @@ public class QaseioApiTest {
                 .statusCode(200);
     }
 
-    @Test
-    @Disabled
+
     @DisplayName("Delete project 'Demo', project with code 'DEMO' should be created before this method runs")
-    public void qaseioDelProj() {
+    public void qaseioDelProj(String codeOfProject) {
         given()
-                .header("Token", headerValue)
+                .header("Token", token)
                 .log().uri()
                 .when()
-                .delete("https://api.qase.io/v1/project/DEMO")
+                .delete("https://api.qase.io/v1/project/" + codeOfProject)
                 .then()
                 .log().status()
                 .log().body()

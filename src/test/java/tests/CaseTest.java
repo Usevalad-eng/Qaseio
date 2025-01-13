@@ -2,7 +2,6 @@ package tests;
 
 import io.qameta.allure.*;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -21,19 +20,19 @@ public class CaseTest extends BaseTest{
         loginSteps.authInApp("kubyox@mailto.plus", "qaseio122024");
         projectPage.projectPageIsOpened();
         projectPage.createNewProject();
-        projectPage.getProjectName("Demo");
+        projectPage.inputProjectName("Demo");
         projectPage.createProject();
         suitePage.createNewSuite();
-        suitePage.getSuiteName("suiteTest");
+        suitePage.inputSuiteName("suiteTest");
         suitePage.createSuite();
         casePage.createNewCase();
-        casePage.getCaseName("caseTest");
+        casePage.inputCaseName("caseTest");
         casePage.createCase();
         casePage.assertThatCaseCreated("caseTest");
     }
 
     @Test
-    @Disabled
+    //@Disabled
     @Feature("Case")
     @Story("User can create a case")
     @Owner("Vsevolod")
@@ -45,21 +44,21 @@ public class CaseTest extends BaseTest{
         loginSteps.authInApp("kubyox@mailto.plus", "qaseio122024");
         projectPage.projectPageIsOpened();
         projectPage.createNewProject();
-        projectPage.getProjectName(projectFakerTest.getProjName());
+        projectPage.inputProjectName(proj.getProjectName());
         projectPage.createProject();
         suitePage.createNewSuite();
-        String expectedSuiteName = suiteFakerTest.getSuiteName();
-        suitePage.getSuiteName(expectedSuiteName);
+        String expectedSuiteName = suite.getSuiteName();
+        suitePage.inputSuiteName(expectedSuiteName);
         suitePage.createSuite();
         casePage.createNewCase();
-        String expectedCaseName = caseFakerTest.getCaseName();
-        casePage.getCaseName(expectedCaseName);
+        String expectedCaseName = caseName.getCaseName();
+        casePage.inputCaseName(expectedCaseName);
         casePage.createCase();
         Assertions.assertEquals(expectedCaseName, casePage.receiveCaseName(), "error!");
     }
 
     @Test
-    @Disabled
+    //@Disabled
     @Feature("Case")
     @Story("User can not create a case")
     @Owner("Vsevolod")
@@ -71,13 +70,13 @@ public class CaseTest extends BaseTest{
         loginSteps.authInApp("kubyox@mailto.plus", "qaseio122024");
         projectPage.projectPageIsOpened();
         projectPage.createNewProject();
-        projectPage.getProjectName("Demo");
+        projectPage.inputProjectName("Demo");
         projectPage.createProject();
         suitePage.createNewSuite();
-        suitePage.getSuiteName("suiteTest");
+        suitePage.inputSuiteName("suiteTest");
         suitePage.createSuite();
         casePage.createNewCase();
-        casePage.getCaseName("");
+        casePage.inputCaseName("");
         projectPage.openProjectsPage();
         casePage.assertThatCaseCanNotCreated();
     }

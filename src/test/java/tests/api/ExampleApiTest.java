@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
@@ -24,9 +25,9 @@ public class ExampleApiTest {
                 .then()
                 .log().status()
                 .log().body()
-                .statusCode(HttpStatus.SC_OK);
-        //.body("count", is(6172))
-        //.body("country.country_id[0]", is("NG"));
+                .statusCode(HttpStatus.SC_OK)
+        .body("count", is(6172))
+        .body("country.country_id[0]", is("NG"));
     }
 
     @Test

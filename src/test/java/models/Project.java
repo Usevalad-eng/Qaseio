@@ -6,16 +6,16 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.experimental.SuperBuilder;
 
-/*@Builder
-@Data
-@AllArgsConstructor*/
 
+@Data
+@Builder
+@AllArgsConstructor
 public class Project {
 
     private String projectName;
     private String projectCode;
 
-    public Project(String projectName, String projectCode) {
+    /*public Project(String projectName, String projectCode) {
         this.projectName = projectName;
         this.projectCode = projectCode;
     }
@@ -26,5 +26,5 @@ public class Project {
 
     public String getProjCode() {
         return projectCode;
-    }
+    }*/
 }

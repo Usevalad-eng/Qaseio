@@ -9,7 +9,7 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static io.restassured.RestAssured.given;
 
-@Data
+//@Data
 public class ProjectPage extends BasePage {
 
     private final SelenideElement PROJECT_NAME_INPUT = $("#project-name");
@@ -133,19 +133,6 @@ public class ProjectPage extends BasePage {
         open("/projects");
         PROJ_NAME.shouldBe(not(visible));
     }
-
-    /*@Step("Del project 'Demo'")
-    public void delProj() {
-        given()
-                .header("Token", "8712b8dd5d9089dac78e3e50b649233346b7f122015027677ef032f5b55fc9e8")
-                .log().uri()
-                .when()
-                .delete("https://api.qase.io/v1/project/DEMO")
-                .then()
-                .log().status()
-                .log().body()
-                .statusCode(200);
-    }*/
 
     @Override
     public boolean pageIsOpen(String title) {

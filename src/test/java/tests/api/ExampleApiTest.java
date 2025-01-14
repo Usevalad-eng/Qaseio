@@ -1,13 +1,20 @@
 package tests.api;
 
+import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.WebDriverRunner;
+import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.Cookie;
 
+import static com.codeborne.selenide.Selenide.*;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -39,8 +46,8 @@ public class ExampleApiTest {
                 .then()
                 .log().status()
                 .log().body()
-                .statusCode(HttpStatus.SC_OK);
-        //.body("total", is(20));
+                .statusCode(HttpStatus.SC_OK)
+                .body("total", is(20));
     }
 
     @Test
@@ -56,13 +63,30 @@ public class ExampleApiTest {
                 .then()
                 .log().status()
                 .log().body()
-                .statusCode(200);
-        //.body("token", is("QpwL5tke4Pnpja7X4"));
+                .statusCode(200)
+                .body("token", is("QpwL5tke4Pnpja7X4"));
     }
 
     @Test
     @Disabled
-    void check() {
+    void loginCheckTest() {
+        given()
+                .log().uri()
+                .contentType(ContentType.JSON)
+                .formParam("email", "eve.holt@reqres.in")
+                .formParam("password", "cityslicka")
+                .when()
+                .post("https://reqres.in/api/login")
+                .then()
+                .log().status()
+                .log().body()
+                .statusCode(200)
+                .body("token", is("QpwL5tke4Pnpja7X4"));
+    }
+
+    @Test
+    @Disabled
+    void checkResponseTest() {
         String expectedResponse = "{\n" +
                 "  \"count\": 6172,\n" +
                 "  \"name\": \"nathaniel\",\n" +
@@ -131,8 +155,8 @@ public class ExampleApiTest {
                 .then()
                 .log().status()
                 .log().body()
-                .statusCode(422);
-        //.body("error", is("Missing 'name' parameter"));
+                .statusCode(422)
+                .body("error", is("Missing 'name' parameter"));
     }
 
     @Test
@@ -145,19 +169,14 @@ public class ExampleApiTest {
                 .then()
                 .log().status()
                 .log().body()
-                .statusCode(HttpStatus.SC_OK);
-        //.body("total", is(20));
+                .statusCode(HttpStatus.SC_OK)
+                .body("total", is(20));
     }
 
     @Test
     @Disabled
     void loginPostTest() {
         String data = "{ \"email\": \"eve.holt@reqres.in\", \"password\": \"cityslicka\" }";
-
-        /*String data = "{\n" +
-                "\"email\":\"eve.holt@reqres.in\",\n" +
-                "\"password\":\"cityslicka\"\n" +
-                "}";*/
 
         String validatableResponse = given()
                 .log().uri()
@@ -173,5 +192,52 @@ public class ExampleApiTest {
         //.body("token", is("QpwL5tke4Pnpja7X4"));
 
         assertEquals("QpwL5tke4Pnpja7X4", validatableResponse, "Error!");
+    }
+
+    /*@BeforeAll
+    static void configureBaseUrl(){
+        RestAssured.baseURI = "https://demowebshop.tricentis.com";
+        String authCookie = given()
+                .contentType("application/x-www-form-urlencoded; charset=utf-8")
+                .formParam("Email", "kubyox@mailto.plus")
+                .formParam("Password", "kubyox")
+                .when()
+                .post("https://demowebshop.tricentis.com/login")
+                .then()
+                .statusCode(302)
+                .extract()
+                .cookie("NOPCOMMERCE.AUTH");
+        open("https://demowebshop.tricentis.com/Themes/DefaultClean/Content/images/logo.png");
+        WebDriverRunner.getWebDriver().manage().addCookie(new Cookie("NOPCOMMERCE.AUTH", authCookie));
+    }*/
+
+    @Test
+    @Disabled
+    void testDemowebshop(){
+        open("https://demowebshop.tricentis.com/login");
+        //Selenide.refresh();
+        //String data = "{ \"email\": \"kubyox@mailto.plus\", \"password\": \"kubyox\" }";
+        $("#Email").setValue("kubyox@mailto.plus");
+        $("#Password").setValue("kubyox").pressEnter();
+        $(".account").shouldHave(Condition.text("kubyox@mailto.plus"));
+    }
+
+    @Test
+    @Disabled
+    void loginWithCookie(){
+        String authCookie = given()
+                .contentType("application/x-www-form-urlencoded; charset=utf-8")
+                .formParam("Email", "kubyox@mailto.plus")
+                .formParam("Password", "kubyox")
+                .when()
+                .post("https://demowebshop.tricentis.com/login")
+                .then()
+                .statusCode(302)
+                .extract()
+                .cookie("NOPCOMMERCE.AUTH");
+        open("https://demowebshop.tricentis.com/Themes/DefaultClean/Content/images/logo.png");
+        WebDriverRunner.getWebDriver().manage().addCookie(new Cookie("NOPCOMMERCE.AUTH", authCookie));
+        open("https://demowebshop.tricentis.com");
+        $(".account").shouldHave(Condition.text("kubyox@mailto.plus"));
     }
 }

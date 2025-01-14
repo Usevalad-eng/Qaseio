@@ -12,7 +12,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class ProjectTest extends BaseTest {
 
     @Test
-    @Disabled
     @Feature("Project")
     @Story("User can create a project")
     @Owner("Vsevolod")
@@ -31,7 +30,6 @@ public class ProjectTest extends BaseTest {
     }
 
     @Test
-    //@Disabled
     @Feature("Project")
     @Story("User can create/delete a project")
     @Owner("Vsevolod")
@@ -51,7 +49,6 @@ public class ProjectTest extends BaseTest {
     }
 
     @Test
-    //@Disabled
     @Feature("Project")
     @Story("User can create a project")
     @Owner("Vsevolod")
@@ -68,7 +65,6 @@ public class ProjectTest extends BaseTest {
     }
 
     @Test
-    //@Disabled
     @Feature("Project")
     @Story("User can create a project")
     @Owner("Vsevolod")
@@ -85,7 +81,6 @@ public class ProjectTest extends BaseTest {
     }
 
     @Test
-    //@Disabled
     @Feature("Project")
     @Story("User can create a project")
     @Owner("Vsevolod")
@@ -126,7 +121,6 @@ public class ProjectTest extends BaseTest {
     }
 
     @Test
-    //@Disabled
     @DisplayName("Creation of Project  and exit from the App")
     @Feature("Project")
     @Story("User can create a project")
@@ -147,7 +141,6 @@ public class ProjectTest extends BaseTest {
     }
 
     @Test
-    //@Disabled
     @DisplayName("Deletion of the Project")
     @Feature("Project")
     @Story("User can delete a project")

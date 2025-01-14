@@ -14,17 +14,4 @@ public class Project {
 
     private String projectName;
     private String projectCode;
-
-    /*public Project(String projectName, String projectCode) {
-        this.projectName = projectName;
-        this.projectCode = projectCode;
-    }
-
-    public String getProjName() {
-        return projectName;
-    }
-
-    public String getProjCode() {
-        return projectCode;
-    }*/
 }

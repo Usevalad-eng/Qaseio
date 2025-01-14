@@ -81,7 +81,6 @@ public class LoginTest extends BaseTest {
     }
     @MethodSource("qaseioAuthNegativeScenarios")
     @ParameterizedTest(name = "Qaseio auth negative tests using JUnit5(empty pass or login)")
-    @Disabled
     @Severity(SeverityLevel.NORMAL)
     @DisplayName("User should not be logged in using empty password or login")
     void qaseioAuthNegativeScenarios(String login, String pass, String textOfExpectedMessage) {

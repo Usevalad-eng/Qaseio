@@ -29,7 +29,6 @@ public class CasePage extends BasePage {
 
     @Step("Enter case name: {name}")
     public void inputCaseAll(String name) {
-        /*CASE_NAME_INPUT.sendKeys(name);*/
     }
 
     @Step("Click create case")

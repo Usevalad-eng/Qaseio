@@ -9,7 +9,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class SuiteTest extends BaseTest{
 
     @Test
-    //@Disabled
     @Feature("Suite")
     @Story("User can create a suite")
     @Owner("Vsevolod")
@@ -30,7 +29,6 @@ public class SuiteTest extends BaseTest{
     }
 
     @Test
-    //@Disabled
     @Feature("Suite")
     @Story("User can create a suite")
     @Owner("Vsevolod")
@@ -52,7 +50,6 @@ public class SuiteTest extends BaseTest{
     }
 
     @Test
-    //@Disabled
     @Feature("Suite")
     @Story("User can create a suite")
     @Owner("Vsevolod")

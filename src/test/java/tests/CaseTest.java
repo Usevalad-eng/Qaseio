@@ -2,6 +2,7 @@ package tests;
 
 import io.qameta.allure.*;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -32,7 +33,6 @@ public class CaseTest extends BaseTest{
     }
 
     @Test
-    //@Disabled
     @Feature("Case")
     @Story("User can create a case")
     @Owner("Vsevolod")
@@ -58,7 +58,6 @@ public class CaseTest extends BaseTest{
     }
 
     @Test
-    //@Disabled
     @Feature("Case")
     @Story("User can not create a case")
     @Owner("Vsevolod")

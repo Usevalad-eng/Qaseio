@@ -27,10 +27,8 @@ public class BaseTest {
     SuitePage suitePage = new SuitePage();
     CasePage casePage = new CasePage();
     QaseioApiTest qaseioApiTest = new QaseioApiTest();
-
     Project proj = ProjectBuilder.get();
     Project proj1 = Project.builder().projectName("Demo").projectCode("Demo").build();
-
     Project projTest = new Project(fake.code().asin(), fake.name().firstName());
     Suite suite = SuiteBuilder.get();
     Suite suiteSuite = new Suite(fake.name().firstName());

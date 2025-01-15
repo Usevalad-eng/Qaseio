@@ -7,6 +7,8 @@ import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
+import models.LoginRequestPojoModel;
+import models.LoginResponsePojoModel;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -16,8 +18,11 @@ import org.openqa.selenium.Cookie;
 
 import static com.codeborne.selenide.Selenide.*;
 import static io.restassured.RestAssured.given;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static specs.LoginSpecs.loginRequestSpec;
+import static specs.LoginSpecs.loginResponseSpec;
 
 
 public class ExampleApiTest {
@@ -82,6 +87,64 @@ public class ExampleApiTest {
                 .log().body()
                 .statusCode(200)
                 .body("token", is("QpwL5tke4Pnpja7X4"));
+    }
+
+    @Test
+    @Disabled
+    void loginTestB() {
+        LoginRequestPojoModel data = new LoginRequestPojoModel();
+        data.setEmail("eve.holt@reqres.in");
+        data.setPassword("cityslicka");
+
+        given()
+                .log().uri()
+                .contentType(ContentType.JSON)
+                .body(data)
+                .when()
+                .post("https://reqres.in/api/login")
+                .then()
+                .log().status()
+                .log().body()
+                .statusCode(200)
+                .body("token", is("QpwL5tke4Pnpja7X4"));
+    }
+
+    @Test
+    @Disabled
+    void loginTestG() {
+        LoginRequestPojoModel data = new LoginRequestPojoModel();
+        data.setEmail("eve.holt@reqres.in");
+        data.setPassword("cityslicka");
+
+        LoginResponsePojoModel response = given()
+                .log().uri()
+                .contentType(ContentType.JSON)
+                .body(data)
+                .when()
+                .post("https://reqres.in/api/login")
+                .then()
+                .log().status()
+                .log().body()
+                .statusCode(200)
+                .extract().as(LoginResponsePojoModel.class);
+        assertThat(response.getToken()).isEqualTo("QpwL5tke4Pnpja7X4");
+    }
+
+    @Test
+    @Disabled
+    void loginTestGWSpecs() {
+        LoginRequestPojoModel data = new LoginRequestPojoModel();
+        data.setEmail("eve.holt@reqres.in");
+        data.setPassword("cityslicka");
+
+        LoginResponsePojoModel response = given(loginRequestSpec)
+                .body(data)
+                .when()
+                .post("/login")
+                .then()
+                .spec(loginResponseSpec)
+                .extract().as(LoginResponsePojoModel.class);
+        assertThat(response.getToken()).isEqualTo("QpwL5tke4Pnpja7X4");
     }
 
     @Test
@@ -239,5 +302,24 @@ public class ExampleApiTest {
         WebDriverRunner.getWebDriver().manage().addCookie(new Cookie("NOPCOMMERCE.AUTH", authCookie));
         open("https://demowebshop.tricentis.com");
         $(".account").shouldHave(Condition.text("kubyox@mailto.plus"));
+    }
+
+    @Test
+    @Disabled
+    void addCartTest(){
+        String cookieValue = "29687C6076C808CA9A680849350BEF1B499206EEDB28B22451C2A0304FD22F3EE1D4F52CF66B57E9E13EC2788C4EA5626CB66732C9E84F9EF9CF47B06D8CB873FF6B234A0D0B412FF9D1AC3A4843B14F784C71A9769E81038A6E59EECF41A3E8453283C6C217961878FEF469456333F2F416F8EFADC0B037667D4B9E771ABF945DC36BAA0372D519DB2F197FF2FACF39BE9FEC51C6440F1582BD204E357C2B42";
+        String body = "product_attribute_72_5_18=53" + "&product_attribute_72_6_19=54" + "&product_attribute_72_3_20=57" +
+                "&addtocart_72.EnteredQuontity=4";
+        given()
+                .contentType("application/x-www-form-urlencoded; charset=utf-8")
+                .cookie("NOPCOMMERCE.AUTH", cookieValue)
+                .body(body)
+                .when()
+                .post("https://demowebshop.tricentis.com/addproducttocart/details/72/1")
+                .then()
+                .log().all()
+                .statusCode(200)
+                .body("success", is(true))
+                .body("message", is("The product has been added to your <a href=\"/cart\">shopping cart</a>"));
     }
 }

@@ -34,7 +34,8 @@ dependencies {
             "org.assertj:assertj-core:3.26.3",
             "io.qameta.allure:allure-selenide:2.12.0",
             "io.rest-assured:rest-assured:5.5.0",
-            "com.github.javafaker:javafaker:1.0.2"
+            "com.github.javafaker:javafaker:1.0.2",
+            "com.fasterxml.jackson.core:jackson-core:2.18.2"
     )
 }
 

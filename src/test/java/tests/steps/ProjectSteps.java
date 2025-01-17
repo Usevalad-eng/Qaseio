@@ -1,4 +1,4 @@
-package tests.api.stepsa;
+package tests.steps;
 
 import tests.api.pojos.request.project.CreateProjectRequest;
 import tests.api.pojos.response.project.CreateProjectResponse;

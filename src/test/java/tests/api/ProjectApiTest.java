@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import tests.api.pojos.request.project.CreateProjectRequest;
 import tests.api.pojos.response.project.CreateProjectResponse;
 import tests.api.pojos.response.project.Result;
-import tests.api.stepsa.ProjectSteps;
+import tests.steps.ProjectSteps;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

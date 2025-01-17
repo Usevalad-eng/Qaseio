@@ -24,12 +24,15 @@ allure {
     }
 }
 
+def junitVersion = "5.11.3",
+    selenideVersion = "6.19.1"
+
 dependencies {
     testCompileOnly 'org.projectlombok:lombok:1.18.22'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.22'
     testImplementation(
-            "org.junit.jupiter:junit-jupiter:5.11.3",
-            "com.codeborne:selenide:6.19.1",
+            "org.junit.jupiter:junit-jupiter:$junitVersion",
+            "com.codeborne:selenide:$selenideVersion",
             "org.slf4j:slf4j-simple:2.0.16",
             "org.assertj:assertj-core:3.26.3",
             "io.qameta.allure:allure-selenide:2.12.0",

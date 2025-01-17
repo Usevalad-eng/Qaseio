@@ -1,17 +1,12 @@
 package tests.api;
 
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
-import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import io.restassured.response.ValidatableResponse;
 import models.LoginRequestPojoModel;
 import models.LoginResponsePojoModel;
 import org.apache.http.HttpStatus;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Cookie;
@@ -21,8 +16,8 @@ import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static specs.LoginSpecs.loginRequestSpec;
-import static specs.LoginSpecs.loginResponseSpec;
+import static specsL.LoginSpecs.loginRequestSpec;
+import static specsL.LoginSpecs.loginResponseSpec;
 
 
 public class ExampleApiTest {

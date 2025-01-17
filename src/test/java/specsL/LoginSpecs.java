@@ -1,4 +1,4 @@
-package specs;
+package specsL;
 
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.filter.log.LogDetail;

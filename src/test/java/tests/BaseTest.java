@@ -19,21 +19,21 @@ import tests.api.QaseioApiTest;
 
 public class BaseTest {
 
-    static Faker fake = new Faker();
+    public static Faker fake = new Faker();
     public LoginSteps loginSteps = new LoginSteps();
     public ProjectSteps projectSteps = new ProjectSteps();
-    LoginPage loginPage = new LoginPage();
-    ProjectPage projectPage = new ProjectPage();
-    SuitePage suitePage = new SuitePage();
-    CasePage casePage = new CasePage();
-    QaseioApiTest qaseioApiTest = new QaseioApiTest();
-    Project proj = ProjectBuilder.get();
-    Project proj1 = Project.builder().projectName("Demo").projectCode("Demo").build();
-    Project projTest = new Project(fake.code().asin(), fake.name().firstName());
-    Suite suite = SuiteBuilder.get();
-    Suite suiteSuite = new Suite(fake.name().firstName());
-    Case caseName = new Case(fake.name().firstName());
-    Case caseCase = CaseBuilder.get();
+    public LoginPage loginPage = new LoginPage();
+    public ProjectPage projectPage = new ProjectPage();
+    public SuitePage suitePage = new SuitePage();
+    public CasePage casePage = new CasePage();
+    public QaseioApiTest qaseioApiTest = new QaseioApiTest();
+    public Project proj = ProjectBuilder.get();
+    public Project proj1 = Project.builder().projectName("Demo").projectCode("Demo").build();
+    public Project projTest = new Project(fake.code().asin(), fake.name().firstName());
+    public Suite suite = SuiteBuilder.get();
+    public Suite suiteSuite = new Suite(fake.name().firstName());
+    public Case caseName = new Case(fake.name().firstName());
+    public Case caseCase = CaseBuilder.get();
 
 
     @BeforeAll
@@ -45,6 +45,7 @@ public class BaseTest {
     @BeforeEach
     void setUp() {
         Configuration.timeout = 5000;
+        Configuration.pollingInterval = 200;
         SelenideLogger.addListener("allure", new AllureSelenide());
     }
 

@@ -1,12 +1,13 @@
-package tests;
+package tests.ui;
 
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import tests.BaseTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class SuiteTest extends BaseTest{
+public class SuiteTest extends BaseTest {
 
     @Test
     @Feature("Suite")

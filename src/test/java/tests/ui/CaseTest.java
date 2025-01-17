@@ -1,14 +1,15 @@
-package tests;
+package tests.ui;
 
 import io.qameta.allure.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import tests.BaseTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class CaseTest extends BaseTest{
+public class CaseTest extends BaseTest {
     @Test
     @Feature("Case")
     @Story("User can create a case")

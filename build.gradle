@@ -25,7 +25,13 @@ allure {
 }
 
 def junitVersion = "5.11.3",
-    selenideVersion = "6.19.1"
+    selenideVersion = "6.19.1",
+    slf4jVersion = "2.0.16",
+    assertjVersion = "3.26.3",
+    allureVersion = "2.12.0",
+    restVersion = "5.5.0",
+    fakerVersion = "1.0.2",
+    jacksonVersion = "2.18.2"
 
 dependencies {
     testCompileOnly 'org.projectlombok:lombok:1.18.22'
@@ -33,12 +39,12 @@ dependencies {
     testImplementation(
             "org.junit.jupiter:junit-jupiter:$junitVersion",
             "com.codeborne:selenide:$selenideVersion",
-            "org.slf4j:slf4j-simple:2.0.16",
-            "org.assertj:assertj-core:3.26.3",
-            "io.qameta.allure:allure-selenide:2.12.0",
-            "io.rest-assured:rest-assured:5.5.0",
-            "com.github.javafaker:javafaker:1.0.2",
-            "com.fasterxml.jackson.core:jackson-core:2.18.2"
+            "org.slf4j:slf4j-simple:$slf4jVersion",
+            "org.assertj:assertj-core:$assertjVersion",
+            "io.qameta.allure:allure-selenide:$allureVersion",
+            "io.rest-assured:rest-assured:$restVersion",
+            "com.github.javafaker:javafaker:$fakerVersion",
+            "com.fasterxml.jackson.core:jackson-core:$jacksonVersion"
     )
 }
 

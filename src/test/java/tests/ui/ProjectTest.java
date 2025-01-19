@@ -1,6 +1,8 @@
 package tests.ui;
 
+import generators.ProjectGenerator;
 import io.qameta.allure.*;
+import models.ProjectBuilder;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import tests.BaseTest;
@@ -9,6 +11,19 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ProjectTest extends BaseTest {
+
+    @Test
+    public void createProjTest(){
+        authorizeInApp("kubyox@mailto.plus", "qaseio122024");
+        projectPage.openProjectsPage();
+        projectPage.clickCreateNewProjectButton();
+        projectPage.create(ProjectBuilder.getTwo());
+    }
+
+    @Test
+    public void createProjTestT(){
+        ProjectGenerator.createProjApi();
+    }
 
     @Test
     @Feature("Project")

@@ -17,6 +17,9 @@ import steps.LoginSteps;
 import steps.ProjectSteps;
 import tests.api.QaseioApiTest;
 
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
+
 public class BaseTest {
 
     public static Faker fake = new Faker();
@@ -35,6 +38,11 @@ public class BaseTest {
     public Case caseName = new Case(fake.name().firstName());
     public Case caseCase = CaseBuilder.get();
 
+    public void authorizeInApp(String email, String pwd){
+        open("https://app.qase.io/login");
+        $("[name=email]").setValue(email);
+        $("[name=password]").setValue(pwd).submit();
+    }
 
     @BeforeAll
     static void screenResolution() {

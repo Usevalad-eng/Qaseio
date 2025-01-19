@@ -4,10 +4,14 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import lombok.Data;
+import models.Project;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static io.restassured.RestAssured.given;
+import static pages.elements.Button.clickButton;
+import static pages.elements.Input.setValueInInput;
+import static pages.elements.Input.setValueInInputT;
 
 //@Data
 public class ProjectPage extends BasePage {
@@ -33,6 +37,23 @@ public class ProjectPage extends BasePage {
     @Step("Open Login Page")
     public void openLoginPage() {
         open("https://app.qase.io/login");
+    }
+
+    @Step("Open Projects page")
+    public void openProjectsPage() {
+        open("/projects");
+    }
+
+    @Step("Click create new project button")
+    public void clickCreateNewProjectButton(){
+        clickButton("Create new project");
+    }
+
+    @Step("Create")
+    public void create(Project project){
+        setValueInInputT("For example: Web Application", project.getProjectName());
+        setValueInInputT("For example: WA", project.getProjectCode());
+        clickButton("Create project");
     }
 
     @Step("Project title is visible")
@@ -69,11 +90,6 @@ public class ProjectPage extends BasePage {
     @Step("Click create project")
     public void createProject() {
         CREATE_PROJECT_BUTTON.click();
-    }
-
-    @Step("Open Projects page")
-    public void openProjectsPage() {
-        open("/projects");
     }
 
     @Step("Assert that project {projName} created")

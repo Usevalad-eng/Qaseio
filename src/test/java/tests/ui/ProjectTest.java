@@ -2,10 +2,13 @@ package tests.ui;
 
 import generators.ProjectGenerator;
 import io.qameta.allure.*;
+import models.Project;
 import models.ProjectBuilder;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import tests.BaseTest;
+import tests.api.pojos.request.project.CreateProjectRequest;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -13,16 +16,34 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class ProjectTest extends BaseTest {
 
     @Test
+    @Feature("Project")
+    @Story("User can create a project")
+    @Owner("Vsevolod")
+    @Severity(SeverityLevel.BLOCKER)
+    @Link(value = "test", url = "https://app.qase.io")
+    @DisplayName("Creation of Project with valid data")
     public void createProjTest(){
         authorizeInApp("kubyox@mailto.plus", "qaseio122024");
         projectPage.openProjectsPage();
         projectPage.clickCreateNewProjectButton();
-        projectPage.create(ProjectBuilder.getTwo());
+        Project projTwo = ProjectBuilder.getTwo();
+        projectPage.create(projTwo);
+        projectPage.assertThatProjCreated();
     }
 
     @Test
-    public void createProjTestT(){
-        ProjectGenerator.createProjApi();
+    @Feature("Project")
+    @Story("User can create a project")
+    @Owner("Vsevolod")
+    @Severity(SeverityLevel.BLOCKER)
+    @Link(value = "test", url = "https://app.qase.io")
+    @DisplayName("Creation of Project with valid data")
+    public void createProjjTest(){
+        authorizeInApp("kubyox@mailto.plus", "qaseio122024");
+        projectPage.openProjectsPage();
+        projectPage.clickCreateNewProjectButton();
+        projectPage.createT(ProjectBuilder.getTwo());
+        projectPage.assertThatProjCreated();
     }
 
     @Test
@@ -41,6 +62,13 @@ public class ProjectTest extends BaseTest {
         projectPage.createProject();
         projectPage.openProjectsPage();
         projectPage.assertThatProjectCreated("Demo");
+        ProjectGenerator.deleteProjectApi("DEMO");
+    }
+
+    @Test
+    @Disabled
+    public void deleteDemoTest(){
+        ProjectGenerator.deleteProjectApi("DEMO");  //Create project with Code DEMO before using this test
     }
 
     @Test
@@ -171,6 +199,39 @@ public class ProjectTest extends BaseTest {
         projectPage.findDots();
         projectPage.deleteButton();
         projectPage.deleteProject();
+        projectPage.assertThatProjDeleted();
+    }
+
+    @Test
+    @DisplayName("Deletion of the Project")
+    @Feature("Project")
+    @Story("User can delete a project")
+    @Owner("Vsevolod")
+    @Link(value = "test", url = "https://app.qase.io")
+    @Severity(SeverityLevel.NORMAL)
+    public void createProjAndDeleteTest(){
+        ProjectGenerator.createProjApi();
+        projectPage.openLoginPage();
+        loginSteps.authInApp("kubyox@mailto.plus", "qaseio122024");
+        projectPage.openProjectsPage();
+        projectPage.findDots();
+        projectPage.deleteButton();
+        projectPage.deleteProject();
+        projectPage.assertThatProjDeleted();
+    }
+
+    @Test
+    @DisplayName("Deletion of the Project")
+    @Feature("Project")
+    @Story("User can delete a project")
+    @Owner("Vsevolod")
+    @Link(value = "test", url = "https://app.qase.io")
+    @Severity(SeverityLevel.NORMAL)
+    public void createProjADeleteTest(){
+        CreateProjectRequest projectR = ProjectGenerator.createProjectApi();
+        ProjectGenerator.gett(projectR);
+        ProjectGenerator.deleteProjectApi(projectR.getCode());
+        authorizeInApp("kubyox@mailto.plus", "qaseio122024");
         projectPage.assertThatProjDeleted();
     }
 }

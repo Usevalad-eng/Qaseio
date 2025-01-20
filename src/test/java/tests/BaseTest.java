@@ -31,6 +31,7 @@ public class BaseTest {
     public CasePage casePage = new CasePage();
     public QaseioApiTest qaseioApiTest = new QaseioApiTest();
     public Project proj = ProjectBuilder.get();
+    public Project proj2 = ProjectBuilder.getTwo();
     public Project proj1 = Project.builder().projectName("Demo").projectCode("Demo").build();
     public Project projTest = new Project(fake.code().asin(), fake.name().firstName());
     public Suite suite = SuiteBuilder.get();

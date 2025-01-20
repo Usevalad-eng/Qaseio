@@ -55,6 +55,21 @@ public class ProjectPage extends BasePage {
         setValueInInputT("For example: WA", project.getProjectCode());
         clickButton("Create project");
     }
+    @Step("Create")
+    public void inputName(String name){
+        setValueInInputT("For example: Web Application", name);
+    }
+    @Step("Create")
+    public void inputCode(String code){
+        setValueInInputT("For example: WA", code);
+    }
+
+    @Step("Create")
+    public void createT(Project project){
+        inputName(project.getProjectName());
+        inputCode(project.getProjectCode());
+        clickButton("Create project");
+    }
 
     @Step("Project title is visible")
     public void projectPageIsOpened() {

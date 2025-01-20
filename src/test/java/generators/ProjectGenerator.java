@@ -21,4 +21,12 @@ public class ProjectGenerator {
     public static void createProjApi(){
         ProjectSteps.createProject(createProjectApi());
     }
+
+    public static void gett(CreateProjectRequest project){
+        ProjectSteps.createProject(project);
+    }
+
+    public static void deleteProjectApi(String code){
+        ProjectSteps.deleteProject(code);
+    }
 }

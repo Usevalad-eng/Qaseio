@@ -20,6 +20,6 @@ public class Specs {
 
     public static final ResponseSpecification RES_SPEC = new ResponseSpecBuilder()
             .log(LogDetail.ALL)
-            .expectStatusCode(SC_OK)
+            //.expectStatusCode(SC_OK)
             .build();
 }

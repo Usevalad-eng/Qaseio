@@ -1,5 +1,6 @@
 package tests.ui;
 
+import com.codeborne.selenide.Selenide;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
@@ -29,6 +30,32 @@ public class CaseTest extends BaseTest {
         suitePage.createSuite();
         casePage.createNewCase();
         casePage.inputCaseName("caseTest");
+        casePage.createCase();
+        casePage.assertThatCaseCreated("caseTest");
+    }
+
+    @Test
+    //@Disabled
+    @Feature("Case")
+    @Story("User can create a case")
+    @Owner("Vsevolod")
+    @Severity(SeverityLevel.NORMAL)
+    @Link(value = "test", url = "https://app.qase.io")
+    @DisplayName("Creation of a case with valid data")
+    public void createCaseWithStepsTest() {
+        projectPage.openLoginPage();
+        loginSteps.authInApp("kubyox@mailto.plus", "qaseio122024");
+        projectPage.projectPageIsOpened();
+        projectPage.createNewProject();
+        projectPage.inputProjectName("Demo");
+        projectPage.createProject();
+        suitePage.createNewSuite();
+        suitePage.inputSuiteName("suiteTest");
+        suitePage.createSuite();
+        casePage.createNewCase();
+        casePage.inputCaseName("caseTest");
+        casePage.addStep();
+        casePage.fillStep(); //todo the step
         casePage.createCase();
         casePage.assertThatCaseCreated("caseTest");
     }

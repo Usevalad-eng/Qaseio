@@ -36,7 +36,7 @@ public class BaseTest {
     public Project projTest = new Project(fake.code().asin(), fake.name().firstName());
     public Suite suite = SuiteBuilder.get();
     public Suite suiteSuite = new Suite(fake.name().firstName());
-    public Case caseName = new Case(fake.name().firstName());
+    public Case caseName = new Case(fake.name().firstName(), "action", "result");
     public Case caseCase = CaseBuilder.get();
 
     public void authorizeInApp(String email, String pwd){

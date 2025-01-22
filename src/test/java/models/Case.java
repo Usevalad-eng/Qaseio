@@ -12,6 +12,6 @@ import lombok.NoArgsConstructor;
 public class Case {
 
     private String caseName;
+    private String description;
     private String stepAction;
-    private String stepResult;
 }

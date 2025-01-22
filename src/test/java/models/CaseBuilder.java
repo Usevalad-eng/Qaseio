@@ -17,8 +17,8 @@ public class CaseBuilder {
         return Case
                 .builder()
                 .caseName(faker.code().asin())
-                .stepAction("action")
-                .stepResult("result")
+                .description("description")
+                .stepAction(faker.chuckNorris().fact())
                 .build();
     }
 }

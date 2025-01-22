@@ -19,15 +19,9 @@ public class CasePage extends BasePage {
     private final SelenideElement RECEIVE_CASE_NAME = $x("//div[@class = 'YkyiUm t1vo_q']");
     private final SelenideElement CASE_ZERO =
             $x("//small[text() = '0 test cases  |  1 suite  |  No active runs']");
-
     private final SelenideElement ADD_STEP_BUTTON = $x("//span[text() = ' Add step']");
-
-    //private final SelenideElement STEP_ACTION = $$x("//div[@class = 'ProseMirror toastui-editor-contents']//p").get(3);
-    private final SelenideElement STEP_ACTION =$x("//*[@id=\"application-content\"]/div/div[2]/form/div[1]/div[14]/div[1]/div/div/div/div[2]/div/div[1]/div/div/div/div[2]/div/div[2]/div/div/p");
-
-    //private final SelenideElement STEP_RESULT = $$x("//p").get(6);  //$x("//span[text() = 'Expected result']");
-    private final SelenideElement STEP_RESULT = $x("//*[@id=\"application-content\"]/div/div[2]/form/div[1]/div[14]/div[1]/div/div/div/div[2]/div/div[3]/div/div/div/div[2]/div/div[2]/div/div/p");
-    // //*[@id="application-content"]/div/div[2]/form/div[1]/div[14]/div[1]/div/div/div/div[2]/div/div[3]/div/div/div/div[2]/div/div[2]/div/div/p
+    private final SelenideElement DESCRIPTION = $x("//div[@class='ProseMirror toastui-editor-contents']/p");
+    private final SelenideElement STEP_ACTION = $x("//*[@id=\"application-content\"]/div/div[2]/form/div[1]/div[14]/div[1]/div/div/div/div[2]/div/div[1]/div/div/div/div[2]/div/div[2]/div/div/p");
 
     @Step("Create new case")
     public void createNewCase() {
@@ -39,13 +33,8 @@ public class CasePage extends BasePage {
         CASE_NAME_INPUT.sendKeys(name);
     }
 
-    @Step("Enter case name: {name}")
-    public void inputCaseAll(String name) {
-    }
-
     @Step("Click create case")
     public void createCase() {
-        //Selenide.actions().scrollToElement(SAVE_BUTTON);
         SAVE_BUTTON.shouldBe(visible).click();
     }
 
@@ -64,20 +53,18 @@ public class CasePage extends BasePage {
         CASE_ZERO.shouldBe(visible);
     }
 
-
+    @Step("Add step")
+    public void fillDescription() {
+        DESCRIPTION.sendKeys(CaseBuilder.getAllFields().getDescription());
+    }
     @Step("Add step")
     public void addStep() {
-        //Selenide.actions().scrollToElement(ADD_STEP_BUTTON);
         ADD_STEP_BUTTON.shouldBe(visible).click();
     }
 
     @Step("Add step")
     public void fillStep() {
-       //STEP_ACTION.doubleClick().sendKeys("1");
-       STEP_ACTION.sendKeys(CaseBuilder.getAllFields().getStepAction());  //todo - to change selector
-       //Selenide.actions().scrollToElement(SAVE_BUTTON);
-       //STEP_RESULT.click();
-       //STEP_RESULT.sendKeys(CaseBuilder.getAllFields().getStepResult());
+       STEP_ACTION.sendKeys(CaseBuilder.getAllFields().getStepAction());
     }
 
     @Override

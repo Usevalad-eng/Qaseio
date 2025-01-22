@@ -41,7 +41,7 @@ public class CaseTest extends BaseTest {
     @Owner("Vsevolod")
     @Severity(SeverityLevel.NORMAL)
     @Link(value = "test", url = "https://app.qase.io")
-    @DisplayName("Creation of a case with valid data")
+    @DisplayName("Creation of a case with valid data plus description and steps")
     public void createCaseWithStepsTest() {
         projectPage.openLoginPage();
         loginSteps.authInApp("kubyox@mailto.plus", "qaseio122024");
@@ -54,8 +54,9 @@ public class CaseTest extends BaseTest {
         suitePage.createSuite();
         casePage.createNewCase();
         casePage.inputCaseName("caseTest");
+        casePage.fillDescription();
         casePage.addStep();
-        casePage.fillStep(); //todo the step
+        casePage.fillStep();
         casePage.createCase();
         casePage.assertThatCaseCreated("caseTest");
     }

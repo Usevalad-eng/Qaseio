@@ -1,7 +1,6 @@
 package pages;
 
 import com.codeborne.selenide.ElementsCollection;
-import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import models.CaseBuilder;
@@ -22,6 +21,9 @@ public class CasePage extends BasePage {
     private final SelenideElement ADD_STEP_BUTTON = $x("//span[text() = ' Add step']");
     private final SelenideElement DESCRIPTION = $x("//div[@class='ProseMirror toastui-editor-contents']/p");
     private final SelenideElement STEP_ACTION = $x("//*[@id=\"application-content\"]/div/div[2]/form/div[1]/div[14]/div[1]/div/div/div/div[2]/div/div[1]/div/div/div/div[2]/div/div[2]/div/div/p");
+    private final ElementsCollection ARROW_DOWN = $$x("//div[@class = 'xKUpf_']");
+    private final SelenideElement CHOOSE_STATUS = $x("//div[text() = 'Draft']");
+
 
     @Step("Create new case")
     public void createNewCase() {
@@ -57,14 +59,69 @@ public class CasePage extends BasePage {
     public void fillDescription() {
         DESCRIPTION.sendKeys(CaseBuilder.getAllFields().getDescription());
     }
+
     @Step("Add step")
     public void addStep() {
         ADD_STEP_BUTTON.shouldBe(visible).click();
     }
 
-    @Step("Add step")
+    @Step("Fill step")
     public void fillStep() {
-       STEP_ACTION.sendKeys(CaseBuilder.getAllFields().getStepAction());
+        STEP_ACTION.sendKeys(CaseBuilder.getAllFields().getStepAction());
+    }
+
+    @Step("Fill Status field")
+    public void fillStatus() {
+        ARROW_DOWN.get(0).click();
+        CHOOSE_STATUS.shouldBe(visible).click();
+    }
+
+    @Step("Fill Suite field")
+    public void fillSuite(String text) {
+        ARROW_DOWN.get(1).click();
+        $x("//div[text() = '" + text + "']").shouldBe(visible).click();
+    }
+
+    @Step("Fill Severity field")
+    public void fillSeverity(String text) {
+        ARROW_DOWN.get(2).click();
+        $x("//div[text() = '" + text + "']").shouldBe(visible).click();
+    }
+
+    @Step("Fill Priority field")
+    public void fillPriority(String text) {
+        ARROW_DOWN.get(3).click();
+        $x("//div[text() = '" + text + "']").shouldBe(visible).click();
+    }
+
+    @Step("Fill Type field")
+    public void fillType(String text) {
+        ARROW_DOWN.get(4).click();
+        $x("//div[text() = '" + text + "']").shouldBe(visible).click();
+    }
+
+    @Step("Fill Layer field")
+    public void fillLayer(String text) {
+        ARROW_DOWN.get(5).click();
+        $x("//div[text() = '" + text + "']").shouldBe(visible).click();
+    }
+
+    @Step("Fill isFlaky field")
+    public void fillIsFlaky(String text) {
+        ARROW_DOWN.get(6).click();
+        $x("//div[text() = '" + text + "']").shouldBe(visible).click();
+    }
+
+    @Step("Fill Behavior field")
+    public void fillBehavior(String text) {
+        ARROW_DOWN.get(7).click();
+        $x("//div[text() = '" + text + "']").shouldBe(visible).click();
+    }
+
+    @Step("Fill Automation status field")
+    public void fillAutomationStatus(String text) {
+        ARROW_DOWN.get(8).click();
+        $x("//div[text() = '" + text + "']").shouldBe(visible).click();
     }
 
     @Override

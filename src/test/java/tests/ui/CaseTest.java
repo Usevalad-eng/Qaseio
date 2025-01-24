@@ -35,13 +35,12 @@ public class CaseTest extends BaseTest {
     }
 
     @Test
-    //@Disabled
     @Feature("Case")
     @Story("User can create a case")
     @Owner("Vsevolod")
     @Severity(SeverityLevel.NORMAL)
     @Link(value = "test", url = "https://app.qase.io")
-    @DisplayName("Creation of a case with valid data plus description and steps")
+    @DisplayName("Creation of a case with valid data plus description, steps and other fields")
     public void createCaseWithStepsTest() {
         projectPage.openLoginPage();
         loginSteps.authInApp("kubyox@mailto.plus", "qaseio122024");
@@ -54,7 +53,16 @@ public class CaseTest extends BaseTest {
         suitePage.createSuite();
         casePage.createNewCase();
         casePage.inputCaseName("caseTest");
+        casePage.fillStatus();
         casePage.fillDescription();
+        casePage.fillSuite("suiteTest");
+        casePage.fillSeverity("Major");
+        casePage.fillPriority("High");
+        casePage.fillType("Functional");
+        casePage.fillLayer("E2E");
+        casePage.fillIsFlaky("Yes");
+        casePage.fillBehavior("Positive");
+        casePage.fillAutomationStatus("Automated");
         casePage.addStep();
         casePage.fillStep();
         casePage.createCase();

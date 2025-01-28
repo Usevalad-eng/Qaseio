@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import tests.api.pojos.response.project.Result;
 
 @Data
 @Builder
@@ -13,5 +12,5 @@ import tests.api.pojos.response.project.Result;
 public class CreateSuiteResponse {
 
     public boolean status;
-    public Result result;
+    public ResultS result;
 }

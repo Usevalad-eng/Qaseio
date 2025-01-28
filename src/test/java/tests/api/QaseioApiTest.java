@@ -2,7 +2,6 @@ package tests.api;
 
 import io.qameta.allure.Step;
 import io.restassured.http.ContentType;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -27,6 +26,7 @@ public class QaseioApiTest {
                 .log().body()
                 .statusCode(200);
     }
+
     @Test
     @Step("Create project 'Demo'")
     @DisplayName("Create project 'Demo'")
@@ -48,14 +48,15 @@ public class QaseioApiTest {
                 .statusCode(200);
     }
 
+    @Test
     @Step("Delete project 'Demo'")
     @DisplayName("Delete project 'Demo', project with code 'DEMO' should be created before this method runs")
-    public void qaseioDelProj(String codeOfProject) {
+    public void qaseioDelProj() {
         given()
                 .header("Token", token)
                 .log().uri()
                 .when()
-                .delete("https://api.qase.io/v1/project/" + codeOfProject)
+                .delete("https://api.qase.io/v1/project/" + "DEMO")
                 .then()
                 .log().status()
                 .log().body()

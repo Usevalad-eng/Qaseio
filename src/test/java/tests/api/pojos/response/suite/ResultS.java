@@ -1,4 +1,4 @@
-package tests.api.pojos.request.suite;
+package tests.api.pojos.response.suite;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class CreateSuiteRequest {
+public class ResultS {
 
-    String title;
+    private Integer id;
 }

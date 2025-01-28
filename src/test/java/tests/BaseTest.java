@@ -29,7 +29,7 @@ public class BaseTest {
     public ProjectPage projectPage = new ProjectPage();
     public SuitePage suitePage = new SuitePage();
     public CasePage casePage = new CasePage();
-    public QaseioApiTest qaseioApiTest = new QaseioApiTest();
+    //public QaseioApiTest qaseioApiTest = new QaseioApiTest();
     public Project proj = ProjectBuilder.get();
     public Project proj2 = ProjectBuilder.getTwo();
     public Project proj1 = Project.builder().projectName("Demo").projectCode("Demo").build();

@@ -1,7 +1,9 @@
 package tests.steps;
 
 import tests.api.pojos.request.suite.CreateSuiteRequest;
+import tests.api.pojos.response.project.DeleteProjectResponse;
 import tests.api.pojos.response.suite.CreateSuiteResponse;
+import tests.api.pojos.response.suite.DeleteSuiteResponse;
 
 import static io.restassured.RestAssured.given;
 
@@ -19,5 +21,13 @@ public class SuiteSteps {
                 .post(path + code)
                 .then().spec(RES_SPEC)
                 .extract().as(CreateSuiteResponse.class);
+    }
+
+    public static DeleteSuiteResponse deleteSuite(String code, String id){
+        return given()
+                .spec(REQ_SPEC)
+                .delete(path + code + "/" + id)
+                .then().spec(RES_SPEC)
+                .extract().as(DeleteSuiteResponse.class);
     }
 }

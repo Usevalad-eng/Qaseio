@@ -65,11 +65,11 @@ public class ProjectTest extends BaseTest {
         ProjectGenerator.deleteProjectApi("DEMO");
     }
 
-    @Test
+    /*@Test
     @Disabled
     public void deleteDemoTest(){
         ProjectGenerator.deleteProjectApi("DEMO");  //Create project with Code DEMO before using this test
-    }
+    }*/
 
     @Test
     @Feature("Project")
@@ -87,7 +87,8 @@ public class ProjectTest extends BaseTest {
         projectPage.createProject();
         projectPage.openProjectsPage();
         projectPage.assertThatProjectCreated("Demo");
-        qaseioApiTest.qaseioDelProj("DEMO");
+        //qaseioApiTest.qaseioDelProj("DEMO");
+        ProjectGenerator.deleteProjectApi("DEMO");
     }
 
     @Test

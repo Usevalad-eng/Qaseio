@@ -9,7 +9,9 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Result {
+public class DeleteSuiteResponse {
 
-    public Integer id;
+    private boolean status;
+    public ResultS result;
+    private String errorMessage;
 }

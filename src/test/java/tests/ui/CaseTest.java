@@ -11,6 +11,7 @@ import tests.BaseTest;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CaseTest extends BaseTest {
+
     @Test
     @Feature("Case")
     @Story("User can create a case")

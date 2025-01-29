@@ -15,12 +15,27 @@ public class QaseioApiTest {
     @Test
     @Step("Get projects")
     @DisplayName("Get projects")
-    public void qaseioGetProj() {
+    public void qaseioGetProjects() {
         given()
                 .header("Token", token)
                 .log().uri()
                 .when()
                 .get("https://api.qase.io/v1/project")
+                .then()
+                .log().status()
+                .log().body()
+                .statusCode(200);
+    }
+
+    @Test
+    @Step("Get project")
+    @DisplayName("Get project") ////project with code DDD must be created before using
+    public void qaseioGetProject() {
+        given()
+                .header("Token", token)
+                .log().uri()
+                .when()
+                .get("https://api.qase.io/v1/project/DDD")
                 .then()
                 .log().status()
                 .log().body()
@@ -57,6 +72,66 @@ public class QaseioApiTest {
                 .log().uri()
                 .when()
                 .delete("https://api.qase.io/v1/project/" + "DEMO")
+                .then()
+                .log().status()
+                .log().body()
+                .statusCode(200);
+    }
+
+    @Test
+    @Step("Get all suites")
+    @DisplayName("Get all suites")  //project with code DDD must be created before using
+    public void qaseioGetSuites() {
+        given()
+                .header("Token", token)
+                .log().uri()
+                .when()
+                .get("https://api.qase.io/v1/suite/DDD?limit=10&offset=0")
+                .then()
+                .log().status()
+                .log().body()
+                .statusCode(200);
+    }
+
+    @Test
+    @Step("Get suite")
+    @DisplayName("Get suites")  //project with code DDD and suite with id = 1 must be created before using
+    public void qaseioGetSuite() {
+        given()
+                .header("Token", token)
+                .log().uri()
+                .when()
+                .get("https://api.qase.io/v1/suite/DDD/1")
+                .then()
+                .log().status()
+                .log().body()
+                .statusCode(200);
+    }
+
+    @Test
+    @Step("Get all cases")
+    @DisplayName("Get all cases")  //project with code DDD must be created before using
+    public void qaseioGetCases() {
+        given()
+                .header("Token", token)
+                .log().uri()
+                .when()
+                .get("https://api.qase.io/v1/case/DDD?limit=10&offset=0")
+                .then()
+                .log().status()
+                .log().body()
+                .statusCode(200);
+    }
+
+    @Test
+    @Step("Get case")
+    @DisplayName("Get cases")  //project with code DDD and case with id = 1 must be created before using
+    public void qaseioGetCase() {
+        given()
+                .header("Token", token)
+                .log().uri()
+                .when()
+                .get("https://api.qase.io/v1/case/DDD/1")
                 .then()
                 .log().status()
                 .log().body()

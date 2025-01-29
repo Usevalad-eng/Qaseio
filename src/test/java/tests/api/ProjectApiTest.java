@@ -1,6 +1,8 @@
 package tests.api;
 
 import generators.ProjectGenerator;
+import io.qameta.allure.Step;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import tests.api.pojos.request.project.CreateProjectRequest;
 import tests.api.pojos.response.project.CreateProjectResponse;
@@ -14,6 +16,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class ProjectApiTest {
 
     @Test
+    @Step("Project should be created")
+    @DisplayName("Project should be created")
     void projectShouldBeCreated(){
         CreateProjectRequest createProjectRq = ProjectGenerator.createProjectApi();
         CreateProjectResponse createProjectRs = ProjectSteps.createProject(createProjectRq);
@@ -25,6 +29,8 @@ public class ProjectApiTest {
     }
 
     @Test
+    @Step("Project should be created")
+    @DisplayName("Project should be created")
     void projectShouldBeCreatedTrue(){
         CreateProjectRequest createProjectRq = ProjectGenerator.createProjectApi();
         CreateProjectResponse createProjectRs = ProjectSteps.createProject(createProjectRq);
@@ -35,6 +41,8 @@ public class ProjectApiTest {
     }
 
     @Test
+    @Step("Project should be deleted")
+    @DisplayName("Project should be deleted")
     void projectShouldBeDeleted(){
         CreateProjectRequest projectToDel = ProjectGenerator.createProjectApi();
         ProjectSteps.createProject(projectToDel);
@@ -45,6 +53,8 @@ public class ProjectApiTest {
     }
 
     @Test
+    @Step("Project should not be deleted")
+    @DisplayName("Project should not be deleted")
     void projectShouldNotBeDeleted(){
         DeleteProjectResponse deleteProjectResponse = ProjectSteps.deleteProject("codeInvalid");
         assertThat(deleteProjectResponse)

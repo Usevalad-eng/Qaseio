@@ -21,6 +21,7 @@ public class CasePage extends BasePage {
     private final SelenideElement ADD_STEP_BUTTON = $x("//span[text() = ' Add step']");
     private final SelenideElement DESCRIPTION = $x("//div[@class='ProseMirror toastui-editor-contents']/p");
     private final SelenideElement STEP_ACTION = $x("//*[@id=\"application-content\"]/div/div[2]/form/div[1]/div[14]/div[1]/div/div/div/div[2]/div/div[1]/div/div/div/div[2]/div/div[2]/div/div/p");
+    private final SelenideElement STEP_ACTION_FIELD1 = $x("//div[@id='application-content']//span[text() = 'Step Action']");
     private final ElementsCollection ARROW_DOWN = $$x("//div[@class = 'xKUpf_']");
     private final SelenideElement CHOOSE_STATUS = $x("//div[text() = 'Draft']");
 
@@ -68,6 +69,14 @@ public class CasePage extends BasePage {
     @Step("Fill step")
     public void fillStep() {
         STEP_ACTION.sendKeys(CaseBuilder.getAllFields().getStepAction());
+    }
+
+    @Step("Fill steps")
+    public void fillSteps() {
+        STEP_ACTION_FIELD1.sendKeys(CaseBuilder.getAllFields().getStepAction());
+        //fill in field two and three
+
+
     }
 
     @Step("Fill Status field")

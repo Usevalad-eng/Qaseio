@@ -36,6 +36,32 @@ public class CaseTest extends BaseTest {
     }
 
     @Test
+    @Disabled
+    @Feature("Case")
+    @Story("User can create a case")
+    @Owner("Vsevolod")
+    @Severity(SeverityLevel.BLOCKER)
+    @Link(value = "test", url = "https://app.qase.io")
+    @DisplayName("Creation of a case with valid data")
+    public void createCaseTestTest() {
+        projectPage.openLoginPage();
+        loginSteps.authInApp("kubyox@mailto.plus", "qaseio122024");
+        projectPage.projectPageIsOpened();
+        projectPage.createNewProject();
+        projectPage.inputProjectName("Demo");
+        projectPage.createProject();
+        suitePage.createNewSuite();
+        suitePage.inputSuiteName("suiteTest");
+        suitePage.createSuite();
+        casePage.createNewCase();
+        casePage.inputCaseName("caseTest");
+        casePage.addStep();
+        casePage.fillSteps();  //todo
+        casePage.createCase();
+        casePage.assertThatCaseCreated("caseTest");
+    }
+
+    @Test
     @Feature("Case")
     @Story("User can create a case")
     @Owner("Vsevolod")

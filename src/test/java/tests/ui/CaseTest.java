@@ -36,11 +36,11 @@ public class CaseTest extends BaseTest {
     }
 
     @Test
-    @Disabled
+    //@Disabled
     @Feature("Case")
     @Story("User can create a case")
     @Owner("Vsevolod")
-    @Severity(SeverityLevel.BLOCKER)
+    @Severity(SeverityLevel.NORMAL)
     @Link(value = "test", url = "https://app.qase.io")
     @DisplayName("Creation of a case with valid data")
     public void createCaseTestTest() {
@@ -56,7 +56,7 @@ public class CaseTest extends BaseTest {
         casePage.createNewCase();
         casePage.inputCaseName("caseTest");
         casePage.addStep();
-        casePage.fillSteps();  //todo
+        casePage.fillSteps();
         casePage.createCase();
         casePage.assertThatCaseCreated("caseTest");
     }

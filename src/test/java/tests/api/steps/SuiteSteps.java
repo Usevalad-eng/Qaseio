@@ -1,4 +1,4 @@
-package tests.steps;
+package tests.api.steps;
 
 import tests.api.pojos.request.suite.CreateSuiteRequest;
 import tests.api.pojos.response.project.DeleteProjectResponse;
@@ -14,19 +14,19 @@ public class SuiteSteps {
 
     public static String path = "/suite/";
 
-    public static CreateSuiteResponse createSuite(CreateSuiteRequest suiteRq, String code){
+    public static CreateSuiteResponse createSuite(CreateSuiteRequest suiteRq, String codeOfProject){
         return given()
                 .spec(REQ_SPEC)
                 .body(suiteRq)
-                .post(path + code)
+                .post(path + codeOfProject)
                 .then().spec(RES_SPEC)
                 .extract().as(CreateSuiteResponse.class);
     }
 
-    public static DeleteSuiteResponse deleteSuite(String code, String id){
+    public static DeleteSuiteResponse deleteSuite(String codeOfProject, String id){
         return given()
                 .spec(REQ_SPEC)
-                .delete(path + code + "/" + id)
+                .delete(path + codeOfProject + "/" + id)
                 .then().spec(RES_SPEC)
                 .extract().as(DeleteSuiteResponse.class);
     }

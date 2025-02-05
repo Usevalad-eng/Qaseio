@@ -1,4 +1,4 @@
-package tests.steps;
+package tests.api.steps;
 
 import tests.api.pojos.request.project.CreateProjectRequest;
 import tests.api.pojos.response.project.CreateProjectResponse;
@@ -21,10 +21,10 @@ public class ProjectSteps {
                 .extract().as(CreateProjectResponse.class);
     }
 
-    public static DeleteProjectResponse deleteProject(String code){
+    public static DeleteProjectResponse deleteProject(String codeOfProject){
         return given()
                 .spec(REQ_SPEC)
-                .delete(path + "/" + code)
+                .delete(path + "/" + codeOfProject)
                 .then().spec(RES_SPEC)
                 .extract().as(DeleteProjectResponse.class);
     }

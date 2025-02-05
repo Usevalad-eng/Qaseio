@@ -4,7 +4,6 @@ import generators.ProjectGenerator;
 import io.qameta.allure.*;
 import models.Project;
 import models.ProjectBuilder;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import tests.BaseTest;
@@ -64,12 +63,6 @@ public class ProjectTest extends BaseTest {
         projectPage.assertThatProjectCreated("Demo");
         ProjectGenerator.deleteProjectApi("DEMO");
     }
-
-    /*@Test
-    @Disabled
-    public void deleteDemoTest(){
-        ProjectGenerator.deleteProjectApi("DEMO");  //Create project with Code DEMO before using this test
-    }*/
 
     @Test
     @Feature("Project")
@@ -230,7 +223,7 @@ public class ProjectTest extends BaseTest {
     @Severity(SeverityLevel.NORMAL)
     public void createProjADeleteTest(){
         CreateProjectRequest projectR = ProjectGenerator.createProjectApi();
-        ProjectGenerator.gett(projectR);
+        ProjectGenerator.getProjectCreated(projectR);
         ProjectGenerator.deleteProjectApi(projectR.getCode());
         authorizeInApp("kubyox@mailto.plus", "qaseio122024");
         projectPage.assertThatProjDeleted();

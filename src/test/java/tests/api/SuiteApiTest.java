@@ -7,11 +7,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import tests.api.pojos.request.project.CreateProjectRequest;
 import tests.api.pojos.request.suite.CreateSuiteRequest;
-import tests.api.pojos.response.project.DeleteProjectResponse;
 import tests.api.pojos.response.suite.CreateSuiteResponse;
 import tests.api.pojos.response.suite.DeleteSuiteResponse;
-import tests.steps.ProjectSteps;
-import tests.steps.SuiteSteps;
+import tests.api.steps.ProjectSteps;
+import tests.api.steps.SuiteSteps;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -21,11 +20,11 @@ public class SuiteApiTest {
     @Step("Suite should be created")
     @DisplayName("Suite should be created")
     void suiteShouldBeCreated() {
-        CreateProjectRequest projectApiH = ProjectGenerator.createProjectApiH();
-        ProjectSteps.createProject(projectApiH);
+        CreateProjectRequest projectApi = ProjectGenerator.createProjectApi();
+        ProjectSteps.createProject(projectApi);
 
         CreateSuiteRequest createSuiteRq = SuiteGenerator.createSuiteApi();
-        CreateSuiteResponse createSuiteRs = SuiteSteps.createSuite(createSuiteRq, projectApiH.getCode());
+        CreateSuiteResponse createSuiteRs = SuiteSteps.createSuite(createSuiteRq, projectApi.getCode());
 
         assertThat(createSuiteRs)
                 .isNotNull()
@@ -37,13 +36,13 @@ public class SuiteApiTest {
     @Step("Suite should be deleted")
     @DisplayName("Suite should be deleted")
     void suiteShouldBeDeleted() {
-        CreateProjectRequest projectApiH = ProjectGenerator.createProjectApiH();
-        ProjectSteps.createProject(projectApiH);
+        CreateProjectRequest projectApi = ProjectGenerator.createProjectApi();
+        ProjectSteps.createProject(projectApi);
 
         CreateSuiteRequest createSuiteRq = SuiteGenerator.createSuiteApi();
-        SuiteSteps.createSuite(createSuiteRq, projectApiH.getCode());
+        SuiteSteps.createSuite(createSuiteRq, projectApi.getCode());
 
-        DeleteSuiteResponse deleteSuiteResponse = SuiteSteps.deleteSuite(projectApiH.getCode(), "1");
+        DeleteSuiteResponse deleteSuiteResponse = SuiteSteps.deleteSuite(projectApi.getCode(), "1");
         assertThat(deleteSuiteResponse)
                 .extracting(DeleteSuiteResponse::isStatus)
                 .isEqualTo(true);
@@ -53,13 +52,13 @@ public class SuiteApiTest {
     @Step("Suite should not be deleted")
     @DisplayName("Suite should not be deleted")
     void suiteShouldNotBeDeleted() {
-        CreateProjectRequest projectApiH = ProjectGenerator.createProjectApiH();
-        ProjectSteps.createProject(projectApiH);
+        CreateProjectRequest projectApi = ProjectGenerator.createProjectApi();
+        ProjectSteps.createProject(projectApi);
 
         CreateSuiteRequest createSuiteRq = SuiteGenerator.createSuiteApi();
-        SuiteSteps.createSuite(createSuiteRq, projectApiH.getCode());
+        SuiteSteps.createSuite(createSuiteRq, projectApi.getCode());
 
-        DeleteSuiteResponse deleteSuiteResponse = SuiteSteps.deleteSuite(projectApiH.getCode(), "2222");
+        DeleteSuiteResponse deleteSuiteResponse = SuiteSteps.deleteSuite(projectApi.getCode(), "2222");
         assertThat(deleteSuiteResponse)
                 .extracting(DeleteSuiteResponse::getErrorMessage)
                 .isEqualTo("Suite not found");

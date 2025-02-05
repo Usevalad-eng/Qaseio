@@ -1,4 +1,4 @@
-package tests.steps;
+package tests.api.steps;
 
 import tests.api.pojos.request.cases.CreateCaseRequest;
 import tests.api.pojos.request.suite.CreateSuiteRequest;
@@ -15,19 +15,19 @@ public class CaseSteps {
 
     public static String path = "/case/";
 
-    public static CreateCaseResponse createCase(CreateCaseRequest caseRq, String code){
+    public static CreateCaseResponse createCase(CreateCaseRequest caseRq, String codeOfProject){
         return given()
                 .spec(REQ_SPEC)
                 .body(caseRq)
-                .post(path + code)
+                .post(path + codeOfProject)
                 .then().spec(RES_SPEC)
                 .extract().as(CreateCaseResponse.class);
     }
 
-    public static DeleteCaseResponse deleteCase(String code, String id){
+    public static DeleteCaseResponse deleteCase(String codeOfProject, String id){
         return given()
                 .spec(REQ_SPEC)
-                .delete(path + code + "/" + id)
+                .delete(path + codeOfProject + "/" + id)
                 .then().spec(RES_SPEC)
                 .extract().as(DeleteCaseResponse.class);
     }

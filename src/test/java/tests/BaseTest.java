@@ -15,7 +15,7 @@ import pages.ProjectPage;
 import pages.SuitePage;
 import steps.LoginSteps;
 import steps.ProjectSteps;
-import tests.api.QaseioApiTest;
+//import tests.api.QaseioApiTest;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;

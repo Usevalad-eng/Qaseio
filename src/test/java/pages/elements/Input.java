@@ -5,7 +5,7 @@ import static java.lang.String.format;
 
 public class Input {
 
-    private static String inputLocator = "//input[@placeholder = '%s'";
+    private static final String inputLocator = "//input[@placeholder = '%s']";
     public static void setValueInInput(String placeholder, String value){
         $x(format(inputLocator, placeholder)).clear();
         $x(format(inputLocator, placeholder)).setValue(value);

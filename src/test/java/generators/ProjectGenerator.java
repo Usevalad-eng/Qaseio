@@ -2,7 +2,7 @@ package generators;
 
 import com.github.javafaker.Faker;
 import tests.api.pojos.request.project.CreateProjectRequest;
-import tests.steps.ProjectSteps;
+import tests.api.steps.ProjectSteps;
 
 public class ProjectGenerator {
 
@@ -10,7 +10,7 @@ public class ProjectGenerator {
 
     public static CreateProjectRequest createProjectApi(){
         return CreateProjectRequest.builder()
-                .title(faker.name().firstName())
+                .title(faker.name().firstName())   //todo: name must be < 10 symbols
                 .code(faker.name().firstName().toUpperCase())
                 .description(faker.chuckNorris().fact())
                 .access("all")
@@ -18,7 +18,7 @@ public class ProjectGenerator {
                 .build();
     }
 
-    public static CreateProjectRequest createProjectApiH(){
+    /*public static CreateProjectRequest createProjectApiH(){
             return CreateProjectRequest.builder()
                     .title(faker.name().firstName())
                     .code("DDD")
@@ -26,13 +26,13 @@ public class ProjectGenerator {
                     .access("all")
                     .group(faker.name().firstName())
                     .build();
-        }
+        }*/
 
     public static void createProjApi(){
         ProjectSteps.createProject(createProjectApi());
     }
 
-    public static void gett(CreateProjectRequest project){
+    public static void getProjectCreated(CreateProjectRequest project){
         ProjectSteps.createProject(project);
     }
 

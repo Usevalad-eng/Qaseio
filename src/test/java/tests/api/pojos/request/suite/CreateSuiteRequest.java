@@ -12,4 +12,5 @@ import lombok.NoArgsConstructor;
 public class CreateSuiteRequest {
 
     String title;
+    String description;
 }

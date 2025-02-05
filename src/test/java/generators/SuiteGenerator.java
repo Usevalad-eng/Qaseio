@@ -10,6 +10,7 @@ public class SuiteGenerator {
     public static CreateSuiteRequest createSuiteApi(){
         return CreateSuiteRequest.builder()
                 .title(faker.name().firstName())
+                .description(faker.name().firstName())
                 .build();
     }
 }

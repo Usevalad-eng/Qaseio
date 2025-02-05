@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.is;
 
-public class QaseioApiTest {
+/*public class QaseioApiTest {
 
     public String token = "8712b8dd5d9089dac78e3e50b649233346b7f122015027677ef032f5b55fc9e8";
 
@@ -137,6 +137,6 @@ public class QaseioApiTest {
                 .log().body()
                 .statusCode(200);
     }
-}
+}*/
 
 

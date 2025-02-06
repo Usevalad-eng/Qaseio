@@ -1,4 +1,4 @@
-package tests.api.pojos.response.project;
+package tests.api.pojos.response.project.get;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class CreateProjectResponse {
+public class ErrorField {
 
-    public boolean status;
-    public Result result;
+    public String field;
+    public String error;
 }

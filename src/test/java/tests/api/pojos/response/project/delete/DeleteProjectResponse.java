@@ -1,4 +1,4 @@
-package tests.api.pojos.response.project;
+package tests.api.pojos.response.project.delete;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

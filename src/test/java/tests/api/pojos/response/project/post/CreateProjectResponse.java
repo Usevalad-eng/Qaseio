@@ -1,4 +1,4 @@
-package tests.api.pojos.response.project;
+package tests.api.pojos.response.project.post;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Result {
+public class CreateProjectResponse {
 
-    public String code;
+    public boolean status;
+    public Result result;
 }

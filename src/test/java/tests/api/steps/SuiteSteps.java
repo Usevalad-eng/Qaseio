@@ -1,7 +1,6 @@
 package tests.api.steps;
 
 import tests.api.pojos.request.suite.CreateSuiteRequest;
-import tests.api.pojos.response.project.DeleteProjectResponse;
 import tests.api.pojos.response.suite.CreateSuiteResponse;
 import tests.api.pojos.response.suite.DeleteSuiteResponse;
 

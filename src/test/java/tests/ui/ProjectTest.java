@@ -2,8 +2,6 @@ package tests.ui;
 
 import generators.ProjectGenerator;
 import io.qameta.allure.*;
-import models.Project;
-import models.ProjectBuilder;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import tests.BaseTest;
@@ -21,12 +19,12 @@ public class ProjectTest extends BaseTest {
     @Severity(SeverityLevel.BLOCKER)
     @Link(value = "test", url = "https://app.qase.io")
     @DisplayName("Creation of Project with valid data")
-    public void createProjTest(){
+    public void createProjTest() {
         authorizeInApp("kubyox@mailto.plus", "qaseio122024");
         projectPage.openProjectsPage();
         projectPage.clickCreateNewProjectButton();
-        Project projTwo = ProjectBuilder.getTwo();
-        projectPage.create(projTwo);
+        CreateProjectRequest projectTwo = ProjectGenerator.createProjectApi();
+        projectPage.create(projectTwo);
         projectPage.assertThatProjCreated();
     }
 
@@ -37,11 +35,11 @@ public class ProjectTest extends BaseTest {
     @Severity(SeverityLevel.BLOCKER)
     @Link(value = "test", url = "https://app.qase.io")
     @DisplayName("Creation of Project with valid data")
-    public void createProjjTest(){
+    public void createProjJTest() {
         authorizeInApp("kubyox@mailto.plus", "qaseio122024");
         projectPage.openProjectsPage();
         projectPage.clickCreateNewProjectButton();
-        projectPage.createT(ProjectBuilder.getTwo());
+        projectPage.createT(ProjectGenerator.createProjectApi());
         projectPage.assertThatProjCreated();
     }
 
@@ -80,7 +78,6 @@ public class ProjectTest extends BaseTest {
         projectPage.createProject();
         projectPage.openProjectsPage();
         projectPage.assertThatProjectCreated("Demo");
-        //qaseioApiTest.qaseioDelProj("DEMO");
         ProjectGenerator.deleteProjectApi("DEMO");
     }
 
@@ -95,7 +92,23 @@ public class ProjectTest extends BaseTest {
         projectPage.openLoginPage();
         loginSteps.authInApp("kubyox@mailto.plus", "qaseio122024");
         projectPage.projectPageIsOpened();
-        projectSteps.createProject(proj);
+        projectSteps.createProject(testProject);
+        projectPage.openProjectsPage();
+        projectPage.assertThatProjCreated();
+    }
+
+    @Test
+    @Feature("Project")
+    @Story("User can create a project")
+    @Owner("Vsevolod")
+    @Severity(SeverityLevel.NORMAL)
+    @Link(value = "test", url = "https://app.qase.io")
+    @DisplayName("Creation of Project with valid data using Lombok/Faker")
+    public void createProjectTestUsingTestBuilder() {
+        projectPage.openLoginPage();
+        loginSteps.authInApp("kubyox@mailto.plus", "qaseio122024");
+        projectPage.projectPageIsOpened();
+        projectSteps.createProject(testProject2);
         projectPage.openProjectsPage();
         projectPage.assertThatProjCreated();
     }
@@ -111,7 +124,7 @@ public class ProjectTest extends BaseTest {
         projectPage.openLoginPage();
         loginSteps.authInApp("kubyox@mailto.plus", "qaseio122024");
         projectPage.projectPageIsOpened();
-        projectSteps.createProject(proj1);
+        projectSteps.createProject(testProject3);
         projectPage.openProjectsPage();
         projectPage.assertThatProjCreated();
     }
@@ -203,7 +216,7 @@ public class ProjectTest extends BaseTest {
     @Owner("Vsevolod")
     @Link(value = "test", url = "https://app.qase.io")
     @Severity(SeverityLevel.NORMAL)
-    public void createProjAndDeleteTest(){
+    public void createProjAndDeleteTest() {
         ProjectGenerator.createProjApi();
         projectPage.openLoginPage();
         loginSteps.authInApp("kubyox@mailto.plus", "qaseio122024");
@@ -221,7 +234,7 @@ public class ProjectTest extends BaseTest {
     @Owner("Vsevolod")
     @Link(value = "test", url = "https://app.qase.io")
     @Severity(SeverityLevel.NORMAL)
-    public void createProjADeleteTest(){
+    public void createProjADeleteTest() {
         CreateProjectRequest projectR = ProjectGenerator.createProjectApi();
         ProjectGenerator.getProjectCreated(projectR);
         ProjectGenerator.deleteProjectApi(projectR.getCode());

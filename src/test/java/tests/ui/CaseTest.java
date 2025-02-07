@@ -1,14 +1,10 @@
 package tests.ui;
 
-import com.codeborne.selenide.Selenide;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import tests.BaseTest;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CaseTest extends BaseTest {
 
@@ -103,19 +99,19 @@ public class CaseTest extends BaseTest {
     @Severity(SeverityLevel.BLOCKER)
     @Link(value = "test", url = "https://app.qase.io")
     @DisplayName("Creation of case with valid data(using Faker to get random project with random data)")
-    public void createCaseTestT() {
+    public void createCaseTestTTest() {
         projectPage.openLoginPage();
         loginSteps.authInApp("kubyox@mailto.plus", "qaseio122024");
         projectPage.projectPageIsOpened();
         projectPage.createNewProject();
-        projectPage.inputProjectName(proj.getProjectName());
+        projectPage.inputProjectName(testProject.getTitle());
         projectPage.createProject();
         suitePage.createNewSuite();
-        String expectedSuiteName = suite.getSuiteName();
+        String expectedSuiteName = testSuite.getTitle();
         suitePage.inputSuiteName(expectedSuiteName);
         suitePage.createSuite();
         casePage.createNewCase();
-        String expectedCaseName = caseName.getCaseName();
+        String expectedCaseName = caseTest.getTitle();
         casePage.inputCaseName(expectedCaseName);
         casePage.createCase();
         Assertions.assertEquals(expectedCaseName, casePage.receiveCaseName(), "error!");

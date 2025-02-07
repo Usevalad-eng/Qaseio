@@ -3,7 +3,6 @@ package pages;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
-import models.CaseBuilder;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
@@ -59,7 +58,7 @@ public class CasePage extends BasePage {
 
     @Step("Add step")
     public void fillDescription() {
-        DESCRIPTION.sendKeys(CaseBuilder.getAllFields().getDescription());
+        DESCRIPTION.sendKeys("Description");  //CaseBuilder.getAllFields().getDescription()
     }
 
     @Step("Add step")
@@ -69,12 +68,12 @@ public class CasePage extends BasePage {
 
     @Step("Fill step")
     public void fillStep() {
-        STEP_ACTION.sendKeys(CaseBuilder.getAllFields().getStepAction());
+        STEP_ACTION.sendKeys("Action test"); //CaseBuilder.getAllFields().getStepAction()
     }
 
     @Step("Fill steps")
     public void fillSteps() {
-        STEP_ACTION_FIELD1.sendKeys(CaseBuilder.getAllFields().getStepAction());
+        STEP_ACTION_FIELD1.sendKeys("Action test"); //CaseBuilder.getAllFields().getStepAction()
         //STEP_ACTION_FIELD2.sendKeys("data");
         //STEP_ACTION_FIELD3.sendKeys("result");
     }

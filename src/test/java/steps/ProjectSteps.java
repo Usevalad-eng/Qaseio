@@ -1,16 +1,16 @@
 package steps;
 
-import models.Project;
 import pages.ProjectPage;
+import tests.api.pojos.request.project.CreateProjectRequest;
 
 public class ProjectSteps {
 
     ProjectPage projectPage = new ProjectPage();
 
-    public void createProject(Project project) {
+    public void createProject(CreateProjectRequest project) {
         projectPage.createNewProject();
-        projectPage.inputProjectName(project.getProjectName());
-        //projectPage.getProjectCode(project.getProjectCode());
+        projectPage.inputProjectName(project.getTitle());
+        //projectPage.inputProjectCode(project.getCode());
         projectPage.createProject();
     }
 }

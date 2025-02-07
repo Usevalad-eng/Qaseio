@@ -8,9 +8,9 @@ public class ProjectGenerator {
 
     static Faker faker = new Faker();
 
-    public static CreateProjectRequest createProjectApi(){
+    public static CreateProjectRequest createProjectApi(){   //todo: name must be < 10 symbols
         return CreateProjectRequest.builder()
-                .title(faker.name().firstName())   //todo: name must be < 10 symbols
+                .title(faker.name().firstName())
                 .code(faker.name().firstName().toUpperCase())
                 .description(faker.chuckNorris().fact())
                 .access("all")

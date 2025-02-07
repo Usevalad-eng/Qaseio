@@ -1,7 +1,6 @@
 package tests.ui;
 
 import io.qameta.allure.*;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -12,7 +11,6 @@ import tests.BaseTest;
 
 import java.util.stream.Stream;
 
-import static com.codeborne.selenide.Selenide.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -29,12 +27,27 @@ public class LoginTest extends BaseTest {
         loginPage.inputLogin("kubyox@mailto.plus");
         loginPage.inputPass("qaseio122024");
         loginPage.clickSubmit();
-        loginPage.successfulLogin(); //assertTrue(projectPage.pageIsOpen("Projects"));  //check why it isn't working and delete
+        loginPage.successfulLogin();
+    }
+
+    @Test
+    @Disabled
+    @Feature("Auth")
+    @Story("User can auth to a project")
+    @Owner("Vsevolod")
+    @Severity(SeverityLevel.BLOCKER)
+    @DisplayName("Auth successful test")
+    public void loginSuccessfulAuthTestT() {
+        loginPage.openLoginPage();
+        loginPage.inputLogin("kubyox@mailto.plus");
+        loginPage.inputPass("qaseio122024");
+        loginPage.clickSubmit();
+        assertTrue(projectPage.pageIsOpen("Projects"));
     }
 
     @Test
     @Feature("Auth")
-    @Story("User can auth to a project")
+    @Story("User can  auth to a project")
     @Owner("Vsevolod")
     @Severity(SeverityLevel.NORMAL)
     @DisplayName("User should not be logged in using empty login and password")
@@ -48,7 +61,7 @@ public class LoginTest extends BaseTest {
 
     @Test
     @Feature("Auth")
-    @Story("User can auth to a project")
+    @Story("User can  auth to a project")
     @Owner("Vsevolod")
     @Severity(SeverityLevel.NORMAL)
     @DisplayName("User should not be loggedIn using empty login")
@@ -80,6 +93,7 @@ public class LoginTest extends BaseTest {
                 Arguments.of("", "qaseio122024", "This field is required")
         );
     }
+
     @MethodSource("qaseioAuthNegativeScenarios")
     @ParameterizedTest(name = "Qaseio auth negative tests using JUnit5(empty pass or login)")
     @Severity(SeverityLevel.NORMAL)

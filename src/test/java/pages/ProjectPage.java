@@ -3,14 +3,11 @@ package pages;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
-import lombok.Data;
-import models.Project;
+import tests.api.pojos.request.project.CreateProjectRequest;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
-import static io.restassured.RestAssured.given;
 import static pages.elements.Button.clickButton;
-import static pages.elements.Input.setValueInInput;
 import static pages.elements.Input.setValueInInputT;
 
 //@Data
@@ -50,9 +47,9 @@ public class ProjectPage extends BasePage {
     }
 
     @Step("Create")
-    public void create(Project project){
-        setValueInInputT("For example: Web Application", project.getProjectName());
-        setValueInInputT("For example: WA", project.getProjectCode());
+    public void create(CreateProjectRequest project){
+        setValueInInputT("For example: Web Application", project.getTitle());
+        setValueInInputT("For example: WA", project.getCode());
         clickButton("Create project");
     }
     @Step("Create")
@@ -65,9 +62,9 @@ public class ProjectPage extends BasePage {
     }
 
     @Step("Create")
-    public void createT(Project project){
-        inputName(project.getProjectName());
-        inputCode(project.getProjectCode());
+    public void createT(CreateProjectRequest project){
+        inputName(project.getTitle());
+        inputCode(project.getCode());
         clickButton("Create project");
     }
 

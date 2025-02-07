@@ -36,15 +36,15 @@ public class SuiteTest extends BaseTest {
     @Severity(SeverityLevel.BLOCKER)
     @Link(value = "test", url = "https://app.qase.io")
     @DisplayName("Creation of suite with valid data(using Faker to get random project with random data)")
-    public void createSuiteTestT() {
+    public void createSuiteTestTest() {
         projectPage.openLoginPage();
         loginSteps.authInApp("kubyox@mailto.plus", "qaseio122024");
         projectPage.projectPageIsOpened();
         projectPage.createNewProject();
-        projectPage.inputProjectName(proj.getProjectName());
+        projectPage.inputProjectName(testProject.getTitle());
         projectPage.createProject();
         suitePage.createNewSuite();
-        String expectedSuiteName = suite.getSuiteName();
+        String expectedSuiteName = testSuite.getTitle();
         suitePage.inputSuiteName(expectedSuiteName);
         suitePage.createSuite();
         assertEquals(expectedSuiteName, suitePage.receiveSuiteName(), "error!");

@@ -1,11 +1,8 @@
 package tests.api.steps;
 
 import tests.api.pojos.request.cases.CreateCaseRequest;
-import tests.api.pojos.request.suite.CreateSuiteRequest;
 import tests.api.pojos.response.cases.CreateCaseResponse;
 import tests.api.pojos.response.cases.DeleteCaseResponse;
-import tests.api.pojos.response.suite.CreateSuiteResponse;
-import tests.api.pojos.response.suite.DeleteSuiteResponse;
 
 import static io.restassured.RestAssured.given;
 import static tests.api.specs.Specs.REQ_SPEC;

@@ -17,7 +17,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CaseApiTest {
 
     @Test
-    @Step("Case should be created")
+    //@Step("Case should be created")
     @DisplayName("Case should be created")
     void caseShouldBeCreated() {
         CreateProjectRequest projectApi = ProjectGenerator.createProjectApi();
@@ -33,7 +33,7 @@ public class CaseApiTest {
     }
 
     @Test
-    @Step("Case should be deleted")
+    //@Step("Case should be deleted")
     @DisplayName("Case should be deleted")
     void caseShouldBeDeleted(){
         CreateProjectRequest projectApi = ProjectGenerator.createProjectApi();
@@ -49,7 +49,7 @@ public class CaseApiTest {
     }
 
     @Test
-    @Step("Case should not be deleted")
+    //@Step("Case should not be deleted")
     @DisplayName("Case should not be deleted")
     void caseShouldNotBeDeleted(){
         CreateProjectRequest projectApi = ProjectGenerator.createProjectApi();

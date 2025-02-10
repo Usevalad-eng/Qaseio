@@ -1,10 +1,16 @@
 package tests.ui;
 
+import generators.CaseGenerator;
+import generators.ProjectGenerator;
+import generators.SuiteGenerator;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import tests.BaseTest;
+import tests.api.pojos.request.cases.CreateCaseRequest;
+import tests.api.pojos.request.project.CreateProjectRequest;
+import tests.api.pojos.request.suite.CreateSuiteRequest;
 
 public class CaseTest extends BaseTest {
 
@@ -52,7 +58,7 @@ public class CaseTest extends BaseTest {
         casePage.createNewCase();
         casePage.inputCaseName("caseTest");
         casePage.addStep();
-        casePage.fillSteps();
+        casePage.fillStep();
         casePage.createCase();
         casePage.assertThatCaseCreated("caseTest");
     }
@@ -104,13 +110,16 @@ public class CaseTest extends BaseTest {
         loginSteps.authInApp("kubyox@mailto.plus", "qaseio122024");
         projectPage.projectPageIsOpened();
         projectPage.createNewProject();
+        CreateProjectRequest testProject = ProjectGenerator.createProjectApi();
         projectPage.inputProjectName(testProject.getTitle());
         projectPage.createProject();
         suitePage.createNewSuite();
+        CreateSuiteRequest testSuite = SuiteGenerator.createSuiteApi();
         String expectedSuiteName = testSuite.getTitle();
         suitePage.inputSuiteName(expectedSuiteName);
         suitePage.createSuite();
         casePage.createNewCase();
+        CreateCaseRequest caseTest = CaseGenerator.createCaseApi();
         String expectedCaseName = caseTest.getTitle();
         casePage.inputCaseName(expectedCaseName);
         casePage.createCase();

@@ -26,6 +26,8 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class BaseTest {
 
+    public String email = "kubyox@mailto.plus";
+    public String pwd = "qaseio122024";
     public static Faker fake = new Faker();
     public LoginSteps loginSteps = new LoginSteps();
     public ProjectSteps projectSteps = new ProjectSteps();
@@ -34,16 +36,16 @@ public class BaseTest {
     public SuitePage suitePage = new SuitePage();
     public CasePage casePage = new CasePage();
 
-    public CreateProjectRequest testProject = ProjectGenerator.createProjectApi();
-    public CreateProjectRequest testProject2 = CreateProjectRequest.builder().title(fake.name().firstName())
+    //public CreateProjectRequest testProject = ProjectGenerator.createProjectApi();
+    /*public CreateProjectRequest testProject2 = CreateProjectRequest.builder().title(fake.name().firstName())
             .code(fake.name().firstName().toUpperCase())
             .description(fake.chuckNorris().fact())
             .access("all")
             .group(fake.name().firstName()).build();
     public CreateProjectRequest testProject3 = new CreateProjectRequest("Demo", "DEMO",
-            "Description", "all", "group");
-    public CreateSuiteRequest testSuite = SuiteGenerator.createSuiteApi();
-    public CreateCaseRequest caseTest = CaseGenerator.createCaseApi();
+            "Description", "all", "group");*/
+    //public CreateSuiteRequest testSuite = SuiteGenerator.createSuiteApi();
+    //public CreateCaseRequest caseTest = CaseGenerator.createCaseApi();
 
     public void authorizeInApp(String email, String pwd) {
         open("https://app.qase.io/login");

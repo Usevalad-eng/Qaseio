@@ -17,7 +17,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class SuiteApiTest {
 
     @Test
-    @Step("Suite should be created")
+    //@Step("Suite should be created")
     @DisplayName("Suite should be created")
     void suiteShouldBeCreated() {
         CreateProjectRequest projectApi = ProjectGenerator.createProjectApi();
@@ -33,7 +33,7 @@ public class SuiteApiTest {
     }
 
     @Test
-    @Step("Suite should be deleted")
+    //@Step("Suite should be deleted")
     @DisplayName("Suite should be deleted")
     void suiteShouldBeDeleted() {
         CreateProjectRequest projectApi = ProjectGenerator.createProjectApi();
@@ -49,7 +49,7 @@ public class SuiteApiTest {
     }
 
     @Test
-    @Step("Suite should not be deleted")
+    //@Step("Suite should not be deleted")
     @DisplayName("Suite should not be deleted")
     void suiteShouldNotBeDeleted() {
         CreateProjectRequest projectApi = ProjectGenerator.createProjectApi();

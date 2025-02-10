@@ -30,7 +30,7 @@ public class LoginTest extends BaseTest {
         loginPage.successfulLogin();
     }
 
-    @Test
+    /*@Test
     @Disabled
     @Feature("Auth")
     @Story("User can auth to a project")
@@ -43,7 +43,7 @@ public class LoginTest extends BaseTest {
         loginPage.inputPass("qaseio122024");
         loginPage.clickSubmit();
         assertTrue(projectPage.pageIsOpen("Projects"));
-    }
+    }*/
 
     @Test
     @Feature("Auth")

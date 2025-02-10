@@ -16,7 +16,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class ProjectApiTest {
 
     @Test
-    @Step("Project should be created")
+    //@Step("Project should be created")
     @DisplayName("Project should be created")
     void projectShouldBeCreated(){
         CreateProjectRequest createProjectRq = ProjectGenerator.createProjectApi();
@@ -30,7 +30,7 @@ public class ProjectApiTest {
     }
 
     @Test
-    @Step("Project should be created")
+    //@Step("Project should be created")
     @DisplayName("Project should be created")
     void projShouldBeCreated(){
         CreateProjectRequest build = CreateProjectRequest.builder()
@@ -50,7 +50,7 @@ public class ProjectApiTest {
     }
 
     @Test
-    @Step("Project should be created")
+    //@Step("Project should be created")
     @DisplayName("Project should be created")
     void projectShouldBeCreatedWithStatusTrue(){
         CreateProjectRequest createProjectRq = ProjectGenerator.createProjectApi();
@@ -63,7 +63,7 @@ public class ProjectApiTest {
     }
 
     @Test
-    @Step("Project should be deleted")
+    //@Step("Project should be deleted")
     @DisplayName("Project should be deleted")
     void projectShouldBeDeleted(){
         CreateProjectRequest projectToDel = ProjectGenerator.createProjectApi();
@@ -76,7 +76,7 @@ public class ProjectApiTest {
     }
 
     @Test
-    @Step("Project should not be deleted")
+    //@Step("Project should not be deleted")
     @DisplayName("Project should not be deleted")
     void projectShouldNotBeDeleted(){
         DeleteProjectResponse deleteProjectResponse = ProjectSteps.deleteProject("codeInvalid");
@@ -87,7 +87,7 @@ public class ProjectApiTest {
     }
 
     @Test
-    @Step("Projects should  be displayed")
+    //@Step("Projects should  be displayed")
     @DisplayName("Projects should  be displayed")
     void getProjectList(){
         GetProjResponse getProjResponse = ProjectSteps.getProjects(10, 0);
@@ -98,7 +98,7 @@ public class ProjectApiTest {
     }
 
     @Test
-    @Step("Projects should  be displayed")
+    //@Step("Projects should  be displayed")
     @DisplayName("Projects should  be displayed")
     void getProjectListGetTotal(){
         GetProjResponse getProjResponse = ProjectSteps.getProjects(10, 0);
@@ -110,7 +110,7 @@ public class ProjectApiTest {
     }
 
     @Test
-    @Step("Projects should  be displayed")
+    //@Step("Projects should  be displayed")
     @DisplayName("Projects should  be displayed")
     void getProjectListGetTotalWithError(){
         GetProjResponse getProjResponse = ProjectSteps.getProjects(101, 0);  //limit may not be greater than 100.

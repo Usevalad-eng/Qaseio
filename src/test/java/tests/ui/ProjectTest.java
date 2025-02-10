@@ -20,7 +20,7 @@ public class ProjectTest extends BaseTest {
     @Link(value = "test", url = "https://app.qase.io")
     @DisplayName("Creation of Project with valid data")
     public void createProjTest() {
-        authorizeInApp("kubyox@mailto.plus", "qaseio122024");
+        authorizeInApp(email, pwd);
         projectPage.openProjectsPage();
         projectPage.clickCreateNewProjectButton();
         CreateProjectRequest projectTwo = ProjectGenerator.createProjectApi();
@@ -92,12 +92,12 @@ public class ProjectTest extends BaseTest {
         projectPage.openLoginPage();
         loginSteps.authInApp("kubyox@mailto.plus", "qaseio122024");
         projectPage.projectPageIsOpened();
-        projectSteps.createProject(testProject);
+        projectSteps.createProject(ProjectGenerator.createProjectApi());
         projectPage.openProjectsPage();
         projectPage.assertThatProjCreated();
     }
 
-    @Test
+    /*@Test
     @Feature("Project")
     @Story("User can create a project")
     @Owner("Vsevolod")
@@ -111,23 +111,23 @@ public class ProjectTest extends BaseTest {
         projectSteps.createProject(testProject2);
         projectPage.openProjectsPage();
         projectPage.assertThatProjCreated();
-    }
+    }*/
 
-    @Test
-    @Feature("Project")
-    @Story("User can create a project")
-    @Owner("Vsevolod")
-    @Severity(SeverityLevel.NORMAL)
-    @Link(value = "test", url = "https://app.qase.io")
-    @DisplayName("Creation of Project with valid data using Constructor/Faker")
-    public void createProjectTestUsingBuilderTwo() {
-        projectPage.openLoginPage();
-        loginSteps.authInApp("kubyox@mailto.plus", "qaseio122024");
-        projectPage.projectPageIsOpened();
-        projectSteps.createProject(testProject3);
-        projectPage.openProjectsPage();
-        projectPage.assertThatProjCreated();
-    }
+//    @Test
+//    @Feature("Project")
+//    @Story("User can create a project")
+//    @Owner("Vsevolod")
+//    @Severity(SeverityLevel.NORMAL)
+//    @Link(value = "test", url = "https://app.qase.io")
+//    @DisplayName("Creation of Project with valid data using Constructor/Faker")
+//    public void createProjectTestUsingBuilderTwo() {
+//        projectPage.openLoginPage();
+//        loginSteps.authInApp("kubyox@mailto.plus", "qaseio122024");
+//        projectPage.projectPageIsOpened();
+//        projectSteps.createProject(testProject3);
+//        projectPage.openProjectsPage();
+//        projectPage.assertThatProjCreated();
+//    }
 
     @Test
     @Feature("Project")

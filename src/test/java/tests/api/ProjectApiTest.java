@@ -27,6 +27,8 @@ public class ProjectApiTest {
                 .extracting(CreateProjectResponse::getResult)
                 .extracting(Result::getCode)
                 .isEqualTo(createProjectRq.getCode());
+
+        ProjectGenerator.deleteProjectApi(createProjectRq.getCode());
     }
 
     @Test
@@ -47,6 +49,8 @@ public class ProjectApiTest {
                 .extracting(CreateProjectResponse::getResult)
                 .extracting(Result::getCode)
                 .isEqualTo(build.getCode());
+
+        ProjectGenerator.deleteProjectApi(build.getCode());
     }
 
     @Test
@@ -60,6 +64,8 @@ public class ProjectApiTest {
                 .isNotNull()
                 .extracting(CreateProjectResponse::isStatus)
                 .isEqualTo(true);
+
+        ProjectGenerator.deleteProjectApi(createProjectRq.getCode());
     }
 
     @Test
@@ -99,7 +105,7 @@ public class ProjectApiTest {
 
     @Test
     //@Step("Projects should  be displayed")
-    @DisplayName("Projects should  be displayed")
+    @DisplayName("Projects should  be displayed (as a json list in response)")
     void getProjectListGetTotal(){
         GetProjResponse getProjResponse = ProjectSteps.getProjects(10, 0);
 

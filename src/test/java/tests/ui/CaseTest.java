@@ -23,7 +23,7 @@ public class CaseTest extends BaseTest {
     @DisplayName("Creation of a case with valid data")
     public void createCaseTest() {
         projectPage.openLoginPage();
-        loginSteps.authInApp("kubyox@mailto.plus", "qaseio122024");
+        loginSteps.authInApp(email, password);
         projectPage.projectPageIsOpened();
         projectPage.createNewProject();
         projectPage.inputProjectName("Demo");
@@ -35,6 +35,7 @@ public class CaseTest extends BaseTest {
         casePage.inputCaseName("caseTest");
         casePage.createCase();
         casePage.assertThatCaseCreated("caseTest");
+        ProjectGenerator.deleteProjectApi("DEMO");
     }
 
     @Test
@@ -47,7 +48,7 @@ public class CaseTest extends BaseTest {
     @DisplayName("Creation of a case with valid data")
     public void createCaseTestTest() {
         projectPage.openLoginPage();
-        loginSteps.authInApp("kubyox@mailto.plus", "qaseio122024");
+        loginSteps.authInApp(email, password);
         projectPage.projectPageIsOpened();
         projectPage.createNewProject();
         projectPage.inputProjectName("Demo");
@@ -61,6 +62,7 @@ public class CaseTest extends BaseTest {
         casePage.fillStep();
         casePage.createCase();
         casePage.assertThatCaseCreated("caseTest");
+        ProjectGenerator.deleteProjectApi("DEMO");
     }
 
     @Test
@@ -72,7 +74,7 @@ public class CaseTest extends BaseTest {
     @DisplayName("Creation of a case with valid data plus description, steps and other fields")
     public void createCaseWithStepsTest() {
         projectPage.openLoginPage();
-        loginSteps.authInApp("kubyox@mailto.plus", "qaseio122024");
+        loginSteps.authInApp(email, password);
         projectPage.projectPageIsOpened();
         projectPage.createNewProject();
         projectPage.inputProjectName("Demo");
@@ -96,6 +98,7 @@ public class CaseTest extends BaseTest {
         casePage.fillStep();
         casePage.createCase();
         casePage.assertThatCaseCreated("caseTest");
+        ProjectGenerator.deleteProjectApi("DEMO");
     }
 
     @Test
@@ -104,10 +107,10 @@ public class CaseTest extends BaseTest {
     @Owner("Vsevolod")
     @Severity(SeverityLevel.BLOCKER)
     @Link(value = "test", url = "https://app.qase.io")
-    @DisplayName("Creation of case with valid data(using Faker to get random project with random data)")
+    @DisplayName("Creation of case with valid data")
     public void createCaseTestTTest() {
         projectPage.openLoginPage();
-        loginSteps.authInApp("kubyox@mailto.plus", "qaseio122024");
+        loginSteps.authInApp(email, password);
         projectPage.projectPageIsOpened();
         projectPage.createNewProject();
         CreateProjectRequest testProject = ProjectGenerator.createProjectApi();
@@ -124,6 +127,7 @@ public class CaseTest extends BaseTest {
         casePage.inputCaseName(expectedCaseName);
         casePage.createCase();
         Assertions.assertEquals(expectedCaseName, casePage.receiveCaseName(), "error!");
+        ProjectGenerator.deleteProjectApi(testProject.getTitle().toUpperCase());
     }
 
     @Test
@@ -135,7 +139,7 @@ public class CaseTest extends BaseTest {
     @DisplayName("Creation of a case with not valid data")
     public void notCreateCaseTest() {
         projectPage.openLoginPage();
-        loginSteps.authInApp("kubyox@mailto.plus", "qaseio122024");
+        loginSteps.authInApp(email, password);
         projectPage.projectPageIsOpened();
         projectPage.createNewProject();
         projectPage.inputProjectName("Demo");
@@ -147,5 +151,6 @@ public class CaseTest extends BaseTest {
         casePage.inputCaseName("");
         projectPage.openProjectsPage();
         casePage.assertThatCaseCanNotCreated();
+        ProjectGenerator.deleteProjectApi("DEMO");
     }
 }

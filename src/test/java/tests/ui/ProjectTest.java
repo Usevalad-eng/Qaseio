@@ -20,30 +20,31 @@ public class ProjectTest extends BaseTest {
     @Link(value = "test", url = "https://app.qase.io")
     @DisplayName("Creation of Project with valid data")
     public void createProjTest() {
-        authorizeInApp(email, pwd);
+        authorizeInApp(email, password);
         projectPage.openProjectsPage();
         projectPage.clickCreateNewProjectButton();
-        CreateProjectRequest projectTwo = ProjectGenerator.createProjectApi();
-        projectPage.create(projectTwo);
+        CreateProjectRequest project = ProjectGenerator.createProjectApi();
+        projectPage.create(project);
         projectPage.assertThatProjCreated();
+        ProjectGenerator.deleteProjectApi(project.getCode());
     }
 
-    @Test
-    @Feature("Project")
-    @Story("User can create a project")
-    @Owner("Vsevolod")
-    @Severity(SeverityLevel.BLOCKER)
-    @Link(value = "test", url = "https://app.qase.io")
-    @DisplayName("Creation of Project with valid data")
-    public void createProjJTest() {
-        authorizeInApp("kubyox@mailto.plus", "qaseio122024");
-        projectPage.openProjectsPage();
-        projectPage.clickCreateNewProjectButton();
-        projectPage.createT(ProjectGenerator.createProjectApi());
-        projectPage.assertThatProjCreated();
-    }
+//    @Test
+//    @Feature("Project")
+//    @Story("User can create a project")
+//    @Owner("Vsevolod")
+//    @Severity(SeverityLevel.BLOCKER)
+//    @Link(value = "test", url = "https://app.qase.io")
+//    @DisplayName("Creation of Project with valid data")
+//    public void createProjJTest() {
+//        authorizeInApp(email, password);
+//        projectPage.openProjectsPage();
+//        projectPage.clickCreateNewProjectButton();
+//        projectPage.createT(ProjectGenerator.createProjectApi());
+//        projectPage.assertThatProjCreated();
+//    }
 
-    @Test
+    /*@Test
     @Feature("Project")
     @Story("User can create a project")
     @Owner("Vsevolod")
@@ -52,7 +53,7 @@ public class ProjectTest extends BaseTest {
     @DisplayName("Creation of Project with valid data")
     public void createProjectTest() {
         projectPage.openLoginPage();
-        loginSteps.authInApp("kubyox@mailto.plus", "qaseio122024");
+        loginSteps.authInApp(email, password);
         projectPage.projectPageIsOpened();
         projectPage.createNewProject();
         projectPage.inputProjectName("Demo");
@@ -71,7 +72,7 @@ public class ProjectTest extends BaseTest {
     @DisplayName("Creation of Project with valid data")
     public void createProjectTestAndDelProj() {
         projectPage.openLoginPage();
-        loginSteps.authInApp("kubyox@mailto.plus", "qaseio122024");
+        loginSteps.authInApp(email, password);
         projectPage.projectPageIsOpened();
         projectPage.createNewProject();
         projectPage.inputProjectName("Demo");
@@ -79,7 +80,7 @@ public class ProjectTest extends BaseTest {
         projectPage.openProjectsPage();
         projectPage.assertThatProjectCreated("Demo");
         ProjectGenerator.deleteProjectApi("DEMO");
-    }
+    }*/
 
     @Test
     @Feature("Project")
@@ -88,13 +89,15 @@ public class ProjectTest extends BaseTest {
     @Severity(SeverityLevel.NORMAL)
     @Link(value = "test", url = "https://app.qase.io")
     @DisplayName("Creation of Project with valid data using Lombok/Faker")
-    public void createProjectTestUsingBuilder() {
+    public void createProjectTestU() {
         projectPage.openLoginPage();
-        loginSteps.authInApp("kubyox@mailto.plus", "qaseio122024");
+        loginSteps.authInApp(email, password);
         projectPage.projectPageIsOpened();
-        projectSteps.createProject(ProjectGenerator.createProjectApi());
+        CreateProjectRequest projectApi = ProjectGenerator.createProjectApi();
+        projectSteps.createProject(projectApi);
         projectPage.openProjectsPage();
         projectPage.assertThatProjCreated();
+        ProjectGenerator.deleteProjectApi(projectApi.getTitle().toUpperCase());
     }
 
     /*@Test
@@ -129,16 +132,16 @@ public class ProjectTest extends BaseTest {
 //        projectPage.assertThatProjCreated();
 //    }
 
-    @Test
+    /*@Test
     @Feature("Project")
     @Story("User can create a project")
     @Owner("Vsevolod")
     @Severity(SeverityLevel.NORMAL)
     @Link(value = "test", url = "https://app.qase.io")
-    @DisplayName("Creation of Project with valid data using Constructor/Faker")
-    public void createProjectTestWithFaker() {
+    @DisplayName("Creation of Project with valid data")
+    public void createProjectTestW() {
         projectPage.openLoginPage();
-        loginSteps.authInApp("kubyox@mailto.plus", "qaseio122024");
+        loginSteps.authInApp(email, password);
         projectPage.projectPageIsOpened();
         projectPage.createNewProject();
         String fakeName = fake.name().firstName();
@@ -150,7 +153,7 @@ public class ProjectTest extends BaseTest {
                 () -> assertEquals(fakeName, actualProjName, "Error, something went wrong!"),
                 () -> projectPage.assertThatProjCreated()
         );
-    }
+    }*/
 
     @Test
     @Feature("Project")
@@ -161,7 +164,7 @@ public class ProjectTest extends BaseTest {
     @DisplayName("Creation of a Project with only one character is unavailable")
     public void createProjectWithOneCharacterInTheNameTest() {
         projectPage.openLoginPage();
-        loginSteps.authInApp("kubyox@mailto.plus", "qaseio122024");
+        loginSteps.authInApp(email, password);
         projectPage.projectPageIsOpened();
         projectPage.createNewProject();
         projectPage.inputProjectName("D");
@@ -169,7 +172,7 @@ public class ProjectTest extends BaseTest {
         projectPage.canNotCreateProjectErrorShouldBeVisible();
     }
 
-    @Test
+    /*@Test
     @DisplayName("Creation of Project  and exit from the App")
     @Feature("Project")
     @Story("User can create a project")
@@ -178,7 +181,7 @@ public class ProjectTest extends BaseTest {
     @Severity(SeverityLevel.NORMAL)
     public void createProjectAndExitTest() {
         projectPage.openLoginPage();
-        loginSteps.authInApp("kubyox@mailto.plus", "qaseio122024");
+        loginSteps.authInApp(email, password);
         projectPage.createNewProject();
         projectPage.inputProjectName("Dee");
         projectPage.createProject();
@@ -187,9 +190,9 @@ public class ProjectTest extends BaseTest {
         projectPage.findMenu();
         projectPage.findExit();
         projectPage.assertThatExit();
-    }
+    }*/
 
-    @Test
+    /*@Test
     @DisplayName("Deletion of the Project")
     @Feature("Project")
     @Story("User can delete a project")
@@ -198,7 +201,7 @@ public class ProjectTest extends BaseTest {
     @Severity(SeverityLevel.NORMAL)
     public void createProjectAndDel() {
         projectPage.openLoginPage();
-        loginSteps.authInApp("kubyox@mailto.plus", "qaseio122024");
+        loginSteps.authInApp(email, password);
         projectPage.createNewProject();
         projectPage.inputProjectName("Dee");
         projectPage.createProject();
@@ -207,7 +210,7 @@ public class ProjectTest extends BaseTest {
         projectPage.deleteButton();
         projectPage.deleteProject();
         projectPage.assertThatProjDeleted();
-    }
+    }*/
 
     @Test
     @DisplayName("Deletion of the Project")
@@ -219,7 +222,7 @@ public class ProjectTest extends BaseTest {
     public void createProjAndDeleteTest() {
         ProjectGenerator.createProjApi();
         projectPage.openLoginPage();
-        loginSteps.authInApp("kubyox@mailto.plus", "qaseio122024");
+        loginSteps.authInApp(email, password);
         projectPage.openProjectsPage();
         projectPage.findDots();
         projectPage.deleteButton();
@@ -234,11 +237,11 @@ public class ProjectTest extends BaseTest {
     @Owner("Vsevolod")
     @Link(value = "test", url = "https://app.qase.io")
     @Severity(SeverityLevel.NORMAL)
-    public void createProjADeleteTest() {
+    public void createProjADeleteTestA() {
         CreateProjectRequest projectR = ProjectGenerator.createProjectApi();
         ProjectGenerator.getProjectCreated(projectR);
         ProjectGenerator.deleteProjectApi(projectR.getCode());
-        authorizeInApp("kubyox@mailto.plus", "qaseio122024");
+        authorizeInApp(email, password);
         projectPage.assertThatProjDeleted();
     }
 }

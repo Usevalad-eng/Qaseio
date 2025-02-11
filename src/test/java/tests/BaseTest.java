@@ -4,9 +4,6 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import com.github.javafaker.Faker;
-import generators.CaseGenerator;
-import generators.ProjectGenerator;
-import generators.SuiteGenerator;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -17,17 +14,14 @@ import pages.ProjectPage;
 import pages.SuitePage;
 import steps.LoginSteps;
 import steps.ProjectSteps;
-import tests.api.pojos.request.cases.CreateCaseRequest;
-import tests.api.pojos.request.project.CreateProjectRequest;
-import tests.api.pojos.request.suite.CreateSuiteRequest;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 public class BaseTest {
 
-    public String email = "kubyox@mailto.plus";
-    public String pwd = "qaseio122024";
+    protected String email = "kubyox@mailto.plus";
+    protected String password = "qaseio122024";
     public static Faker fake = new Faker();
     public LoginSteps loginSteps = new LoginSteps();
     public ProjectSteps projectSteps = new ProjectSteps();

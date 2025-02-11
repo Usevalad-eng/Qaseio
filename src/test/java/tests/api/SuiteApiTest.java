@@ -30,6 +30,8 @@ public class SuiteApiTest {
                 .isNotNull()
                 .extracting(CreateSuiteResponse::isStatus)
                 .isEqualTo(true);
+
+        ProjectGenerator.deleteProjectApi(projectApi.getCode());
     }
 
     @Test
@@ -46,6 +48,8 @@ public class SuiteApiTest {
         assertThat(deleteSuiteResponse)
                 .extracting(DeleteSuiteResponse::isStatus)
                 .isEqualTo(true);
+
+        ProjectGenerator.deleteProjectApi(projectApi.getCode());
     }
 
     @Test
@@ -62,5 +66,7 @@ public class SuiteApiTest {
         assertThat(deleteSuiteResponse)
                 .extracting(DeleteSuiteResponse::getErrorMessage)
                 .isEqualTo("Suite not found");
+
+        ProjectGenerator.deleteProjectApi(projectApi.getCode());
     }
 }

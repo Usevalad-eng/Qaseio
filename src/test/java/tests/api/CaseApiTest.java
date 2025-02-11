@@ -30,6 +30,8 @@ public class CaseApiTest {
                 .isNotNull()
                 .extracting(CreateCaseResponse::isStatus)
                 .isEqualTo(true);
+
+        ProjectGenerator.deleteProjectApi(projectApi.getCode());
     }
 
     @Test
@@ -46,6 +48,8 @@ public class CaseApiTest {
         assertThat(deleteCaseResponse)
                 .extracting(DeleteCaseResponse::isStatus)
                 .isEqualTo(true);
+
+        ProjectGenerator.deleteProjectApi(projectApi.getCode());
     }
 
     @Test
@@ -62,5 +66,7 @@ public class CaseApiTest {
         assertThat(deleteCaseResponse)
                 .extracting(DeleteCaseResponse::getErrorMessage)
                 .isEqualTo("TestCase not found");
+
+        ProjectGenerator.deleteProjectApi(projectApi.getCode());
     }
 }

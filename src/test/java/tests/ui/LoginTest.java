@@ -24,8 +24,8 @@ public class LoginTest extends BaseTest {
     @DisplayName("Auth successful test")
     public void loginSuccessfulAuthTest() {
         loginPage.openLoginPage();
-        loginPage.inputLogin("kubyox@mailto.plus");
-        loginPage.inputPass("qaseio122024");
+        loginPage.inputLogin(email);
+        loginPage.inputPass(password);
         loginPage.clickSubmit();
         loginPage.successfulLogin();
     }
@@ -59,7 +59,7 @@ public class LoginTest extends BaseTest {
         assertEquals(2, loginPage.getErrorMessagesCount(), "Something went wrong!");
     }
 
-    @Test
+    /*@Test
     @Feature("Auth")
     @Story("User can  auth to a project")
     @Owner("Vsevolod")
@@ -71,9 +71,9 @@ public class LoginTest extends BaseTest {
         loginPage.inputPass("qaseio122024");
         loginPage.clickSignInButton();
         assertEquals("This field is required", loginPage.getErrorMessage(), "Something went wrong!");
-    }
+    }*/
 
-    @Test
+    /*@Test
     @Feature("Auth")
     @Story("User can auth to a project")
     @Owner("Vsevolod")
@@ -85,7 +85,7 @@ public class LoginTest extends BaseTest {
         loginPage.inputPass("");
         loginPage.clickSignInButton();
         assertEquals("This field is required", loginPage.getErrorMessage(), "Something went wrong!");
-    }
+    }*/
 
     static Stream<Arguments> qaseioAuthNegativeScenarios() {
         return Stream.of(

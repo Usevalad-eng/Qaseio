@@ -22,7 +22,7 @@ public class SuiteTest extends BaseTest {
     @DisplayName("Creation of suite with valid data")
     public void createSuiteTest() {
         projectPage.openLoginPage();
-        loginSteps.authInApp("kubyox@mailto.plus", "qaseio122024");
+        loginSteps.authInApp(email, password);
         projectPage.projectPageIsOpened();
         projectPage.createNewProject();
         projectPage.inputProjectName("Demo");
@@ -31,6 +31,7 @@ public class SuiteTest extends BaseTest {
         suitePage.inputSuiteName("suiteTest");
         suitePage.createSuite();
         suitePage.assertThatSuiteCreated("suiteTest");
+        ProjectGenerator.deleteProjectApi("DEMO");
     }
 
     @Test
@@ -42,7 +43,7 @@ public class SuiteTest extends BaseTest {
     @DisplayName("Creation of suite with valid data(using Faker to get random project with random data)")
     public void createSuiteTestTest() {
         projectPage.openLoginPage();
-        loginSteps.authInApp("kubyox@mailto.plus", "qaseio122024");
+        loginSteps.authInApp(email, password);
         projectPage.projectPageIsOpened();
         projectPage.createNewProject();
         CreateProjectRequest testProject = ProjectGenerator.createProjectApi();
@@ -54,6 +55,7 @@ public class SuiteTest extends BaseTest {
         suitePage.inputSuiteName(expectedSuiteName);
         suitePage.createSuite();
         assertEquals(expectedSuiteName, suitePage.receiveSuiteName(), "error!");
+        ProjectGenerator.deleteProjectApi(testProject.getTitle().toUpperCase());
     }
 
     @Test
@@ -65,7 +67,7 @@ public class SuiteTest extends BaseTest {
     @DisplayName("Creation of suite with valid data")
     public void cannotCreateSuiteTest() {
         projectPage.openLoginPage();
-        loginSteps.authInApp("kubyox@mailto.plus", "qaseio122024");
+        loginSteps.authInApp(email, password);
         projectPage.projectPageIsOpened();
         projectPage.createNewProject();
         projectPage.inputProjectName("Demo");
@@ -75,5 +77,6 @@ public class SuiteTest extends BaseTest {
         suitePage.createSuite();
         suitePage.openSuitePage();
         suitePage.assertThatSuiteNotCreated();
+        ProjectGenerator.deleteProjectApi("DEMO");
     }
 }

@@ -10,9 +10,10 @@ import tests.api.pojos.response.project.delete.DeleteProjectResponse;
 import tests.api.pojos.response.project.post.Result;
 import tests.api.pojos.response.project.get.GetProjResponse;
 import tests.api.steps.ProjectSteps;
+import org.junit.jupiter.api.Tag;
 
 import static org.assertj.core.api.Assertions.assertThat;
-
+@Tag("Api")
 public class ProjectApiTest {
 
     @Test

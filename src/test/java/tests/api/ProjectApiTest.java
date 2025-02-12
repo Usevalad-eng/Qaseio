@@ -19,7 +19,7 @@ public class ProjectApiTest {
 
     @Test
     //@Step("Project should be created")
-    @DisplayName("Project should be created")
+    @DisplayName("Project should be created1")
     void projectShouldBeCreated(){
         CreateProjectRequest createProjectRq = ProjectGenerator.createProjectApi();
         CreateProjectResponse createProjectRs = ProjectSteps.createProject(createProjectRq);
@@ -35,7 +35,7 @@ public class ProjectApiTest {
 
     @Test
     //@Step("Project should be created")
-    @DisplayName("Project should be created")
+    @DisplayName("Project should be created2")
     void projShouldBeCreated(){
         CreateProjectRequest build = CreateProjectRequest.builder()
                 .title("title")
@@ -57,7 +57,7 @@ public class ProjectApiTest {
 
     @Test
     //@Step("Project should be created")
-    @DisplayName("Project should be created")
+    @DisplayName("Project should be created3")
     void projectShouldBeCreatedWithStatusTrue(){
         CreateProjectRequest createProjectRq = ProjectGenerator.createProjectApi();
         CreateProjectResponse createProjectRs = ProjectSteps.createProject(createProjectRq);
@@ -72,7 +72,7 @@ public class ProjectApiTest {
 
     @Test
     //@Step("Project should be deleted")
-    @DisplayName("Project should be deleted")
+    @DisplayName("Project should be deleted1")
     void projectShouldBeDeleted(){
         CreateProjectRequest projectToDel = ProjectGenerator.createProjectApi();
         ProjectSteps.createProject(projectToDel);
@@ -85,7 +85,7 @@ public class ProjectApiTest {
 
     @Test
     //@Step("Project should not be deleted")
-    @DisplayName("Project should not be deleted")
+    @DisplayName("Project should not be deleted2")
     void projectShouldNotBeDeleted(){
         DeleteProjectResponse deleteProjectResponse = ProjectSteps.deleteProject("codeInvalid");
 
@@ -96,7 +96,7 @@ public class ProjectApiTest {
 
     @Test
     //@Step("Projects should  be displayed")
-    @DisplayName("Projects should  be displayed")
+    @DisplayName("Projects should  be displayed1")
     void getProjectList(){
         GetProjResponse getProjResponse = ProjectSteps.getProjects(10, 0);
 
@@ -108,7 +108,7 @@ public class ProjectApiTest {
     @Test
     @Disabled
     //@Step("Projects should  be displayed")
-    @DisplayName("Projects should  be displayed (as a json list in response)")
+    @DisplayName("Projects should  be displayed as a json list in response2")
     void getProjectListGetTotal(){
         GetProjResponse getProjResponse = ProjectSteps.getProjects(10, 0);
 
@@ -120,7 +120,7 @@ public class ProjectApiTest {
 
     @Test
     //@Step("Projects should  be displayed")
-    @DisplayName("Projects should  be displayed")
+    @DisplayName("Projects should  be displayed3")
     void getProjectListGetTotalWithError(){
         GetProjResponse getProjResponse = ProjectSteps.getProjects(101, 0);  //limit may not be greater than 100.
 

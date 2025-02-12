@@ -51,6 +51,7 @@ public class BaseTest {
     static void screenResolution() {
         Configuration.baseUrl = "https://app.qase.io";
         Configuration.browserSize = "1920x1080";
+        Configuration.headless = true;
     }
 
     @BeforeEach

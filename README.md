@@ -1,6 +1,6 @@
 ##  [QASE.IO](https://app.qase.io/) - project automated with <u>Java, Selenide, JUnit5, Gradle.</u>
 
-![qaseio.jpg](src/test/media/qaseio.jpg)
+![qaseio.jpg](media/qaseio.jpg)
 
 > Qase.io helps to manage test cases, track their  execution status, and report defects.
 > Qase.io is a  test management platform for manual and automated testing, and reporting that helps deliver higher quality software.
@@ -13,12 +13,12 @@
 ### <a name="Tools">Tools are used:</a>
 
 <p  align="left">
-<code><img width="5%" title="IntelliJ IDEA" src="src/test/media/idea.jpg"></code>
-<code><img width="5%" title="Java" src="src/test/media/java.png"></code>
-<code><img width="5%" title="Gradle" src="src/test/media/gradle.png"></code>
-<code><img width="5%" title="Allure" src="src/test/media/allure.jpg"></code>
-<code><img width="5%" title="JUnit5" src="src/test/media/junit5.png"></code>
-<code><img width="5%" title="Selenide" src="src/test/media/selenide.jpg"></code>
+<code><img width="5%" title="IntelliJ IDEA" src="media/idea.jpg"></code>
+<code><img width="5%" title="Java" src="media/java.png"></code>
+<code><img width="5%" title="Gradle" src="media/gradle.png"></code>
+<code><img width="5%" title="Allure" src="media/allure.jpg"></code>
+<code><img width="5%" title="JUnit5" src="media/junit5.png"></code>
+<code><img width="5%" title="Selenide" src="media/selenide.jpg"></code>
 </p>
 
 <a name="Description">Description:</a>

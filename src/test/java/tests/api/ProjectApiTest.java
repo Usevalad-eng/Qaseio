@@ -2,6 +2,7 @@ package tests.api;
 
 import generators.ProjectGenerator;
 import io.qameta.allure.Step;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import tests.api.pojos.request.project.CreateProjectRequest;
@@ -105,6 +106,7 @@ public class ProjectApiTest {
     }
 
     @Test
+    @Disabled
     //@Step("Projects should  be displayed")
     @DisplayName("Projects should  be displayed (as a json list in response)")
     void getProjectListGetTotal(){

@@ -18,16 +18,6 @@ public class ProjectGenerator {
                 .build();
     }
 
-    /*public static CreateProjectRequest createProjectApiH(){
-            return CreateProjectRequest.builder()
-                    .title(faker.name().firstName())
-                    .code("DDD")
-                    .description(faker.chuckNorris().fact())
-                    .access("all")
-                    .group(faker.name().firstName())
-                    .build();
-        }*/
-
     public static void createProjApi(){
         ProjectSteps.createProject(createProjectApi());
     }

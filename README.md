@@ -5,9 +5,12 @@
 > Qase.io helps to manage test cases, track their  execution status, and report defects.
 > Qase.io is a  test management platform for manual and automated testing, and reporting that helps deliver higher quality software.
 > 
-## To start you should set up underlined technologies and run "gradle clean test" in your Terminal.
-
+## To start testing you should set up underlined technologies and run "gradle clean test" in a Terminal.
 > gradle clean test
+## To start only Api tests:  run "gradle clean -Dtest=Api" in a Terminal.
+> gradle clean -Dtest=Api
+## To start only UI tests: run "gradle clean -Dtest=Api" in a Terminal.
+> gradle clean -Dtest=UI
 ### [Test cases](https://github.com/Usevalad-eng/Qaseio/blob/main/testCases.md/) - test cases to check the project.
 
 ### <a name="Tools">Tools are used:</a>
@@ -31,5 +34,5 @@ The project:
 - [x] Objects  using `Rest-assured` for API serialization/deserialization objects,
 - [x] `Allure listener` for logging;
 
-#### Project is being developed 2/11/2025
+#### Project is being developed 2/13/2025
 ###### @Owner of these tests: Vsevolod A.

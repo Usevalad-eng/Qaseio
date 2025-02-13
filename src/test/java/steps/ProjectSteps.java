@@ -10,7 +10,6 @@ public class ProjectSteps {
     public void createProject(CreateProjectRequest project) {
         projectPage.createNewProject();
         projectPage.inputProjectName(project.getTitle());
-        //projectPage.inputProjectCode("CODE");
         projectPage.createProject();
     }
 }

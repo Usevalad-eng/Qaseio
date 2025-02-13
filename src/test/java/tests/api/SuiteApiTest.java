@@ -4,6 +4,7 @@ import generators.ProjectGenerator;
 import generators.SuiteGenerator;
 import io.qameta.allure.Step;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import tests.api.pojos.request.project.CreateProjectRequest;
 import tests.api.pojos.request.suite.CreateSuiteRequest;
@@ -14,10 +15,10 @@ import tests.api.steps.SuiteSteps;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@Tag("Api")
 public class SuiteApiTest {
 
     @Test
-    //@Step("Suite should be created")
     @DisplayName("Suite should be created")
     void suiteShouldBeCreated() {
         CreateProjectRequest projectApi = ProjectGenerator.createProjectApi();
@@ -35,7 +36,6 @@ public class SuiteApiTest {
     }
 
     @Test
-    //@Step("Suite should be deleted")
     @DisplayName("Suite should be deleted")
     void suiteShouldBeDeleted() {
         CreateProjectRequest projectApi = ProjectGenerator.createProjectApi();
@@ -53,7 +53,6 @@ public class SuiteApiTest {
     }
 
     @Test
-    //@Step("Suite should not be deleted")
     @DisplayName("Suite should not be deleted")
     void suiteShouldNotBeDeleted() {
         CreateProjectRequest projectApi = ProjectGenerator.createProjectApi();

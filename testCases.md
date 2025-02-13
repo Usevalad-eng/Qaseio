@@ -1,5 +1,6 @@
 # **Test cases:**
-#  Auth tests:
+#  UI tests:
+##  Auth tests:
 ##  1.1 Login  with valid data:
 Steps:
 ####   1. go to Login page 
@@ -110,4 +111,32 @@ Steps:
 ## Expected result: test case with expected name is deleted
 ### Severity: Medium
 
+#  API tests:
+##  Project tests:
+## 1.1 Create a project:
+## Expected result: project with expected name is created
+### Severity: Blocker
+## 1.2 Delete a project:
+## Expected result: project with expected name is deleted
+### Severity: Normal
+## 1.3 Create a project with not valid data:
+## Expected result: project with expected name is not created
+### Severity: Normal
+## 1.4 Get list of  projects in a json format:
+## Expected result: have a list of projects
+### Severity: Blocker
+#  Suite tests:
+## 2.1 Create test suite:
+## Expected result: test suit with expected name is created
+### Severity: High
+## 2.2 Delete test suite:
+## Expected result: test suit with expected name is deleted
+### Severity: Medium
+#  Test cases tests:
+## 3.1 Create test case:
+## Expected result: test case with expected name is created
+### Severity: High
+## 3.2 Delete test case:
+## Expected result: test case with expected name is deleted
+### Severity: Medium
 

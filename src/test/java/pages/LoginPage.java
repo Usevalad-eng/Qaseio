@@ -46,11 +46,6 @@ public class LoginPage extends BasePage {
         PROJECTS_TEXT.shouldHave(text("Projects"));
     }
 
-    /*@Step("Get error message")
-    public String getErrorMessage() {
-        return ERROR_MESSAGE.get(0).getText();
-    }*/
-
     @Step("Get error message count")
     public Integer getErrorMessagesCount() {
         return ERROR_MESSAGE.size();

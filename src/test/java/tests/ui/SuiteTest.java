@@ -4,6 +4,7 @@ import generators.ProjectGenerator;
 import generators.SuiteGenerator;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import tests.BaseTest;
 import tests.api.pojos.request.project.CreateProjectRequest;
@@ -11,6 +12,7 @@ import tests.api.pojos.request.suite.CreateSuiteRequest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@Tag("UI")
 public class SuiteTest extends BaseTest {
 
     @Test
@@ -40,8 +42,8 @@ public class SuiteTest extends BaseTest {
     @Owner("Vsevolod")
     @Severity(SeverityLevel.BLOCKER)
     @Link(value = "test", url = "https://app.qase.io")
-    @DisplayName("Creation of suite with valid data(using Faker to get random project with random data)")
-    public void createSuiteTestTest() {
+    @DisplayName("Creation of suite with valid data using random data)")
+    public void createSuiteWithRandomDataTest() {
         projectPage.openLoginPage();
         loginSteps.authInApp(email, password);
         projectPage.projectPageIsOpened();
@@ -64,7 +66,7 @@ public class SuiteTest extends BaseTest {
     @Owner("Vsevolod")
     @Severity(SeverityLevel.MINOR)
     @Link(value = "test", url = "https://app.qase.io")
-    @DisplayName("Creation of suite with valid data")
+    @DisplayName("User can not create a suite with not valid data")
     public void cannotCreateSuiteTest() {
         projectPage.openLoginPage();
         loginSteps.authInApp(email, password);

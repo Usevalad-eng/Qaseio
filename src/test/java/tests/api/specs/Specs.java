@@ -7,7 +7,6 @@ import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 
 import static io.restassured.RestAssured.with;
-import static org.apache.http.HttpStatus.SC_OK;
 
 public class Specs {
 
@@ -20,6 +19,5 @@ public class Specs {
 
     public static final ResponseSpecification RES_SPEC = new ResponseSpecBuilder()
             .log(LogDetail.ALL)
-            //.expectStatusCode(SC_OK)
             .build();
 }

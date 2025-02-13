@@ -2,8 +2,8 @@ package tests.api;
 
 import generators.CaseGenerator;
 import generators.ProjectGenerator;
-import io.qameta.allure.Step;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import tests.api.pojos.request.cases.CreateCaseRequest;
 import tests.api.pojos.request.project.CreateProjectRequest;
@@ -14,10 +14,10 @@ import tests.api.steps.ProjectSteps;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@Tag("Api")
 public class CaseApiTest {
 
     @Test
-    //@Step("Case should be created")
     @DisplayName("Case should be created")
     void caseShouldBeCreated() {
         CreateProjectRequest projectApi = ProjectGenerator.createProjectApi();
@@ -35,7 +35,6 @@ public class CaseApiTest {
     }
 
     @Test
-    //@Step("Case should be deleted")
     @DisplayName("Case should be deleted")
     void caseShouldBeDeleted(){
         CreateProjectRequest projectApi = ProjectGenerator.createProjectApi();
@@ -53,7 +52,6 @@ public class CaseApiTest {
     }
 
     @Test
-    //@Step("Case should not be deleted")
     @DisplayName("Case should not be deleted")
     void caseShouldNotBeDeleted(){
         CreateProjectRequest projectApi = ProjectGenerator.createProjectApi();

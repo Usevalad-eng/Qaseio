@@ -1,25 +1,23 @@
 package tests.api;
 
 import generators.ProjectGenerator;
-import io.qameta.allure.Step;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import tests.api.pojos.request.project.CreateProjectRequest;
-import tests.api.pojos.response.project.post.CreateProjectResponse;
 import tests.api.pojos.response.project.delete.DeleteProjectResponse;
-import tests.api.pojos.response.project.post.Result;
 import tests.api.pojos.response.project.get.GetProjResponse;
+import tests.api.pojos.response.project.post.CreateProjectResponse;
+import tests.api.pojos.response.project.post.Result;
 import tests.api.steps.ProjectSteps;
-import org.junit.jupiter.api.Tag;
 
 import static org.assertj.core.api.Assertions.assertThat;
+
 @Tag("Api")
 public class ProjectApiTest {
 
     @Test
-    //@Step("Project should be created")
-    @DisplayName("Project should be created1")
+    @DisplayName("Project with valid random data should be created")
     void projectShouldBeCreated(){
         CreateProjectRequest createProjectRq = ProjectGenerator.createProjectApi();
         CreateProjectResponse createProjectRs = ProjectSteps.createProject(createProjectRq);
@@ -34,8 +32,7 @@ public class ProjectApiTest {
     }
 
     @Test
-    //@Step("Project should be created")
-    @DisplayName("Project should be created2")
+    @DisplayName("Project with valid not random data should be created")
     void projShouldBeCreated(){
         CreateProjectRequest build = CreateProjectRequest.builder()
                 .title("title")
@@ -56,8 +53,7 @@ public class ProjectApiTest {
     }
 
     @Test
-    //@Step("Project should be created")
-    @DisplayName("Project should be created3")
+    @DisplayName("Project should be created, checking only creating")
     void projectShouldBeCreatedWithStatusTrue(){
         CreateProjectRequest createProjectRq = ProjectGenerator.createProjectApi();
         CreateProjectResponse createProjectRs = ProjectSteps.createProject(createProjectRq);
@@ -71,8 +67,7 @@ public class ProjectApiTest {
     }
 
     @Test
-    //@Step("Project should be deleted")
-    @DisplayName("Project should be deleted1")
+    @DisplayName("Project should be deleted")
     void projectShouldBeDeleted(){
         CreateProjectRequest projectToDel = ProjectGenerator.createProjectApi();
         ProjectSteps.createProject(projectToDel);
@@ -84,8 +79,7 @@ public class ProjectApiTest {
     }
 
     @Test
-    //@Step("Project should not be deleted")
-    @DisplayName("Project should not be deleted2")
+    @DisplayName("Project should not be deleted")
     void projectShouldNotBeDeleted(){
         DeleteProjectResponse deleteProjectResponse = ProjectSteps.deleteProject("codeInvalid");
 
@@ -95,8 +89,7 @@ public class ProjectApiTest {
     }
 
     @Test
-    //@Step("Projects should  be displayed")
-    @DisplayName("Projects should  be displayed1")
+    @DisplayName("Projects should  be displayed as a json data only")
     void getProjectList(){
         GetProjResponse getProjResponse = ProjectSteps.getProjects(10, 0);
 
@@ -106,23 +99,9 @@ public class ProjectApiTest {
     }
 
     @Test
-    @Disabled
-    //@Step("Projects should  be displayed")
-    @DisplayName("Projects should  be displayed as a json list in response2")
-    void getProjectListGetTotal(){
-        GetProjResponse getProjResponse = ProjectSteps.getProjects(10, 0);
-
-        assertThat(getProjResponse)
-                .extracting(GetProjResponse::getResult)
-                .extracting(tests.api.pojos.response.project.get.Result::getTotal)
-                .isEqualTo(0);
-    }
-
-    @Test
-    //@Step("Projects should  be displayed")
-    @DisplayName("Projects should  be displayed3")
+    @DisplayName("Projects should  be displayed with errors when limit  greater than 100")
     void getProjectListGetTotalWithError(){
-        GetProjResponse getProjResponse = ProjectSteps.getProjects(101, 0);  //limit may not be greater than 100.
+        GetProjResponse getProjResponse = ProjectSteps.getProjects(101, 0);
 
         assertThat(getProjResponse)
                 .extracting(GetProjResponse::getErrorMessage)

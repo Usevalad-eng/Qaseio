@@ -6,12 +6,14 @@ import generators.SuiteGenerator;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import tests.BaseTest;
 import tests.api.pojos.request.cases.CreateCaseRequest;
 import tests.api.pojos.request.project.CreateProjectRequest;
 import tests.api.pojos.request.suite.CreateSuiteRequest;
 
+@Tag("UI")
 public class CaseTest extends BaseTest {
 
     @Test
@@ -20,7 +22,7 @@ public class CaseTest extends BaseTest {
     @Owner("Vsevolod")
     @Severity(SeverityLevel.BLOCKER)
     @Link(value = "test", url = "https://app.qase.io")
-    @DisplayName("Creation of a case with valid data")
+    @DisplayName("Creation of an empty case with valid data")
     public void createCaseTest() {
         projectPage.openLoginPage();
         loginSteps.authInApp(email, password);
@@ -39,14 +41,13 @@ public class CaseTest extends BaseTest {
     }
 
     @Test
-    //@Disabled
     @Feature("Case")
     @Story("User can create a case")
     @Owner("Vsevolod")
     @Severity(SeverityLevel.NORMAL)
     @Link(value = "test", url = "https://app.qase.io")
     @DisplayName("Creation of a case with valid data")
-    public void createCaseTestTest() {
+    public void createCaseWithStepsTest() {
         projectPage.openLoginPage();
         loginSteps.authInApp(email, password);
         projectPage.projectPageIsOpened();
@@ -71,8 +72,8 @@ public class CaseTest extends BaseTest {
     @Owner("Vsevolod")
     @Severity(SeverityLevel.NORMAL)
     @Link(value = "test", url = "https://app.qase.io")
-    @DisplayName("Creation of a case with valid data plus description, steps and other fields")
-    public void createCaseWithStepsTest() {
+    @DisplayName("Creation of a case with valid data plus filling: description, steps and other fields")
+    public void createCaseWithFieldsTest() {
         projectPage.openLoginPage();
         loginSteps.authInApp(email, password);
         projectPage.projectPageIsOpened();
@@ -107,8 +108,8 @@ public class CaseTest extends BaseTest {
     @Owner("Vsevolod")
     @Severity(SeverityLevel.BLOCKER)
     @Link(value = "test", url = "https://app.qase.io")
-    @DisplayName("Creation of case with valid data")
-    public void createCaseTestTTest() {
+    @DisplayName("Creation of case with valid random data")
+    public void createCaseWithRandomDataTest() {
         projectPage.openLoginPage();
         loginSteps.authInApp(email, password);
         projectPage.projectPageIsOpened();
@@ -136,8 +137,8 @@ public class CaseTest extends BaseTest {
     @Owner("Vsevolod")
     @Severity(SeverityLevel.MINOR)
     @Link(value = "test", url = "https://app.qase.io")
-    @DisplayName("Creation of a case with not valid data")
-    public void notCreateCaseTest() {
+    @DisplayName("User can not create of a case with not valid data")
+    public void canNotCreateCaseTest() {
         projectPage.openLoginPage();
         loginSteps.authInApp(email, password);
         projectPage.projectPageIsOpened();

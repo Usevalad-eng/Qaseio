@@ -8,8 +8,8 @@ public class ProjectSteps {
     ProjectPage projectPage = new ProjectPage();
 
     public void createProject(CreateProjectRequest project) {
-        projectPage.createNewProject();
+        projectPage.createNewProjectButtonToClick();
         projectPage.inputProjectName(project.getTitle());
-        projectPage.createProject();
+        projectPage.createProjectButtonToClick();
     }
 }

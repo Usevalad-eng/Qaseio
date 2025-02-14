@@ -50,8 +50,8 @@ public class ProjectPage extends BasePage {
         PROJECT_TEXT.shouldHave(text("Projects"));
     }
 
-    @Step("Create new project")
-    public void createNewProject() {
+    @Step("Click Create new project button")
+    public void createNewProjectButtonToClick() {
         CREATE_NEW_PROJECT_BUTTON.shouldBe(visible).click();
     }
 
@@ -60,8 +60,8 @@ public class ProjectPage extends BasePage {
         PROJECT_NAME_INPUT.sendKeys(name);
     }
 
-    @Step("Click create project")
-    public void createProject() {
+    @Step("Click Create project button")
+    public void createProjectButtonToClick() {
         CREATE_PROJECT_BUTTON.click();
     }
 

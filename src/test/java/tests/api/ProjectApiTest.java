@@ -100,7 +100,7 @@ public class ProjectApiTest {
 
     @Test
     @DisplayName("Projects should  be displayed with errors when limit  greater than 100")
-    void getProjectListGetTotalWithError(){
+    void getProjectListTotalWithErrorMessage(){
         GetProjResponse getProjResponse = ProjectSteps.getProjects(101, 0);
 
         assertThat(getProjResponse)

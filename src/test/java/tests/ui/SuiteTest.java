@@ -26,9 +26,9 @@ public class SuiteTest extends BaseTest {
         projectPage.openLoginPage();
         loginSteps.authInApp(email, password);
         projectPage.projectPageIsOpened();
-        projectPage.createNewProject();
+        projectPage.createNewProjectButtonToClick();
         projectPage.inputProjectName("Demo");
-        projectPage.createProject();
+        projectPage.createProjectButtonToClick();
         suitePage.createNewSuite();
         suitePage.inputSuiteName("suiteTest");
         suitePage.createSuite();
@@ -47,10 +47,10 @@ public class SuiteTest extends BaseTest {
         projectPage.openLoginPage();
         loginSteps.authInApp(email, password);
         projectPage.projectPageIsOpened();
-        projectPage.createNewProject();
+        projectPage.createNewProjectButtonToClick();
         CreateProjectRequest testProject = ProjectGenerator.createProjectApi();
         projectPage.inputProjectName(testProject.getTitle());
-        projectPage.createProject();
+        projectPage.createProjectButtonToClick();
         suitePage.createNewSuite();
         CreateSuiteRequest testSuite = SuiteGenerator.createSuiteApi();
         String expectedSuiteName = testSuite.getTitle();
@@ -71,9 +71,9 @@ public class SuiteTest extends BaseTest {
         projectPage.openLoginPage();
         loginSteps.authInApp(email, password);
         projectPage.projectPageIsOpened();
-        projectPage.createNewProject();
+        projectPage.createNewProjectButtonToClick();
         projectPage.inputProjectName("Demo");
-        projectPage.createProject();
+        projectPage.createProjectButtonToClick();
         suitePage.createNewSuite();
         suitePage.inputSuiteName("");
         suitePage.createSuite();

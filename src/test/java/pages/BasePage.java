@@ -9,7 +9,7 @@ public abstract class BasePage {
 
     @Step("Open login Page")
     public void openLoginPage(){
-        open("/login");
+        open("https://app.qase.io/login");
     }
 
     @Step("Is page opened")

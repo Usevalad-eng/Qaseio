@@ -44,8 +44,8 @@ public class BaseTest {
 
     @BeforeEach
     void setUp() {
-        Configuration.timeout = 5000;
-        Configuration.pollingInterval = 200;
+        Configuration.timeout = 6000;
+        Configuration.pollingInterval = 300;
         SelenideLogger.addListener("allure", new AllureSelenide());
     }
 

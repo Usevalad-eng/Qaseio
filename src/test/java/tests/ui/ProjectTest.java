@@ -7,6 +7,9 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import tests.BaseTest;
 import tests.api.pojos.request.project.CreateProjectRequest;
+import tests.api.steps.ProjectSteps;
+
+import static generators.ProjectGenerator.createProjectApi;
 
 @Tag("UI")
 public class ProjectTest extends BaseTest {
@@ -22,7 +25,7 @@ public class ProjectTest extends BaseTest {
         authorizeInApp(email, password);
         projectPage.openProjectsPage();
         projectPage.clickCreateNewProjectButton();
-        CreateProjectRequest project = ProjectGenerator.createProjectApi();
+        CreateProjectRequest project = createProjectApi();
         projectPage.create(project);
         projectPage.assertThatProjCreated();
         ProjectGenerator.deleteProjectApi(project.getCode());
@@ -36,10 +39,10 @@ public class ProjectTest extends BaseTest {
     @Link(value = "test", url = "https://app.qase.io")
     @DisplayName("Creation of Project with valid data using random data")
     public void createProjectWithRandomDataTest() {
-        projectPage.openLoginPage();
+        loginPage.openLoginPage();
         loginSteps.authInApp(email, password);
         projectPage.projectPageIsOpened();
-        CreateProjectRequest projectApi = ProjectGenerator.createProjectApi();
+        CreateProjectRequest projectApi = createProjectApi();
         projectSteps.createProject(projectApi);
         projectPage.openProjectsPage();
         projectPage.assertThatProjCreated();
@@ -54,25 +57,25 @@ public class ProjectTest extends BaseTest {
     @Link(value = "test", url = "https://app.qase.io")
     @DisplayName("Creation of a Project with only one character is unavailable")
     public void createProjectWithOneCharacterInTheNameTest() {
-        projectPage.openLoginPage();
+        loginPage.openLoginPage();
         loginSteps.authInApp(email, password);
         projectPage.projectPageIsOpened();
-        projectPage.createNewProject();
+        projectPage.createNewProjectButtonToClick();
         projectPage.inputProjectName("D");
-        projectPage.createProject();
+        projectPage.createProjectButtonToClick();
         projectPage.canNotCreateProjectErrorShouldBeVisible();
     }
 
     @Test
-    @DisplayName("Deletion of the Project")
     @Feature("Project")
     @Story("User can delete the project")
     @Owner("Vsevolod")
     @Link(value = "test", url = "https://app.qase.io")
     @Severity(SeverityLevel.NORMAL)
+    @DisplayName("Deletion of the Project")
     public void DeleteProjectTest() {
-        ProjectGenerator.createProjApi();
-        projectPage.openLoginPage();
+        ProjectSteps.createProject(createProjectApi());
+        loginPage.openLoginPage();
         loginSteps.authInApp(email, password);
         projectPage.openProjectsPage();
         projectPage.findDots();
@@ -82,16 +85,16 @@ public class ProjectTest extends BaseTest {
     }
 
     @Test
-    @DisplayName("Deletion of the Project")
     @Feature("Project")
     @Story("User can crete and delete the project")
     @Owner("Vsevolod")
     @Link(value = "test", url = "https://app.qase.io")
     @Severity(SeverityLevel.NORMAL)
+    @DisplayName("Create project and delete")
     public void createProjectAndDeleteTest() {
-        CreateProjectRequest projectR = ProjectGenerator.createProjectApi();
-        ProjectGenerator.getProjectCreated(projectR);
-        ProjectGenerator.deleteProjectApi(projectR.getCode());
+        CreateProjectRequest project = createProjectApi();
+        ProjectSteps.createProject(project);
+        ProjectGenerator.deleteProjectApi(project.getCode());
         authorizeInApp(email, password);
         projectPage.assertThatProjDeleted();
     }

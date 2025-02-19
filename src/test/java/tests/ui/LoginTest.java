@@ -63,6 +63,6 @@ public class LoginTest extends BaseTest {
         loginPage.inputPass(pass);
         loginPage.clickSignInButton();
         String textOfActualMessage = loginPage.getErrorMessagesText();
-        assertEquals(textOfExpectedMessage, textOfActualMessage, "Error, something went wrong!");
+        assertEquals(textOfExpectedMessage, textOfActualMessage, "Error, check code of this test");
     }
 }

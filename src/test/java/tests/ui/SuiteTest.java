@@ -9,7 +9,9 @@ import org.junit.jupiter.api.Test;
 import tests.BaseTest;
 import tests.api.pojos.request.project.CreateProjectRequest;
 import tests.api.pojos.request.suite.CreateSuiteRequest;
+import tests.api.steps.ProjectSteps;
 
+import static generators.ProjectGenerator.createProjectApi;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Tag("UI")
@@ -21,7 +23,7 @@ public class SuiteTest extends BaseTest {
     @Owner("Vsevolod")
     @Severity(SeverityLevel.BLOCKER)
     @Link(value = "test", url = "https://app.qase.io")
-    @DisplayName("Creation of suite with valid data")
+    @DisplayName("Creation of suite with valid letters as data")
     public void createSuiteTest() {
         projectPage.openLoginPage();
         loginSteps.authInApp(email, password);
@@ -40,9 +42,30 @@ public class SuiteTest extends BaseTest {
     @Feature("Suite")
     @Story("User can create a suite")
     @Owner("Vsevolod")
+    @Severity(SeverityLevel.NORMAL)
+    @Link(value = "test", url = "https://app.qase.io")
+    @DisplayName("Creation of suite with valid letters and digits as data")
+    public void createSuiteWithDigitsTest() {
+        CreateProjectRequest project = createProjectApi();
+        ProjectSteps.createProject(project);
+        projectPage.openLoginPage();
+        loginSteps.authInApp(email, password);
+        projectPage.projectPageIsOpened();
+        projectPage.clickOnProject();
+        suitePage.createNewSuite();
+        suitePage.inputSuiteName("12345");
+        suitePage.createSuite();
+        suitePage.assertThatSuiteCreated("12345");
+        ProjectGenerator.deleteProjectApi(project.getCode());
+    }
+
+    @Test
+    @Feature("Suite")
+    @Story("User can create a suite")
+    @Owner("Vsevolod")
     @Severity(SeverityLevel.BLOCKER)
     @Link(value = "test", url = "https://app.qase.io")
-    @DisplayName("Creation of suite with valid data using random data)")
+    @DisplayName("Creation of suite with valid random data")
     public void createSuiteWithRandomDataTest() {
         projectPage.openLoginPage();
         loginSteps.authInApp(email, password);

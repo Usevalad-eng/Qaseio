@@ -1,4 +1,5 @@
 <html>
+<#-- http://freemarker.org/freemarkerdownload.html -->
 <#-- @ftlvariable name="data" type="io.qameta.allure.attachment.http.HttpResponseAttachment" -->
 <head>
 <meta http-equiv="content-type" content="text/html; charset = UTF-8">

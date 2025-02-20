@@ -70,10 +70,16 @@ public class ProjectPage extends BasePage {
         PROJ_ERROR.shouldBe(visible);
     }
 
-    @Step("Assert that project deleted")
+    @Step("Assert that project created")
     public void assertThatProjCreated() {
         open("/projects");
         PROJ_NAME.shouldBe(visible);
+    }
+
+    @Step("Click on project")
+    public void clickOnProject() {
+        open("/projects");
+        PROJ_NAME.click();
     }
 
     @Step("Find and click Dots")

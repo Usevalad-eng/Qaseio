@@ -31,7 +31,8 @@ def junitVersion = "5.11.3",
     allureVersion = "2.12.0",
     restVersion = "5.5.0",
     fakerVersion = "1.0.2",
-    jacksonVersion = "2.18.2"
+    jacksonVersion = "2.18.2",
+    ownerVersion = "1.0.4"
 
 dependencies {
     testCompileOnly 'org.projectlombok:lombok:1.18.22'
@@ -45,7 +46,8 @@ dependencies {
             "io.qameta.allure:allure-rest-assured:$allureVersion",
             "io.rest-assured:rest-assured:$restVersion",
             "com.github.javafaker:javafaker:$fakerVersion",
-            "com.fasterxml.jackson.core:jackson-core:$jacksonVersion"
+            "com.fasterxml.jackson.core:jackson-core:$jacksonVersion",
+            "org.aeonbits.owner:owner:$ownerVersion"
     )
 }
 

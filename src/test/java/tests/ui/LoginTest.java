@@ -22,6 +22,7 @@ public class LoginTest extends BaseTest {
     @Owner("Vsevolod")
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Auth successful test")
+    @Tag("LoginUI")
     public void loginSuccessfulAuthTest() {
         loginPage.openLoginPage();
         loginPage.inputLogin(email);

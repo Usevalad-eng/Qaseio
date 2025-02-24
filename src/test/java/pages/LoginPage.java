@@ -18,7 +18,7 @@ public class LoginPage extends BasePage {
     @Override
     @Step("Open login Page")
     public void openLoginPage() {
-        open("https://app.qase.io/login");
+        open("/login"); //open("https://app.qase.io/login");
     }
 
     @Step("Input login {login}")

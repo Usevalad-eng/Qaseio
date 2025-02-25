@@ -3,8 +3,7 @@ package tests;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
-import config.Project;
-import config.User;
+import config.ConfigReader;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -21,8 +20,8 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class BaseTest {
 
-    protected String email = User.config.email(); //protected String email = "kubyox@mailto.plus";
-    protected String password = User.config.password(); //protected String password = "qaseio122024";
+    protected String email = ConfigReader.userConfig.email(); //protected String email = "kubyox@mailto.plus";
+    protected String password = ConfigReader.userConfig.password(); //protected String password = "qaseio122024";
     public LoginSteps loginSteps = new LoginSteps();
     public ProjectSteps projectSteps = new ProjectSteps();
     public LoginPage loginPage = new LoginPage();
@@ -38,14 +37,14 @@ public class BaseTest {
 
     @BeforeAll
     static void screenResolution() {
-        Configuration.baseUrl = Project.config.baseUrl();       //Configuration.baseUrl = "https://app.qase.io";
+        Configuration.baseUrl = ConfigReader.projectConfig.baseUrl();       //Configuration.baseUrl = "https://app.qase.io";
         Configuration.browserSize = "1920x1080";
-        //Configuration.headless = true;
+        Configuration.headless = true;
     }
 
     @BeforeEach
     void setUp() {
-        Configuration.timeout = Project.config.timeout();   //Configuration.timeout = 7000;
+        Configuration.timeout = ConfigReader.projectConfig.timeout();   //Configuration.timeout = 7000;
         Configuration.pollingInterval = 400;
         SelenideLogger.addListener("allure", new AllureSelenide());
     }

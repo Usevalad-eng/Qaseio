@@ -114,7 +114,7 @@ public class CaseTest extends BaseTest {
         loginSteps.authInApp(email, password);
         projectPage.projectPageIsOpened();
         projectPage.createNewProjectButtonToClick();
-        CreateProjectRequest testProject = ProjectGenerator.createProjectApi();
+        CreateProjectRequest testProject = ProjectGenerator.createProjectApiUI();
         projectPage.inputProjectName(testProject.getTitle());
         projectPage.createProjectButtonToClick();
         suitePage.createNewSuite();

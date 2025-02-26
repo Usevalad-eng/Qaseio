@@ -21,6 +21,7 @@ public class ProjectPage extends BasePage {
     private final ElementsCollection DOTS_BUTTON = $$x("//span[@class = 'qc0jO1']");
     private final SelenideElement DELETE_BUTTON = $x("//div[@data-testid = 'remove']");
     private final SelenideElement DELETE_PROJECT_BUTTON = $x("//span[text() = 'Delete project']");
+    private final SelenideElement PROJECT_CODE = $x("//h1[@class = 'pOpqJc']");
 
     @Override
     @Step("Open Login Page")
@@ -70,8 +71,8 @@ public class ProjectPage extends BasePage {
         PROJ_ERROR.shouldBe(visible);
     }
 
-    @Step("Assert that project created")
-    public void assertThatProjCreated() {
+    @Step("Check that project created")
+    public void checkThatProjCreated() {
         open("/projects");
         PROJ_NAME.shouldBe(visible);
     }
@@ -80,6 +81,11 @@ public class ProjectPage extends BasePage {
     public void clickOnProject() {
         open("/projects");
         PROJ_NAME.click();
+    }
+
+    @Step("Contains project")
+    public void assertThatProjContainsProjCode(String projCode) {
+        PROJECT_CODE.getText().contains(projCode);
     }
 
     @Step("Find and click Dots")

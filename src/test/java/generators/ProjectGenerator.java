@@ -8,7 +8,7 @@ public class ProjectGenerator {
 
     static Faker faker = new Faker();
 
-    public static CreateProjectRequest createProjectApi(){
+    public static CreateProjectRequest createProjectApiUI(){
         return CreateProjectRequest.builder()
                 .title(faker.name().firstName())
                 .code(faker.name().firstName().toUpperCase())

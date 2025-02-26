@@ -19,7 +19,7 @@ public class ProjectApiTest {
     @Test
     @DisplayName("Project with valid random data should be created")
     void projectShouldBeCreated(){
-        CreateProjectRequest createProjectRq = ProjectGenerator.createProjectApi();
+        CreateProjectRequest createProjectRq = ProjectGenerator.createProjectApiUI();
         CreateProjectResponse createProjectRs = ProjectSteps.createProject(createProjectRq);
 
         assertThat(createProjectRs)
@@ -55,7 +55,7 @@ public class ProjectApiTest {
     @Test
     @DisplayName("Project should be created, checking only creating")
     void projectShouldBeCreatedWithStatusTrue(){
-        CreateProjectRequest createProjectRq = ProjectGenerator.createProjectApi();
+        CreateProjectRequest createProjectRq = ProjectGenerator.createProjectApiUI();
         CreateProjectResponse createProjectRs = ProjectSteps.createProject(createProjectRq);
 
         assertThat(createProjectRs)
@@ -69,7 +69,7 @@ public class ProjectApiTest {
     @Test
     @DisplayName("Project should be deleted")
     void projectShouldBeDeleted(){
-        CreateProjectRequest projectToDel = ProjectGenerator.createProjectApi();
+        CreateProjectRequest projectToDel = ProjectGenerator.createProjectApiUI();
         ProjectSteps.createProject(projectToDel);
         DeleteProjectResponse deleteProjectResponse = ProjectSteps.deleteProject(projectToDel.getCode());
 

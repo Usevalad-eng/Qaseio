@@ -20,7 +20,7 @@ public class CaseApiTest {
     @Test
     @DisplayName("Case should be created")
     void caseShouldBeCreated() {
-        CreateProjectRequest projectApi = ProjectGenerator.createProjectApi();
+        CreateProjectRequest projectApi = ProjectGenerator.createProjectApiUI();
         ProjectSteps.createProject(projectApi);
 
         CreateCaseRequest createCaseRq = CaseGenerator.createCaseApi();
@@ -37,7 +37,7 @@ public class CaseApiTest {
     @Test
     @DisplayName("Case should be deleted")
     void caseShouldBeDeleted(){
-        CreateProjectRequest projectApi = ProjectGenerator.createProjectApi();
+        CreateProjectRequest projectApi = ProjectGenerator.createProjectApiUI();
         ProjectSteps.createProject(projectApi);
 
         CreateCaseRequest createCaseRq = CaseGenerator.createCaseApi();
@@ -54,7 +54,7 @@ public class CaseApiTest {
     @Test
     @DisplayName("Case should not be deleted")
     void caseShouldNotBeDeleted(){
-        CreateProjectRequest projectApi = ProjectGenerator.createProjectApi();
+        CreateProjectRequest projectApi = ProjectGenerator.createProjectApiUI();
         ProjectSteps.createProject(projectApi);
 
         CreateCaseRequest createCaseRq = CaseGenerator.createCaseApi();

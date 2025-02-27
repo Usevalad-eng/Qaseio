@@ -20,8 +20,8 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class BaseTest {
 
-    protected String email = ConfigReader.userConfig.email(); //protected String email = "kubyox@mailto.plus";
-    protected String password = ConfigReader.userConfig.password(); //protected String password = "qaseio122024";
+    protected String email = ConfigReader.userConfig.email();
+    protected String password = ConfigReader.userConfig.password();
     public LoginSteps loginSteps = new LoginSteps();
     public ProjectSteps projectSteps = new ProjectSteps();
     public LoginPage loginPage = new LoginPage();
@@ -37,15 +37,15 @@ public class BaseTest {
 
     @BeforeAll
     static void screenResolution() {
-        Configuration.baseUrl = ConfigReader.projectConfig.baseUrl();       //Configuration.baseUrl = "https://app.qase.io";
+        Configuration.baseUrl = ConfigReader.projectConfig.baseUrl();
         Configuration.browserSize = "1920x1080";
         Configuration.headless = true;
     }
 
     @BeforeEach
     void setUp() {
-        Configuration.timeout = ConfigReader.projectConfig.timeout();   //Configuration.timeout = 7000;
-        Configuration.pollingInterval = 400;
+        Configuration.timeout = ConfigReader.projectConfig.timeout();
+        Configuration.pollingInterval = ConfigReader.projectConfig.pollingInterval();
         SelenideLogger.addListener("allure", new AllureSelenide());
     }
 

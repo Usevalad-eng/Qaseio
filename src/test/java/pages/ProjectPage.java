@@ -66,7 +66,7 @@ public class ProjectPage extends BasePage {
         CREATE_PROJECT_BUTTON.click();
     }
 
-    @Step("Can't create new project error can be seen")
+    @Step("Can't create new project error should be seen")
     public void canNotCreateProjectErrorShouldBeVisible() {
         PROJ_ERROR.shouldBe(visible);
     }

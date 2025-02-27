@@ -11,4 +11,5 @@ public interface ProjectConfig extends Config {
 
     String baseUrl();
     Long timeout();
+    Long pollingInterval();
 }

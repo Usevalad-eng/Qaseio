@@ -35,7 +35,7 @@ Steps:
 #### 1. log in to the app
 #### 2. go to Projects page
 #### 3. click Crate new project button
-#### 4. fill in project name and project code fields
+#### 4. fill in project name and project code fields(with valid data)
 #### 5. click Create project button
 ## Expected result: project with expected name is created
 ### Severity: Blocker
@@ -56,7 +56,7 @@ Steps:
 #### 1. log in to the app
 #### 2. go to Projects page
 #### 3. click Crate new project button
-#### 4. fill in project name and project code fields with one character
+#### 4. fill in project name and project code fields with only one character
 #### 5. click Create project button
 ## Expected result: project with expected name is not created
 ### Severity: Normal
@@ -67,7 +67,7 @@ Steps:
 #### 2. go to Projects page
 #### 3. create a project
 #### 4. click Suite button(inside the created project)
-#### 5. fill in Suite name field
+#### 5. fill in Suite name field(with valid data)
 #### 6. choose Parent suite
 #### 7. click Create button
 ## Expected result: test suit with expected name is created
@@ -92,7 +92,7 @@ Steps:
 #### 3. click Project
 #### 4. click Case button
 #### 5. click Add steps button
-#### 6. fill in required fields
+#### 6. fill in required fields (with * character)
 #### 7. click Save button
 ## Expected result: test case with expected name is created
 ### Severity: High
@@ -103,7 +103,7 @@ Steps:
 #### 3. click Project
 #### 4. click Case button
 #### 5. click Add steps button
-#### 6. fill in required fields
+#### 6. fill in required fields (with * character)
 #### 7. click Save button
 #### 8. choose the case clicking checkbox near the case
 #### 9. enter 'CONFIRM' in the form

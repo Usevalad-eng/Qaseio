@@ -27,7 +27,7 @@ public class LoginTest extends BaseTest {
         loginPage.openLoginPage();
         loginPage.inputLogin(email);
         loginPage.inputPass(password);
-        loginPage.clickSubmit();
+        loginPage.submit();
         loginPage.successfulLogin();
     }
 

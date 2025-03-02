@@ -20,7 +20,7 @@ public class SuiteApiTest {
     @Test
     @DisplayName("Suite should be created")
     void suiteShouldBeCreated() {
-        CreateProjectRequest projectApi = ProjectGenerator.createProjectApiUI();
+        CreateProjectRequest projectApi = ProjectGenerator.createProject();
         ProjectSteps.createProject(projectApi);
 
         CreateSuiteRequest createSuiteRq = SuiteGenerator.createSuiteApi();
@@ -37,7 +37,7 @@ public class SuiteApiTest {
     @Test
     @DisplayName("Suite should be deleted")
     void suiteShouldBeDeleted() {
-        CreateProjectRequest projectApi = ProjectGenerator.createProjectApiUI();
+        CreateProjectRequest projectApi = ProjectGenerator.createProject();
         ProjectSteps.createProject(projectApi);
 
         CreateSuiteRequest createSuiteRq = SuiteGenerator.createSuiteApi();
@@ -54,7 +54,7 @@ public class SuiteApiTest {
     @Test
     @DisplayName("Suite should not be deleted")
     void suiteShouldNotBeDeleted() {
-        CreateProjectRequest projectApi = ProjectGenerator.createProjectApiUI();
+        CreateProjectRequest projectApi = ProjectGenerator.createProject();
         ProjectSteps.createProject(projectApi);
 
         CreateSuiteRequest createSuiteRq = SuiteGenerator.createSuiteApi();

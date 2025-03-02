@@ -39,7 +39,7 @@ public class BaseTest {
     static void screenResolution() {
         Configuration.baseUrl = ConfigReader.projectConfig.baseUrl();
         Configuration.browserSize = "1920x1080";
-        Configuration.headless = true;
+        Configuration.headless = false;
     }
 
     @BeforeEach

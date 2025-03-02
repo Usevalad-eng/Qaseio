@@ -20,8 +20,8 @@
 <code><img width="5%" title="Java" src="media/java.png"></code>
 <code><img width="5%" title="Gradle" src="media/gradle.png"></code>
 <code><img width="5%" title="Allure" src="media/allure.jpg"></code>
-<code><img width="5%" title="JUnit5" src="media/junit5.png"></code>
-<code><img width="5%" title="Selenide" src="media/selenide.jpg"></code>
+<code><img width="5%" title="JUnit5" src="media/junit5.svg"></code>
+<code><img width="5%" title="Selenide" src="media/selenide.svg"></code>
 </p>
 
 <a name="Description">Description:</a>
@@ -34,5 +34,5 @@ The project:
 - [x] Objects  using `Rest-assured` for API serialization/deserialization objects,
 - [x] `Allure listener` for logging;
 
-##### Project is being developed 2/27/2025
+##### Project is being developed 3/02/2025
 ###### @Owner of these tests: Vsevolod A.

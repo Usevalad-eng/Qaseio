@@ -18,7 +18,7 @@ public class LoginPage extends BasePage {
     @Override
     @Step("Open login Page")
     public void openLoginPage() {
-        open("/login"); //open("https://app.qase.io/login");
+        open("/login");
     }
 
     @Step("Input login {login}")
@@ -31,8 +31,8 @@ public class LoginPage extends BasePage {
         PASS_INPUT.sendKeys(pass);
     }
 
-    @Step("Click submit")
-    public void clickSubmit() {
+    @Step("Submit")
+    public void submit() {
         PASS_INPUT.submit();
     }
 
@@ -41,7 +41,7 @@ public class LoginPage extends BasePage {
         SIGN_IN_BUTTON.click();
     }
 
-    @Step("Successful log in")
+    @Step("Successful login")
     public void successfulLogin() {
         PROJECTS_TEXT.shouldHave(text("Projects"));
     }

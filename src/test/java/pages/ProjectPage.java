@@ -8,6 +8,7 @@ import tests.api.pojos.request.project.CreateProjectRequest;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static pages.elements.Button.clickButton;
+import static pages.elements.Input.setValueInInput;
 import static pages.elements.Input.setValueInInputT;
 
 public class ProjectPage extends BasePage {
@@ -39,10 +40,17 @@ public class ProjectPage extends BasePage {
         clickButton("Create new project");
     }
 
-    @Step("Create")
+    @Step("Create project")
     public void create(CreateProjectRequest project){
         setValueInInputT("For example: Web Application", project.getTitle());
         setValueInInputT("For example: WA", project.getCode());
+        clickButton("Create project");
+    }
+
+    @Step("Create a project")
+    public void createAProject(CreateProjectRequest project){
+        setValueInInput("Project name", project.getTitle());
+        setValueInInput("Project code", project.getCode());
         clickButton("Create project");
     }
 

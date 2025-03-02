@@ -56,7 +56,7 @@ public class CasePage extends BasePage {
 
     @Step("Add step")
     public void fillDescription() {
-        DESCRIPTION.sendKeys("Description");  //CaseBuilder.getAllFields().getDescription()
+        DESCRIPTION.sendKeys("Description");
     }
 
     @Step("Add step")
@@ -66,7 +66,7 @@ public class CasePage extends BasePage {
 
     @Step("Fill step")
     public void fillStep() {
-        STEP_ACTION.sendKeys("Action test"); //CaseBuilder.getAllFields().getStepAction()
+        STEP_ACTION.sendKeys("Action test");
     }
 
     @Step("Fill Status field")

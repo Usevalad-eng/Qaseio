@@ -11,7 +11,7 @@ import tests.api.pojos.request.project.CreateProjectRequest;
 import tests.api.pojos.request.suite.CreateSuiteRequest;
 import tests.api.steps.ProjectSteps;
 
-import static generators.ProjectGenerator.createProjectApiUI;
+import static generators.ProjectGenerator.createProject;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Tag("UI")
@@ -46,7 +46,7 @@ public class SuiteTest extends BaseTest {
     @Link(value = "test", url = "https://app.qase.io")
     @DisplayName("Creation of suite with valid letters and digits as data")
     public void createSuiteWithDigitsTest() {
-        CreateProjectRequest project = createProjectApiUI();
+        CreateProjectRequest project = createProject();
         ProjectSteps.createProject(project);
         projectPage.openLoginPage();
         loginSteps.authInApp(email, password);
@@ -71,7 +71,7 @@ public class SuiteTest extends BaseTest {
         loginSteps.authInApp(email, password);
         projectPage.projectPageIsOpened();
         projectPage.createNewProjectButtonToClick();
-        CreateProjectRequest testProject = ProjectGenerator.createProjectApiUI();
+        CreateProjectRequest testProject = ProjectGenerator.createProject();
         projectPage.inputProjectName(testProject.getTitle());
         projectPage.createProjectButtonToClick();
         suitePage.createNewSuite();

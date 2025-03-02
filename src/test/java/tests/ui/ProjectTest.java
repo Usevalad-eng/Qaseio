@@ -9,7 +9,7 @@ import tests.BaseTest;
 import tests.api.pojos.request.project.CreateProjectRequest;
 import tests.api.steps.ProjectSteps;
 
-import static generators.ProjectGenerator.createProjectApiUI;
+import static generators.ProjectGenerator.createProject;
 
 @Tag("UI")
 public class ProjectTest extends BaseTest {
@@ -22,13 +22,13 @@ public class ProjectTest extends BaseTest {
     @Link(value = "test", url = "https://app.qase.io")
     @DisplayName("Creation of Project with valid data")
     public void createProjTest() {
-        authorizeInApp(email, password);
+        loginPage.openLoginPage();
+        loginSteps.authInApp(email, password);
         projectPage.openProjectsPage();
+        projectPage.projectPageIsOpened();
         projectPage.clickCreateNewProjectButton();
-        CreateProjectRequest project = createProjectApiUI();
-        projectPage.create(project);
-        projectPage.checkThatProjCreated();
-        projectPage.clickOnProject();
+        CreateProjectRequest project = createProject();
+        projectPage.createAProject(project);
         projectPage.assertThatProjContainsProjCode(project.getCode());
         ProjectGenerator.deleteProjectApi(project.getCode());
     }
@@ -43,12 +43,10 @@ public class ProjectTest extends BaseTest {
     public void createProjectWithRandomDataTest() {
         loginPage.openLoginPage();
         loginSteps.authInApp(email, password);
-        projectPage.projectPageIsOpened();
-        CreateProjectRequest project = createProjectApiUI();
-        projectSteps.createProject(project);
         projectPage.openProjectsPage();
-        projectPage.checkThatProjCreated();
-        projectPage.clickOnProject();
+        projectPage.projectPageIsOpened();
+        CreateProjectRequest project = createProject();
+        projectSteps.createProject(project);
         projectPage.assertThatProjContainsProjCode(project.getCode());
         ProjectGenerator.deleteProjectApi(project.getTitle().toUpperCase());
     }
@@ -78,7 +76,7 @@ public class ProjectTest extends BaseTest {
     @Severity(SeverityLevel.NORMAL)
     @DisplayName("Deletion of the Project")
     public void DeleteProjectTest() {
-        ProjectSteps.createProject(createProjectApiUI());
+        ProjectSteps.createProject(createProject());
         loginPage.openLoginPage();
         loginSteps.authInApp(email, password);
         projectPage.openProjectsPage();
@@ -96,7 +94,7 @@ public class ProjectTest extends BaseTest {
     @Severity(SeverityLevel.NORMAL)
     @DisplayName("Create project and delete")
     public void createProjectAndDeleteTest() {
-        CreateProjectRequest project = createProjectApiUI();
+        CreateProjectRequest project = createProject();
         ProjectSteps.createProject(project);
         ProjectGenerator.deleteProjectApi(project.getCode());
         authorizeInApp(email, password);

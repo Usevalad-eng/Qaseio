@@ -23,6 +23,29 @@ public class SuiteTest extends BaseTest {
     @Owner("Vsevolod")
     @Severity(SeverityLevel.BLOCKER)
     @Link(value = "test", url = "https://app.qase.io")
+    @DisplayName("Creation of suite with valid letters and digits as data")
+    public void createSuiteRandomTest() {
+        loginPage.openLoginPage();
+        loginSteps.authInApp(email, password);
+        projectPage.openProjectsPage();
+        projectPage.projectPageIsOpened();
+        projectPage.clickCreateNewProjectButton();
+        CreateProjectRequest project = createProject();
+        projectPage.createAProject(project);
+        projectPage.clickOnProject();
+        suitePage.createNewSuite();
+        suitePage.inputSuiteName("suite123Test");
+        suitePage.createSuite();
+        suitePage.assertThatSuiteCreated("suite123Test");
+        ProjectGenerator.deleteProjectApi(project.getCode());
+    }
+
+    @Test
+    @Feature("Suite")
+    @Story("User can create a suite")
+    @Owner("Vsevolod")
+    @Severity(SeverityLevel.BLOCKER)
+    @Link(value = "test", url = "https://app.qase.io")
     @DisplayName("Creation of suite with valid letters as data")
     public void createSuiteTest() {
         projectPage.openLoginPage();
@@ -44,7 +67,7 @@ public class SuiteTest extends BaseTest {
     @Owner("Vsevolod")
     @Severity(SeverityLevel.NORMAL)
     @Link(value = "test", url = "https://app.qase.io")
-    @DisplayName("Creation of suite with valid letters and digits as data")
+    @DisplayName("Creation of suite with valid digits as data")
     public void createSuiteWithDigitsTest() {
         CreateProjectRequest project = createProject();
         ProjectSteps.createProject(project);

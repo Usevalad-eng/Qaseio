@@ -13,8 +13,36 @@ import tests.api.pojos.request.cases.CreateCaseRequest;
 import tests.api.pojos.request.project.CreateProjectRequest;
 import tests.api.pojos.request.suite.CreateSuiteRequest;
 
+import static generators.ProjectGenerator.createProject;
+
 @Tag("UI")
 public class CaseTest extends BaseTest {
+
+    @Test
+    @Feature("Case")
+    @Story("User can create a case")
+    @Owner("Vsevolod")
+    @Severity(SeverityLevel.BLOCKER)
+    @Link(value = "test", url = "https://app.qase.io")
+    @DisplayName("Creation of an empty case with valid random data")
+    public void createCaseRandomTest() {
+        loginPage.openLoginPage();
+        loginSteps.authInApp(email, password);
+        projectPage.openProjectsPage();
+        projectPage.projectPageIsOpened();
+        projectPage.clickCreateNewProjectButton();
+        CreateProjectRequest project = createProject();
+        projectPage.createAProject(project);
+        projectPage.clickOnProject();
+        suitePage.createNewSuite();
+        suitePage.inputSuiteName("suiteTest");
+        suitePage.createSuite();
+        casePage.createNewCase();
+        casePage.inputCaseName("caseTest");
+        casePage.createCase();
+        casePage.assertThatCaseCreated("caseTest");
+        ProjectGenerator.deleteProjectApi(project.getCode());
+    }
 
     @Test
     @Feature("Case")

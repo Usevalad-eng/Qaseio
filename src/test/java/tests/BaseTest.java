@@ -20,8 +20,8 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class BaseTest {
 
-    protected String email = ConfigReader.userConfig.email();
-    protected String password = ConfigReader.userConfig.password();
+    public String email = "kubyox@mailto.plus"; //protected String email = ConfigReader.userConfig.email();
+    public String password = "qaseio122024"; //protected String password = ConfigReader.userConfig.password();
     public LoginSteps loginSteps = new LoginSteps();
     public ProjectSteps projectSteps = new ProjectSteps();
     public LoginPage loginPage = new LoginPage();
@@ -37,9 +37,10 @@ public class BaseTest {
 
     @BeforeAll
     static void screenResolution() {
-        Configuration.baseUrl = ConfigReader.projectConfig.baseUrl();
+        Configuration.baseUrl = "https://app.qase.io"; //Configuration.baseUrl = ConfigReader.projectConfig.baseUrl();
         Configuration.browserSize = "1920x1080";
         Configuration.headless = false;
+        //Configuration.browser="edge";
     }
 
     @BeforeEach

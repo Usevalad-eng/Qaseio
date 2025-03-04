@@ -93,7 +93,7 @@ public class ProjectPage extends BasePage {
 
     @Step("Contains project")
     public void assertThatProjContainsProjCode(String projCode) {
-        PROJECT_CODE.getText().contains(projCode);
+        PROJECT_CODE.shouldBe(visible).getText().contains(projCode);
     }
 
     @Step("Find and click Dots")

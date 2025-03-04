@@ -5,30 +5,31 @@ import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
 public class LoginPage extends BasePage {
 
-    private final SelenideElement LOGIN_INPUT = $("[name=email]");
-    private final SelenideElement PASS_INPUT = $("[name=password]");
-    private final SelenideElement SIGN_IN_BUTTON = $("span[class=CAunhU]");
+    public final SelenideElement LOGIN_INPUT = $x("//input[@name='email']");  //$("[name=email]");
+    public final SelenideElement PASS_INPUT = $x("//input[@name='password']");  //$("[name=password]");
+    public final SelenideElement SIGN_IN_BUTTON = $("span[class=CAunhU]");
     private final ElementsCollection ERROR_MESSAGE = $$x("//small[@class = 'f75Cb_']");
     private final SelenideElement PROJECTS_TEXT = $("h1[class=uA6zAY]");
 
     @Override
     @Step("Open login Page")
     public void openLoginPage() {
-        open("/login");
+        open("https://app.qase.io/login");  //open("/login");
     }
 
     @Step("Input login {login}")
     public void inputLogin(String login) {
-        LOGIN_INPUT.sendKeys(login);
+        LOGIN_INPUT.shouldBe(visible).setValue(login);  //LOGIN_INPUT.sendKeys(login);
     }
 
     @Step("Input pass: {pass}")
     public void inputPass(String pass) {
-        PASS_INPUT.sendKeys(pass);
+        PASS_INPUT.shouldBe(visible).setValue(pass);  //PASS_INPUT.sendKeys(pass);
     }
 
     @Step("Submit")

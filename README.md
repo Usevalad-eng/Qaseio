@@ -34,5 +34,5 @@ The project:
 - [x] Objects  using `Rest-assured` for API serialization/deserialization objects,
 - [x] `Allure listener` for logging;
 
-##### Project is being developed 3/03/2025
+##### Project is being developed 3/04/2025
 ###### @Owner of these tests: Vsevolod A.
